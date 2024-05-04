@@ -1,12 +1,13 @@
 
 .container{
-  margin:0 auto;
+  margin: 0 auto;
   width: 900px;
   padding-top: 30px;
-    margin-top: 30px;
+  margin-top: 30px;
+  padding-left: 206px;
 }
 
-.logo , .experience , .story{
+.logo, .experience , .story{
   float: left;
   width: 280px;
   margin: 10px; 
@@ -18,7 +19,8 @@
   text-align: justify;
   font-size: large;
   margin-top: 30px;
-  margin-left: 30px
+  margin-left: 30px;
+  margin-bottom: 100px;
 }
 
 .head1{
@@ -28,7 +30,13 @@
 .logo_img{
   height: 114px;
   padding-top: 32px;
-  margin-top: 30px;
+  margin-top: 60px;
+  margin-left: -669px;
+   margin-bottom: -208px;
+}
+
+.navh6{
+  color: #114dd4;
 }
 .experience{
   margin-left: -128px;

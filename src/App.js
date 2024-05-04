@@ -1,9 +1,9 @@
 import "./App.css";
-
+import Homepage from "./Pages/Homepage";
 function App() {
   return (
     <>
-      <h1>FYP DAY 1</h1>
+      <Homepage />
     </>
   );
 }

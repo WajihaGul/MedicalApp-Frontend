@@ -14,7 +14,7 @@ const Experience = () => {
           <h1 className={styles.head1}>25+ Years Of Experience</h1>
 
           <br />
-          <h6>
+          <h6 className={styles.navh6}>
             HealthBuddy helps you in searching available doctors as well as
             medicines
           </h6>
