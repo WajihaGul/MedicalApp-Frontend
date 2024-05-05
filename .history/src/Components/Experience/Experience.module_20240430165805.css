@@ -1,0 +1,13 @@
+.container {
+    display: flex; /* Use Flexbox to arrange the children in a row */
+  }
+  
+  .logo,
+  .experience,
+  .story {
+    flex: 1; /* Distribute the available space evenly among the children */
+    border: 1px solid black; /* Just for visualization */
+    padding: 10px; /* Just for visualization */
+    margin: 5px; /* Just for visualization */
+  }
+  

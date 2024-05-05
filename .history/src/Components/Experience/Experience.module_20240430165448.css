@@ -1,0 +1,20 @@
+.container{
+    padding: 200px;
+    display: flex;
+    flex-direction: row;
+}
+
+.logo{
+    margin: 100px;
+    padding: 68px;
+}
+
+.experience{
+    margin: 100px;
+    padding: 68px;
+}
+
+.story{
+    margin: 100px;
+    padding: 68px;
+}

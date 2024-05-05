@@ -1,0 +1,26 @@
+/* Add this CSS to your global stylesheet or within a CSS file that is applied to the Experience component */
+
+.container {
+    display: flex;
+    align-items: center; /* Align items vertically */
+  }
+  
+  .logo,
+  .experience,
+  .story {
+    flex: 1; /* Distribute remaining space evenly */
+    
+  }
+  
+  .logo { 
+    
+  }
+  
+  .experience {
+    /* Add styles for the experience */
+  }
+  
+  .story {
+    /* Add styles for the story */
+  }
+  

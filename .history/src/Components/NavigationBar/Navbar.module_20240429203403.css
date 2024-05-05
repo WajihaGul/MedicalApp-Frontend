@@ -1,0 +1,31 @@
+nav{
+        display: flex;
+        justify-content: space-between;
+        height: 72px;
+        align-items: center;
+        font-size: xx-large;
+        background-color:white;
+        color: black;
+}
+
+  nav ul {
+    display: flex;
+    gap: 43px;
+    list-style-type: none;
+    font-weight: 500;
+  }
+
+  button{
+    border-radius: 46px;
+    align-self: normal;
+    width: 255px;
+    border-color: transparent;
+    color: white;
+    background: green;
+    font-size: x-large;
+    
+  }
+  .logo img{
+ height : 10px;
+}
+  

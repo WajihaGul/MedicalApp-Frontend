@@ -1,0 +1,27 @@
+.carousel {
+  overflow: hidden; /* Hide any overflow */
+}
+
+.carousel-item img {
+  max-width: 100%; /* Ensure images don't exceed the width of the container */
+  max-height: 100vh; /* Adjust the height as needed to fit within the viewport */
+  margin: auto; /* Center the images horizontally */
+}
+
+.dblock{
+  height: 100vh;
+  width: 100%;
+}
+
+.sliders_p{
+  font-size: 56px;
+    color: white;
+    width: 1462px;
+    text-align: center;
+}
+
+.sliders_h{
+  font-family: emoji;
+        font-size: 42px;
+}
+

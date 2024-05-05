@@ -1,0 +1,39 @@
+.container{
+    width: 100%;
+    background-color: #374a85;
+    height: 340px;
+    margin-top: 152px;
+}
+.head3{
+    color: white;
+    font-family: cursive;
+    margin-left: 290px;
+    padding-top: 46px;;
+}
+.head1{
+    margin-top: 44px;
+    color: white;
+    font-family: cursive;
+    margin-left: 290px;
+    font-size: xxx-large;
+    width: 800px;
+}
+
+.ButtonHere, .divii{
+    float: left;
+    width: 280px;
+    margin: 10px;
+}
+
+.ButtonHere{
+    margin-left: 1000px;
+    margin-top: 200px;
+}
+
+.button{height: 65px;
+    color: #3553ba;
+    font-size: x-large;
+    width: 399px;
+    font-family: cursive;
+    border-radius: 24px;
+    margin-left: 5px;}

@@ -1,0 +1,77 @@
+/* Navbar.module.css */
+
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px; /* Increased height for a more prominent navbar */
+  padding: 0 30px; /* Increased padding for better spacing */
+  background: linear-gradient(45deg, #ff5f6d, #ffc371); /* Gradient background */
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  z-index: 1000;
+}
+
+nav ul {
+  display: flex;
+  gap: 30px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-item {
+  position: relative;
+}
+
+.navbar-item a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  padding: 15px 20px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-item a:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background on hover */
+}
+
+.btn-primary.btn-lg {
+  height: 46px;
+  width: 160px;
+  border-radius: 30px; /* Round button corners */
+  margin-left: 24px;
+  margin-top: -14px;
+  font-weight: bold;
+  background-color: #ffffff;
+  color: #9686da; /* Button color */
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.btn-primary.btn-lg:hover {
+  transform: scale(1.05); /* Scale button on hover */
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+}
+
+.nav_img {
+  height: 60px; /* Increased logo height */
+  margin-right: 20px;
+}
+
+.nav_head {
+  margin: 0;
+  color: #fff;
+  font-size: 24px; /* Increased font size */
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3); /* Text shadow for better visibility */
+}

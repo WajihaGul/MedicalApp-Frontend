@@ -1,0 +1,50 @@
+.container{
+    padding-top: 80px;
+    scroll-padding-top: 80px;
+    height: 1000px;
+    width: 100%;
+    background-color: rgb(209 221 253);
+}
+
+.ddivi , .ddivii{
+    float: left;
+    width: 280px;
+    margin-left: 416px;
+    
+}
+
+.divih1{
+    color:black;
+    margin-top: 73px;
+    font-family: cursive;
+    font-weight: 700;
+    font-size: large
+}
+.divip{
+    color: black;
+    width: 531px;
+    font-family: math;
+    font-weight: 900;
+    font-size: 59px
+}
+.dbutton{
+    margin-bottom: -46px;
+    margin-top: 150px;
+    width: 236px;
+    height: 70px;
+    border: transparent;
+    background-color: #7786d2;
+    border-radius: 100px;
+    color: white;
+    font-family: math;
+    font-size: x-large;
+}
+.dicon{
+    margin-left: -16px;
+    margin-right: 10px;
+}
+
+.dcardi , .dcardii{
+    float:left;
+    display: flex;
+}

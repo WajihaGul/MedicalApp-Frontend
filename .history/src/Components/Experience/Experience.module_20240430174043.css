@@ -1,0 +1,19 @@
+/* Add this CSS to your global stylesheet or within a CSS file that is applied to the Experience component */
+
+.container {
+ 
+}
+
+
+.logo {
+    height: 72px;
+    margin: 100px;
+}
+
+.experience {
+  /* Add styles for the experience */
+}
+
+.story {
+  /* Add styles for the story */
+}

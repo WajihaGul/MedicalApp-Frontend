@@ -1,0 +1,48 @@
+
+.container{
+  margin: 0 auto;
+  width: 900px;
+  padding-top: 30px;
+  margin-top: 30px;
+  padding-left: 206px;
+  display: flex;
+  flex-direction: row;
+}
+
+.logo, .experience , .story{
+  float: left;
+  width: 280px;
+  margin: 10px; 
+}
+
+.story_p{
+  width: 467px;
+  font-weight: 500;
+  text-align: justify;
+  font-size: large;
+  margin-top: 30px;
+  margin-left: 30px;
+  margin-bottom: 100px;
+}
+
+.head1{
+  font-size: 3.5rem;
+}
+
+.logo_img{
+  height: 114px;
+  padding-top: 32px;
+  margin-top: 60px;
+  margin-left: -669px;
+   margin-bottom: -208px;
+}
+
+.navh6{
+  color: #114dd4;
+}
+.experience{
+  margin-left: -128px;
+    width: 332px;
+}
+
+
