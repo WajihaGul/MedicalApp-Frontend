@@ -1,3 +1,5 @@
+/* Navbar.module.css */
+
 nav {
     position: fixed;
     top: 0;
@@ -25,7 +27,9 @@ nav {
   color: white;
   font-weight: 800;
 }
-
+.navul hover{
+    color: #007bff;
+  }
 .navbar-item {
   position: relative;
 }

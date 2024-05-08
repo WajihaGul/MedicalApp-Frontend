@@ -15,7 +15,7 @@ const Navbar = () => {
           />
           <h1 className={styles.nav_head}>HealthBuddy</h1>
         </div>
-        <ul className={styles.navul}>
+        <ul>
           <li href="#">Home</li>
           <li href="#">Doctors</li>
           <li href="#">Pharmacies</li>
@@ -38,7 +38,7 @@ const Navbar = () => {
               className={styles.customButton}
               onClick={() => loginWithRedirect()}
             >
-              Login
+              git Login
             </button>
           </li>
         )}

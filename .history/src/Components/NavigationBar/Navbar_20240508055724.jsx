@@ -12,10 +12,11 @@ const Navbar = () => {
             className={styles.nav_img}
             src="https://cdn.icon-icons.com/icons2/1465/PNG/512/588hospital_100778.png"
             alt="logo"
+            href="/Home"
           />
           <h1 className={styles.nav_head}>HealthBuddy</h1>
         </div>
-        <ul className={styles.navul}>
+        <ul>
           <li href="#">Home</li>
           <li href="#">Doctors</li>
           <li href="#">Pharmacies</li>

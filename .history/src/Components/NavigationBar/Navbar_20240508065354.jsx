@@ -15,7 +15,7 @@ const Navbar = () => {
           />
           <h1 className={styles.nav_head}>HealthBuddy</h1>
         </div>
-        <ul className={styles.navul}>
+        <ul className={styles}>
           <li href="#">Home</li>
           <li href="#">Doctors</li>
           <li href="#">Pharmacies</li>

@@ -1,0 +1,26 @@
+.faq_section {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    display: flex;
+  }
+  
+  .image_container {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  
+  .left_back_image,
+  .left_front_image {
+    width: 100%;
+    border-radius: 8px;
+    margin-bottom: 20px;
+  }
+  
+  .faq_content {
+    width: 60%;
+    padding-left: 20px;
+  }
+  
