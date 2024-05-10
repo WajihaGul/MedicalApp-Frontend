@@ -17,10 +17,10 @@
     color: white;
     font-family: cursive;
     margin-left: 290px;
+    font-size: xxx-large;
+    /* width: 800px; */
     margin-bottom: 30px;
     margin-right: 290px;
-    font-size: 46px;
-    width: 600px;
 }
 
 .container , .ButtonHere{

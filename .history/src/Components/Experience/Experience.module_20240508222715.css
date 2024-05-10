@@ -13,27 +13,22 @@
 }
 
 .story_p{
-  padding: 44px;
+  padding: 49px;
     text-align: justify;
     font-size: 20px;
-    width: 900px;
+    width: 673px;
 }
 .divimg{
- 
+  padding-top: 31px;
+  padding-right: 30px;
 }
 .ehead1{
-  font-size: 69px;
+  font-size: 58px
 }
 
-.ehead6{
-color: #339e46 ;
-font-size: larger; 
-}
-.eimg{ 
+.eimg{
   height: 131px;
-  margin-bottom: 102px;
-  margin-top: 102px;
-  padding-right: 30px;
+    padding-top: 30px;
 }
 
 

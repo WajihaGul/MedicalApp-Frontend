@@ -1,45 +1,46 @@
 .container{
     background-color: rgb(126 144 195);
     height: 340px;
+    margin-top: 152px
 }
 .head3{
     color: white;
     font-family: cursive;
     margin-left: 290px;
     padding-top: 18px;
-    /* width: 800px; */
+    width: 800px;
     font-size: xxx-large;
     margin-right: 290px;
     padding-bottom: 18px;
 }
 .head1{
-    margin-top: 30px;
+    margin-top: 44px;
     color: white;
     font-family: cursive;
     margin-left: 290px;
-    margin-bottom: 30px;
+    font-size: xxx-large;
+    width: 800px;
+    margin-bottom: 44px;
     margin-right: 290px;
-    font-size: 46px;
-    width: 600px;
 }
 
-.container , .ButtonHere{
-display: flex;
-flex-direction: row;
+.ButtonHere, .divii{
+    float: left;
+    width: 280px;
+    margin: 10px;
 }
 
 .divii{
     margin-left: 70px;
     margin-right: -32px;
-    margin-left: -32px;
-    width: 1080px;
 }
 
 .ButtonHere{
-    margin:150px auto;
+    margin-left: 1000px;
+    margin-top: 200px;
 }
 
-.mbutton{
+.button{
     height: 55px;
     width: 286px;
     border-color: transparent;
