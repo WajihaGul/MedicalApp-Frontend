@@ -1,0 +1,29 @@
+
+.container{
+  margin: 0 auto;
+  width: 900px;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: row;
+}
+
+.logo, .experience , .story{
+  margin: 10px; 
+  height: 100px !important;
+}
+
+.story_p{
+  
+}
+
+.head1{
+  
+}
+
+.eimg{
+  height: 94px;
+    padding-top: 30px;
+}
+
+
+

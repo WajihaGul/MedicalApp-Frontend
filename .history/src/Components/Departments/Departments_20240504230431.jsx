@@ -1,0 +1,18 @@
+import styles from "./Departments.module.css";
+const Departments = () => {
+  return (
+    <>
+      <div className={styles.container}>
+        <div className={styles.ddivi}>
+          <h6>Departments</h6>
+          <p>Managed Your Heathcare Services</p>
+        </div>
+
+        <div className={styles.ddivii}>
+          <button>More Services</button>
+        </div>
+      </div>
+    </>
+  );
+};
+export default Departments;

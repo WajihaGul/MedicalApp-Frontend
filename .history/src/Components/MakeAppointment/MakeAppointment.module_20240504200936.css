@@ -1,0 +1,19 @@
+.container{
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    background-color: #0571b4;
+    height: 340px;
+}
+
+.head1{
+    margin-top: 81px;
+    color: white;
+    font-family: cursive;
+    margin-left: 290px;
+}
+.head3{
+    color: white;
+    font-family: cursive;
+    margin-left: 290px; 
+}

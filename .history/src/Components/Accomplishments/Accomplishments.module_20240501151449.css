@@ -1,0 +1,10 @@
+.container{
+    width: 280px;
+    padding: 0 auto;
+}
+
+.column1 , .column2 , .column3{
+    float: left;
+    width: 280px;
+    margin: 10px; 
+}

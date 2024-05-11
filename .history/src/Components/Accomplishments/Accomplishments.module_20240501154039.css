@@ -1,0 +1,24 @@
+.container{
+    margin:0 auto;
+    width: 900px;
+    padding-top: 30px;
+    margin-top: 30px;
+}
+
+.column1 , .column2 , .column3{
+    float: left;
+    width: 280px;
+    margin: 10px; 
+}
+
+.explanationi{
+    font-size: xxx-large;
+    font-weight: 700
+}
+
+.explanationii{
+    color: green;
+    font-size: larger;
+    font-style: italic;
+    margin-top: -12px;
+}

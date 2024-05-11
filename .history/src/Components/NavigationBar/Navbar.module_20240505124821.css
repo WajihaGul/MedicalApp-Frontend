@@ -1,0 +1,32 @@
+/* Navbar.module.css */
+
+/* Other existing styles */
+
+.navItem {
+  position: relative;
+}
+
+.navItem a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+  padding: 15px 20px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+  position: relative;
+}
+
+.navItem a:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background on hover */
+}
+
+.navItem a:hover::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px; /* Adjust as needed */
+  height: 3px;
+  background-color: #fff;
+}

@@ -1,0 +1,10 @@
+/* LandingPage.module.css */
+
+.imageContainer {
+  display: flex;
+}
+
+.image {
+  flex: 1;
+  margin-right: 10px; /* Add margin between images */
+}

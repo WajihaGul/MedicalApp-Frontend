@@ -1,0 +1,36 @@
+nav{
+        display: flex;
+        justify-content: space-between;
+        height: 72px;
+        align-items: center;
+        font-size: xx-large;
+        background-color:white;
+        color: black;
+}
+
+  nav ul {
+    display: flex;
+    gap: 43px;
+    list-style-type: none;
+    font-weight: 500;
+  }
+
+  .btn btn-primary btn-lg{
+    height: 46px;
+    padding: 0px;
+    margin: 11px;
+    width: 54px;
+    
+  }
+  .nav_img{
+    height: 46px;
+    padding: 0px;
+    margin: 24px;
+    width: 56px;
+}
+.nav_p{
+  font-size: xx-large;
+  display: flex;
+  flex-direction: row;
+}
+  

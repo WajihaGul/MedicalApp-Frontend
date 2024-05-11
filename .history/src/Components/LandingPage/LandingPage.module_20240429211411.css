@@ -1,0 +1,11 @@
+/* LandingPage.module.css */
+
+.imageContainer {
+  display: flex;
+  overflow-x: auto; /* Add horizontal scroll if needed */
+}
+
+.image {
+  flex: 0 0 400px; /* Fixed width for each image */
+  margin-right: 10px; /* Add margin between images */
+}

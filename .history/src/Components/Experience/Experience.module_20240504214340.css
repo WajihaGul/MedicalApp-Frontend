@@ -1,0 +1,56 @@
+
+.container{
+  margin: 0 auto;
+  width: 900px;
+  padding-top: 30px;
+  margin-top: 30px;
+  padding-left: 206px;
+}
+
+.logo, .experience , .story{
+  float: left;
+  width: 280px;
+  margin: 10px; 
+}
+
+.story_p{
+  width: 467px;
+  font-weight: 500;
+  text-align: justify;
+  font-size: large;
+  margin-top: 30px;
+  margin-left: 30px
+}
+
+.head1{
+  font-size: 3.5rem;
+}
+.hr{
+  color: inherit;
+    border: 0;
+    border-top: var(--bs-border-width) solid;
+    opacity: .25;
+    /* size: b4; */
+    width: 200%;
+    margin-left: -380px;
+    /* margin-right: -700px; */
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+.logo_img{
+  height: 114px;
+  padding-top: 32px;
+  margin-top: 60px;
+  margin-left: -669px;
+   margin-bottom: -208px;
+}
+
+.navh6{
+  color: #114dd4;
+}
+.experience{
+  margin-left: -128px;
+    width: 332px;
+}
+
+
