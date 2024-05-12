@@ -1,0 +1,38 @@
+.contact {
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(234, 237, 255);
+    border-image: initial;
+    padding: 40px 10px;
+}
+div {
+    display: block;
+    unicode-bidi: isolate;
+}
+
+.contact svg{
+    background: #f30505;
+    border: 5px solid #ffffff;
+    border-radius: 50%;
+    box-shadow: 0 16px 32px 0 rgba(206, 226, 255, .4);
+    color: #ffffff;
+    font-size: 20px;
+    height: 80px;
+    line-height: 135px;
+    margin-bottom: 30px;
+    width: 80px;
+    display:inline-block;
+}
+.contact h3 {
+    font-size: 26px;
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+.appointment{
+    border-radius:50px;
+    background-color: #05bfc527;
+    padding: 25px;
+    width: fit-content;
+    margin-left: 80%;
+
+}
