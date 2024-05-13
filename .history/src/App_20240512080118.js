@@ -15,7 +15,7 @@ function App() {
       <Layout>
         <Routes>
           <Route exact path="/" element={<Homepage />} />
-          <Route exact path="/" element={<ViewPatienProfile />} />
+          {/* <Route exact path="/" element={<ViewPatienProfile />} /> */}
           <Route exact path="/add-pharmacy" element={<AddPharmacy />} />
           <Route exact path="/pharmacy" element={<Pharmacy />} />
           <Route exact path="/edit-pharmacy" element={<EditPharmacy />} />

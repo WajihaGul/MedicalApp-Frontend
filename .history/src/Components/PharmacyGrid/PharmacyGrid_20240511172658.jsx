@@ -57,17 +57,18 @@ const PharmacyGrid = ({ pharmacies, addEditPharmacyText }) => {
                 <td>{pharmacy.hours}</td>
                 <td>
                   {/* Edit button */}
-                  {/* <Link to="/edit-pharmacy">
+                  <Link
+                    Link
+                    to={{
+                      pathname: "/edit-pharmacy",
+                      state: { addEditPharmacyText: "Edit" },
+                    }}
+                  >
                     <Button
                       className={styles.editButton}
                       variant="primary"
                       onClick={() => handleEdit(index)}
                     >
-                      <FaRegEdit className={styles.buttonIcon} />
-                    </Button>
-                  </Link> */}
-                  <Link to={`/edit-pharmacy?index=${pharmacy.ID}`}>
-                    <Button className={styles.editButton} variant="primary">
                       <FaRegEdit className={styles.buttonIcon} />
                     </Button>
                   </Link>

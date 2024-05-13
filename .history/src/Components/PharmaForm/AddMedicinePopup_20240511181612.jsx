@@ -47,7 +47,7 @@ const AddMedicinePopup = ({ onClose, medicine }) => {
             </label>
             <input
               type="file"
-              class="form-control"
+              class="form-control-file"
               id="exampleFormControlFile1"
             />
           </div>

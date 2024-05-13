@@ -66,7 +66,7 @@ const PharmacyGrid = ({ pharmacies, addEditPharmacyText }) => {
                       <FaRegEdit className={styles.buttonIcon} />
                     </Button>
                   </Link> */}
-                  <Link to={`/edit-pharmacy?index=${pharmacy.ID}`}>
+                  <Link to={`/edit-pharmacy?index=${index}`}>
                     <Button className={styles.editButton} variant="primary">
                       <FaRegEdit className={styles.buttonIcon} />
                     </Button>

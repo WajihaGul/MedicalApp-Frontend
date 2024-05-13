@@ -42,12 +42,10 @@ const AddMedicinePopup = ({ onClose, medicine }) => {
             ></textarea>
           </div>
           <div className="mb-3">
-            <label htmlFor="price" className="form-label">
-              Image
-            </label>
+            <label for="exampleFormControlFile1">Example file input</label>
             <input
               type="file"
-              class="form-control"
+              class="form-control-file"
               id="exampleFormControlFile1"
             />
           </div>
