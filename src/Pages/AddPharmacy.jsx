@@ -1,6 +1,6 @@
 import PharmaForm from "../Components/PharmaForm/PharmaForm";
 
 const AddPharmacy = () => {
-  return <PharmaForm />;
+  return <PharmaForm addEditPharmacyText="Add Pharmacy" />;
 };
 export default AddPharmacy;
