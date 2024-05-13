@@ -27,9 +27,6 @@ const Navbar = () => {
           <Link className={styles.navLinksColor} to="/search-medicine">
             Order/Search Medicine
           </Link>
-          <Link className={styles.navLinksColor} to="/ViewPatienProfile">
-            Patient Profile
-          </Link>
           {/* <Link to="/contact-us">Contact Us</Link> */}
         </div>
         {isAuthenticated ? (

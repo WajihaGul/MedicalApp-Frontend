@@ -1,0 +1,46 @@
+/* PharmaForm.module.css */
+
+.container {
+    margin: 200px;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .form_group {
+    margin-bottom: 20px;
+  }
+  
+  .form_group label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .form_group input[type="text"],
+  .form_group textarea,
+  .form_group input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+  }
+  
+  .form_group textarea {
+    height: 100px;
+  }
+  
+  .form_group button {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .form_group button:hover {
+    background-color: #45a049;
+  }
+  /* PharmaForm.module.css */
+

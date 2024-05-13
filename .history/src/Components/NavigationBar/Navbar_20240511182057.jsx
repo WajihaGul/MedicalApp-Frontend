@@ -24,11 +24,8 @@ const Navbar = () => {
           <Link className={styles.navLinksColor} to="/pharmacy">
             Pharmacies
           </Link>
-          <Link className={styles.navLinksColor} to="/search-medicine">
+          <Link className={styles.navLinksColor} to="/pharmacy">
             Order/Search Medicine
-          </Link>
-          <Link className={styles.navLinksColor} to="/ViewPatienProfile">
-            Patient Profile
           </Link>
           {/* <Link to="/contact-us">Contact Us</Link> */}
         </div>
