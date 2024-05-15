@@ -12,8 +12,6 @@ import "./App.css";
 import Contact from "./Components/Contact/contact";
 import Doctor from "./Components/Doctor/Doctor";
 import Appointment from "./Components/Appointment/Appointment";
-import ManagePrescription from "./Pages/ManagePrescription";
-
 function App() {
   return (
     <Router>
@@ -32,7 +30,6 @@ function App() {
           <Route exact path="/contact" element={<Contact />} />
           <Route exact path="/doctor" element={<Doctor />} />
           <Route path="/appointment" element={<Appointment />} />
-          <Route path="/upload-prescription" element={<ManagePrescription />} />
         </Routes>
       </Layout>
     </Router>

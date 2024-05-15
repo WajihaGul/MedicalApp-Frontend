@@ -30,9 +30,6 @@ const Navbar = () => {
           <Link className={styles.navLinksColor} to="/view-patient-profile">
             Patient Profile
           </Link>
-          <Link className={styles.navLinksColor} to="/upload-prescription">
-            Upload Prescription
-          </Link>
           {/* <Link to="/contact-us">Contact Us</Link> */}
         </div>
         {isAuthenticated ? (

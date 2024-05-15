@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import styles from "./PatientProfile.module.css";
 
 const PatientProfile = () => {
   // State variables for form fields
@@ -19,24 +20,56 @@ const PatientProfile = () => {
   };
 
   return (
-    <>
-      <div>
-        <h2>View Profile</h2>
-        <form onSubmit={handleSubmit}>
-          <label>Name:</label>
-          <input type="text" value="John Doe" disabled />
-          <br />
-          <label>Email:</label>
-          <input type="email" value="john@example.com" disabled />
-          <br />
-          <label>Contact Number:</label>
+    <div className={styles.view_profile_container}>
+      <h2>View Profile</h2>
+
+      <div className={styles.profile_image_container}>
+        <label htmlFor="imageUpload" className={styles.upload_label}>
+          <input
+            type="file"
+            accept="image/*"
+            id="imageUpload"
+            name="imageUpload"
+            className={styles.upload_input}
+          />
+          <span className={styles.upload_text}>Upload Image</span>
+        </label>
+      </div>
+
+      <form className={styles.form_group} onSubmit={handleSubmit}>
+        <div className={styles.form_row}>
+          <label className={styles.profileLabel}>Name:</label>
+          <input
+            className={styles.input_field}
+            type="text"
+            value="John Doe"
+            disabled
+          />
+        </div>
+        <div className={styles.form_row}>
+          <label className={styles.profileLabel}>Email:</label>
+          <input
+            className={styles.input_field}
+            type="email"
+            value=" "
+            disabled
+          />
+        </div>
+        <div className={styles.form_group}>
+          <label htmlFor="contactNumber">
+            Contact Number<span>*</span>:
+          </label>
           <input
             type="tel"
+            id="contactNumber"
             value={contactNumber}
             onChange={(e) => setContactNumber(e.target.value)}
+            pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
             required
           />
-          <br />
+        </div>
+
+        <div className={styles.form_row}>
           <label>Date of Birth:</label>
           <input
             type="date"
@@ -44,7 +77,8 @@ const PatientProfile = () => {
             onChange={(e) => setDOB(e.target.value)}
             required
           />
-          <br />
+        </div>
+        <div className={styles.form_row}>
           <label>Gender:</label>
           <select
             value={gender}
@@ -54,11 +88,12 @@ const PatientProfile = () => {
             <option value="">Select Gender</option>
             <option value="male">Male</option>
             <option value="female">Female</option>
-            <option value="other">Other</option>
           </select>
-          <br />
+        </div>
+        <div className={styles.form_row}>
           <label>Blood Type:</label>
           <select
+            className={styles.select_field}
             value={bloodType}
             onChange={(e) => setBloodType(e.target.value)}
             required
@@ -73,49 +108,58 @@ const PatientProfile = () => {
             <option value="O+">O+</option>
             <option value="O-">O-</option>
           </select>
-          <br />
+        </div>
+        <div className={styles.form_row}>
           <label>Surgeries:</label>
           <input
             type="checkbox"
             checked={surgeries}
             onChange={(e) => setSurgeries(e.target.checked)}
           />
-          <br />
+        </div>
+        <div className={styles.form_row}>
           <label>Smoking:</label>
           <input
             type="checkbox"
             checked={smoking}
             onChange={(e) => setSmoking(e.target.checked)}
           />
-          <br />
-          <label>Alcohol Use:</label>
+        </div>
+        <div className={styles.form_row}>
+          <label className={styles.checkbox_label}>Alcohol Use:</label>
           <input
             type="checkbox"
             checked={alcohol}
             onChange={(e) => setAlcohol(e.target.checked)}
           />
-          <br />
+        </div>
+        <div className={styles.form_row}>
           <label>Patient History:</label>
           <textarea
+            className={styles.textarea_field}
             value={patientHistory}
             onChange={(e) => setPatientHistory(e.target.value)}
             placeholder="Write about your previous medications, medical conditions, family medical history, immunization history, mental health history"
             required
           ></textarea>
-          <br />
-          <label>Physical Activity Level:</label>
-          <input type="text" />
-          <br />
-          <label>Dietary Preferences/Restrictions:</label>
-          <input type="text" />
-          <br />
-          <label>Health Goals:</label>
-          <input type="text" />
-          <br />
-          <button type="submit">Submit</button>
-        </form>
-      </div>
-    </>
+        </div>
+        <div className={styles.form_row}>
+          <label>Activity Level:</label>
+          <textarea className={styles.textarea_field} required></textarea>
+        </div>
+        <div className={styles.form_row}>
+          <label>Dietary Preference</label>
+          <textarea className={styles.textarea_field} required></textarea>
+        </div>
+        <div className={styles.form_row}>
+          <label>Health Goals</label>
+          <textarea className={styles.textarea_field} required></textarea>
+        </div>
+        <button className={styles.submit_btn} type="submit">
+          Submit
+        </button>
+      </form>
+    </div>
   );
 };
 

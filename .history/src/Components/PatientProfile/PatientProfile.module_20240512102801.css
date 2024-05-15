@@ -1,11 +1,12 @@
 /* PatientProfile.module.css */
 .view_profile_container {
-  margin: 150px;
+  width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
   background-color: #f9f9f9;
   border: 1px solid #ccc;
   border-radius: 5px;
   font-family: Arial, sans-serif;
-  padding: 20px;
 }
 
 .view_profile_container h2 {
