@@ -1,0 +1,11 @@
+/* src/components/MedicineCard.css */
+.medicine-image {
+  height: 75%;
+  object-fit: cover;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

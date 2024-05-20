@@ -109,21 +109,7 @@ const SearchMedicine = () => {
   const handleCloseCart = () => {
     setIsViewCartOpen(false);
   };
-  const handleDecreaseQuantity = (index) => {
-    // Decrease the quantity of the item at the given index
-    const updatedItems = [...cartItems];
-    if (updatedItems[index].quantity > 0) {
-      updatedItems[index].quantity--;
-    }
-    setCartItems(updatedItems);
-  };
 
-  const handleIncreaseQuantity = (index) => {
-    // Increase the quantity of the item at the given index
-    const updatedItems = [...cartItems];
-    updatedItems[index].quantity++;
-    setCartItems(updatedItems);
-  };
   return (
     <div style={{ marginTop: "150px" }}>
       <CartButton itemCount={cartItems.length} onViewCart={handleViewCart} />
