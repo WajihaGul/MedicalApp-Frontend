@@ -48,6 +48,7 @@ const PharmaForm = ({ addEditPharmacyText }) => {
     setShowPopup(!showPopup); // Toggle popup visibility
   };
   const addNewMedicine = (medicine) => {
+    debugger;
     setNewMedicine(medicine);
   };
   // Function to handle form submission
@@ -70,13 +71,16 @@ const PharmaForm = ({ addEditPharmacyText }) => {
     };
     try {
       const response = await axios.post(
-        "http://localhost:8080/pharmacy/register",
+        "http://your-api-url/register",
         newPharmacy
       );
+      // Handle success response
       console.log(response.data);
-      e.target.reset();
+      // Optionally, you can reset the form after successful submission
+      // e.target.reset();
     } catch (error) {
-      console.error("Error:", error);
+      // Handle error
+      console.error("Error:", error.response.data);
     }
     //setMedicines([...medicines, newMedicine]);
     //e.target.reset(); // Reset the form after submission

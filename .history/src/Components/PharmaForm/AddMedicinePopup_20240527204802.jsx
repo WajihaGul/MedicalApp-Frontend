@@ -6,6 +6,7 @@ const AddMedicinePopup = ({ onClose, medicine, addMedicine }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
+    debugger;
     const newMedicine = {
       medicineName: formData.get("medicineName"),
       description: formData.get("description"),

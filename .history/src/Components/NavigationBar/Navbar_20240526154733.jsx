@@ -136,7 +136,7 @@ const Navbar = () => {
                   />
                 </Form.Group>
                 <Button
-                  style={{ marginTop: "30px" }}
+                  style={{ marginTop: "500px" }}
                   variant="primary"
                   onClick={sendOtp}
                 >
@@ -159,9 +159,6 @@ const Navbar = () => {
                 </Button>
               </>
             )}
-            <Button variant="primary" onClick={() => loginWithRedirect()}>
-              Login With Google?
-            </Button>
           </Modal.Body>
         </Modal>
         {/* {isAuthenticated ? (

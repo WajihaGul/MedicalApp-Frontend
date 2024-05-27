@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import styles from "./AddMedicinePopup.module.css";
 import { Button } from "react-bootstrap";
 
-const AddMedicinePopup = ({ onClose, medicine, addMedicine }) => {
+const AddMedicinePopup = ({ onClose, medicine }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
+    debugger;
     const newMedicine = {
       medicineName: formData.get("medicineName"),
       description: formData.get("description"),
@@ -15,7 +16,6 @@ const AddMedicinePopup = ({ onClose, medicine, addMedicine }) => {
       inStock: formData.get("inStock"),
     };
     console.log(medicine);
-    addMedicine(newMedicine);
     onClose();
   };
 

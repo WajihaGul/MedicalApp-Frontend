@@ -2,21 +2,12 @@ import React, { useState } from "react";
 import styles from "./AddMedicinePopup.module.css";
 import { Button } from "react-bootstrap";
 
-const AddMedicinePopup = ({ onClose, medicine, addMedicine }) => {
+const AddMedicinePopup = ({ onClose, medicine }) => {
+  console.log(medicine);
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    const newMedicine = {
-      medicineName: formData.get("medicineName"),
-      description: formData.get("description"),
-      image: formData.get("image"),
-      price: formData.get("price"),
-      discount: formData.get("discount"),
-      inStock: formData.get("inStock"),
-    };
-    console.log(medicine);
-    addMedicine(newMedicine);
-    onClose();
+    // Popup submission logic
+    onClose(); // Close popup after submission
   };
 
   return (
@@ -24,9 +15,11 @@ const AddMedicinePopup = ({ onClose, medicine, addMedicine }) => {
       <div className={styles.popupContent}>
         <h2>Add Medicine</h2>
         <form onSubmit={handleSubmit}>
+          {/* Add Medicine form fields */}
+          {/* Medicine Name */}
           <div className="mb-3">
             <label htmlFor="medicineName" className="form-label">
-              Name
+              Medicine Name
             </label>
             <input
               type="text"
@@ -38,22 +31,27 @@ const AddMedicinePopup = ({ onClose, medicine, addMedicine }) => {
             />
           </div>
           <div className="mb-3">
-            <label htmlFor="description" className="form-label">
-              Description
+            <label htmlFor="medicineName" className="form-label">
+              Medicine Name
             </label>
             <textarea
               className="form-control"
-              id="description"
+              id="medicineName"
               value={medicine.description}
-              name="description"
+              name="medicineDesc"
             ></textarea>
           </div>
           <div className="mb-3">
-            <label htmlFor="image" className="form-label">
+            <label htmlFor="price" className="form-label">
               Image
             </label>
-            <input type="file" class="form-control" id="image" name="image" />
+            <input
+              type="file"
+              class="form-control"
+              id="exampleFormControlFile1"
+            />
           </div>
+          {/* Price Discount */}
           <div className="mb-3">
             <label htmlFor="price" className="form-label">
               Price
@@ -86,7 +84,6 @@ const AddMedicinePopup = ({ onClose, medicine, addMedicine }) => {
               className="form-check-input"
               id="inStock"
               checked={medicine.InStock}
-              name="inStock"
             />
             <label className="form-check-label" htmlFor="inStock">
               In Stock
@@ -94,7 +91,7 @@ const AddMedicinePopup = ({ onClose, medicine, addMedicine }) => {
           </div>
           {/* Submit Button */}
           <div className={styles.buttons}>
-            <Button variant="success" className={styles.saveBtn} type="submit">
+            <Button variant="success" className={styles.saveBtn}>
               Add
             </Button>
             <Button

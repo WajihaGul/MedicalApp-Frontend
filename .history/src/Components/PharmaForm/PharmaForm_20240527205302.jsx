@@ -3,7 +3,7 @@ import styles from "./PharmaForm.module.css";
 import MedGrid from "../PMedicineGrid/MedGrid";
 import AddMedicinePopup from "./AddMedicinePopup";
 import { Button } from "react-bootstrap";
-import axios from "axios";
+
 const medicines = [
   {
     ID: 1,
@@ -48,10 +48,11 @@ const PharmaForm = ({ addEditPharmacyText }) => {
     setShowPopup(!showPopup); // Toggle popup visibility
   };
   const addNewMedicine = (medicine) => {
+    debugger;
     setNewMedicine(medicine);
   };
   // Function to handle form submission
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     debugger;
@@ -68,16 +69,6 @@ const PharmaForm = ({ addEditPharmacyText }) => {
       fromDay: formData.get("fromDay"),
       medicines: newMedicine,
     };
-    try {
-      const response = await axios.post(
-        "http://localhost:8080/pharmacy/register",
-        newPharmacy
-      );
-      console.log(response.data);
-      e.target.reset();
-    } catch (error) {
-      console.error("Error:", error);
-    }
     //setMedicines([...medicines, newMedicine]);
     //e.target.reset(); // Reset the form after submission
   };

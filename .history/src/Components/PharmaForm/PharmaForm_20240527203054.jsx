@@ -3,7 +3,7 @@ import styles from "./PharmaForm.module.css";
 import MedGrid from "../PMedicineGrid/MedGrid";
 import AddMedicinePopup from "./AddMedicinePopup";
 import { Button } from "react-bootstrap";
-import axios from "axios";
+
 const medicines = [
   {
     ID: 1,
@@ -41,17 +41,13 @@ const medicines = [
 
 const PharmaForm = ({ addEditPharmacyText }) => {
   // State to store added medicines
-  const [medicine, setMedicine] = useState(medicines);
-  const [newMedicine, setNewMedicine] = useState();
+  const [medicine, setMedicines] = useState(medicines);
   const [showPopup, setShowPopup] = useState(false); // State to manage popup visibility
   const togglePopup = () => {
     setShowPopup(!showPopup); // Toggle popup visibility
   };
-  const addNewMedicine = (medicine) => {
-    setNewMedicine(medicine);
-  };
   // Function to handle form submission
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     debugger;
@@ -66,20 +62,9 @@ const PharmaForm = ({ addEditPharmacyText }) => {
       endTime: formData.get("endTime"),
       toDay: formData.get("toDay"),
       fromDay: formData.get("fromDay"),
-      medicines: newMedicine,
     };
-    try {
-      const response = await axios.post(
-        "http://localhost:8080/pharmacy/register",
-        newPharmacy
-      );
-      console.log(response.data);
-      e.target.reset();
-    } catch (error) {
-      console.error("Error:", error);
-    }
     //setMedicines([...medicines, newMedicine]);
-    //e.target.reset(); // Reset the form after submission
+    e.target.reset(); // Reset the form after submission
   };
 
   // Function to calculate discounted price
@@ -247,13 +232,7 @@ const PharmaForm = ({ addEditPharmacyText }) => {
       <Button variant="success" onClick={togglePopup}>
         Add Medicine
       </Button>
-      {showPopup && (
-        <AddMedicinePopup
-          onClose={togglePopup}
-          medicine={""}
-          addMedicine={addNewMedicine}
-        />
-      )}
+      {showPopup && <AddMedicinePopup onClose={togglePopup} medicine={""} />}
       <MedGrid medicines={medicine} />
     </div>
   );

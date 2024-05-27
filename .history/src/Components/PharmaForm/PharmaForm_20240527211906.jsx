@@ -73,9 +73,12 @@ const PharmaForm = ({ addEditPharmacyText }) => {
         "http://localhost:8080/pharmacy/register",
         newPharmacy
       );
+      // Handle success response
       console.log(response.data);
-      e.target.reset();
+      // Optionally, you can reset the form after successful submission
+      // e.target.reset();
     } catch (error) {
+      // Handle error
       console.error("Error:", error);
     }
     //setMedicines([...medicines, newMedicine]);

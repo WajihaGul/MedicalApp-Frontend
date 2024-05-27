@@ -110,6 +110,7 @@ const Navbar = () => {
           onHide={() => setShowModal(false)}
           dialogClassName="modal-dialog-centered"
           contentClassName="custom-modal-content"
+          style={{ height: "500px" }}
         >
           <Modal.Header closeButton>
             <Modal.Title>Login</Modal.Title>
@@ -135,11 +136,7 @@ const Navbar = () => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </Form.Group>
-                <Button
-                  style={{ marginTop: "30px" }}
-                  variant="primary"
-                  onClick={sendOtp}
-                >
+                <Button variant="primary" onClick={sendOtp}>
                   Send OTP
                 </Button>
               </>
@@ -159,9 +156,6 @@ const Navbar = () => {
                 </Button>
               </>
             )}
-            <Button variant="primary" onClick={() => loginWithRedirect()}>
-              Login With Google?
-            </Button>
           </Modal.Body>
         </Modal>
         {/* {isAuthenticated ? (

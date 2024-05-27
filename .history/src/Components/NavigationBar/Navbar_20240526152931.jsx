@@ -83,7 +83,10 @@ const Navbar = () => {
           <Link className={styles.navLinksColor} to="/upload-prescription">
             Upload Prescription
           </Link>
-          <div id="navbarNav">
+          <Link className={styles.navLinksColor} to="/upload-prescription">
+            Upload Prescription
+          </Link>
+          <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ml-auto">
               {isLoggedIn ? (
                 <li>
@@ -105,12 +108,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        <Modal
-          show={showModal}
-          onHide={() => setShowModal(false)}
-          dialogClassName="modal-dialog-centered"
-          contentClassName="custom-modal-content"
-        >
+        <Modal show={showModal} onHide={() => setShowModal(false)}>
           <Modal.Header closeButton>
             <Modal.Title>Login</Modal.Title>
           </Modal.Header>
@@ -135,11 +133,7 @@ const Navbar = () => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </Form.Group>
-                <Button
-                  style={{ marginTop: "30px" }}
-                  variant="primary"
-                  onClick={sendOtp}
-                >
+                <Button variant="primary" onClick={sendOtp}>
                   Send OTP
                 </Button>
               </>
@@ -159,9 +153,6 @@ const Navbar = () => {
                 </Button>
               </>
             )}
-            <Button variant="primary" onClick={() => loginWithRedirect()}>
-              Login With Google?
-            </Button>
           </Modal.Body>
         </Modal>
         {/* {isAuthenticated ? (

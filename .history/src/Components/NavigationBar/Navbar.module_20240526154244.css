@@ -105,6 +105,7 @@ nav {
 
 /* Center the modal vertically */
 .modal-dialog-centered {
+  height: 500px; 
   display: flex;
   align-items: center;
   min-height: calc(100% - 1rem);

@@ -3,7 +3,7 @@ import styles from "./PharmaForm.module.css";
 import MedGrid from "../PMedicineGrid/MedGrid";
 import AddMedicinePopup from "./AddMedicinePopup";
 import { Button } from "react-bootstrap";
-import axios from "axios";
+
 const medicines = [
   {
     ID: 1,
@@ -41,45 +41,26 @@ const medicines = [
 
 const PharmaForm = ({ addEditPharmacyText }) => {
   // State to store added medicines
-  const [medicine, setMedicine] = useState(medicines);
-  const [newMedicine, setNewMedicine] = useState();
+  const [medicine, setMedicines] = useState(medicines);
   const [showPopup, setShowPopup] = useState(false); // State to manage popup visibility
   const togglePopup = () => {
     setShowPopup(!showPopup); // Toggle popup visibility
   };
-  const addNewMedicine = (medicine) => {
-    setNewMedicine(medicine);
-  };
   // Function to handle form submission
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     debugger;
     const newPharmacy = {
       pharmacyName: formData.get("pharmacyName"),
-      location: formData.get("location"),
-      contactNumber: formData.get("contactNumber"),
-      pharmacistName: formData.get("pharmacistName"),
-      additionalNote: formData.get("additionalNote"),
-      excludedDay: formData.get("excludedDay"),
-      startTime: formData.get("startTime"),
-      endTime: formData.get("endTime"),
-      toDay: formData.get("toDay"),
-      fromDay: formData.get("fromDay"),
-      medicines: newMedicine,
+      medicineName: formData.get("medicineName"),
+      medicineDescription: formData.get("medicineDescription"),
+      discount: formData.get("discount"),
+      price: formData.get("price"),
+      stock: formData.get("stock"),
     };
-    try {
-      const response = await axios.post(
-        "http://localhost:8080/pharmacy/register",
-        newPharmacy
-      );
-      console.log(response.data);
-      e.target.reset();
-    } catch (error) {
-      console.error("Error:", error);
-    }
     //setMedicines([...medicines, newMedicine]);
-    //e.target.reset(); // Reset the form after submission
+    e.target.reset(); // Reset the form after submission
   };
 
   // Function to calculate discounted price
@@ -103,23 +84,23 @@ const PharmaForm = ({ addEditPharmacyText }) => {
           <Button
             variant="success"
             type="submit"
-            style={{ float: "right", marginBottom: "10px" }}
+            style={{ float: "left", marginBottom: "10px" }}
           >
             Save Details
           </Button>
         </div>
-        <br /> <br />
         <div className={styles.form_group}>
           <label htmlFor="pharmacyName">
             Name<span>*</span>:
           </label>
           <input type="text" id="pharmacyName" name="pharmacyName" required />
         </div>
+
         <div className={styles.form_group}>
-          <label htmlFor="location">
+          <label htmlFor="medicineName">
             Location<span>*</span>:
           </label>
-          <input type="text" id="location" name="location" required />
+          <input type="text" id="medicineName" name="medicineName" required />
         </div>
         <div className="mb-3">
           <label htmlFor="contactNumber" className="form-label">
@@ -135,16 +116,12 @@ const PharmaForm = ({ addEditPharmacyText }) => {
           />
         </div>
         <div className={styles.form_group}>
-          <label htmlFor="pharmacistName">
+          <label htmlFor="medicineName">
             Pharmacist's Name<span>*</span>:
           </label>
-          <input
-            type="text"
-            id="pharmacistName"
-            name="pharmacistName"
-            required
-          />
+          <input type="text" id="medicineName" name="medicineName" required />
         </div>
+
         <div className={styles.form_group}>
           <div className="row">
             <div className="col-md-3">
@@ -168,7 +145,7 @@ const PharmaForm = ({ addEditPharmacyText }) => {
               </select>
             </div>
             <div className="col-md-3">
-              <label htmlFor="toDay">
+              <label htmlFor="fromDay">
                 Operating Days (To)<span>*</span>:
               </label>
               <select className="form-control" id="toDay" name="toDay" required>
@@ -213,11 +190,13 @@ const PharmaForm = ({ addEditPharmacyText }) => {
         <div className={styles.form_group}>
           <div className="row">
             <div className="col-md-6">
-              <label htmlFor="excludedDay">Exclude a Day:</label>
+              <label htmlFor="fromDay">
+                Exclude a Day<span>*</span>:
+              </label>
               <select
                 className="form-control"
-                id="excludedDay"
-                name="excludedDay"
+                id="fromDay"
+                name="fromDay"
                 required
               >
                 <option value="">Select Day</option>
@@ -232,13 +211,14 @@ const PharmaForm = ({ addEditPharmacyText }) => {
             </div>
           </div>
         </div>
+
         <div className={styles.form_group}>
-          <label htmlFor="additionalNote">
+          <label htmlFor="medicineDescription">
             Additional Notes:<span>*</span>
           </label>
           <textarea
-            id="additionalNote"
-            name="additionalNote"
+            id="medicineDescription"
+            name="medicineDescription"
             required
           ></textarea>
         </div>
@@ -247,13 +227,7 @@ const PharmaForm = ({ addEditPharmacyText }) => {
       <Button variant="success" onClick={togglePopup}>
         Add Medicine
       </Button>
-      {showPopup && (
-        <AddMedicinePopup
-          onClose={togglePopup}
-          medicine={""}
-          addMedicine={addNewMedicine}
-        />
-      )}
+      {showPopup && <AddMedicinePopup onClose={togglePopup} medicine={""} />}
       <MedGrid medicines={medicine} />
     </div>
   );

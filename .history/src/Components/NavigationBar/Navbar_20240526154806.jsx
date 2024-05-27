@@ -159,9 +159,6 @@ const Navbar = () => {
                 </Button>
               </>
             )}
-            <Button variant="primary" onClick={() => loginWithRedirect()}>
-              Login With Google?
-            </Button>
           </Modal.Body>
         </Modal>
         {/* {isAuthenticated ? (

@@ -135,11 +135,7 @@ const Navbar = () => {
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </Form.Group>
-                <Button
-                  style={{ marginTop: "30px" }}
-                  variant="primary"
-                  onClick={sendOtp}
-                >
+                <Button className="mt-50" variant="primary" onClick={sendOtp}>
                   Send OTP
                 </Button>
               </>
@@ -159,9 +155,6 @@ const Navbar = () => {
                 </Button>
               </>
             )}
-            <Button variant="primary" onClick={() => loginWithRedirect()}>
-              Login With Google?
-            </Button>
           </Modal.Body>
         </Modal>
         {/* {isAuthenticated ? (

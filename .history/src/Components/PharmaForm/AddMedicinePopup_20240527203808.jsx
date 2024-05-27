@@ -2,21 +2,12 @@ import React, { useState } from "react";
 import styles from "./AddMedicinePopup.module.css";
 import { Button } from "react-bootstrap";
 
-const AddMedicinePopup = ({ onClose, medicine, addMedicine }) => {
+const AddMedicinePopup = ({ onClose, medicine }) => {
+  console.log(medicine);
   const handleSubmit = (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    const newMedicine = {
-      medicineName: formData.get("medicineName"),
-      description: formData.get("description"),
-      image: formData.get("image"),
-      price: formData.get("price"),
-      discount: formData.get("discount"),
-      inStock: formData.get("inStock"),
-    };
-    console.log(medicine);
-    addMedicine(newMedicine);
-    onClose();
+    // Popup submission logic
+    onClose(); // Close popup after submission
   };
 
   return (
@@ -86,7 +77,6 @@ const AddMedicinePopup = ({ onClose, medicine, addMedicine }) => {
               className="form-check-input"
               id="inStock"
               checked={medicine.InStock}
-              name="inStock"
             />
             <label className="form-check-label" htmlFor="inStock">
               In Stock
