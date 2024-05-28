@@ -1,0 +1,80 @@
+.div1{
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+}
+.div2{
+        width: 33.33%;
+        padding: 1rem;    
+}
+.contact{
+    text-align: center;
+    margin-bottom: 30px;
+}
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.contact-container1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #d5f2ec;
+  }
+  
+  .appointment {
+    text-align:right;
+    margin: 20;
+  }
+  .text{
+    font-size: 40px;
+  }
+
+  .form-container1 {
+    display: flex;
+    flex-direction:column;
+  }
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px; /* Add margin between form rows */
+  }
+  .textarea-field {
+    width: 100%; /* Make textarea field full width */
+  }
+  .input-field1{
+    width: 45%; /* Adjust the width of input fields */
+    padding: 20px; /* Add padding to input fields */
+    border: 1px solid #ccc; /* Add border for input fields */
+      background-color: #fff;
+      border-radius: 0.25rem;
+      color: #333;
+      font-size: 30px; 
+      box-sizing: border-box;
+      outline: none;
+  }
+  .contact-content{
+    width: 30%;
+    padding: 20px; /* Add padding to the container */
+    background-color: #ffffff; /* Background color for the form container */
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    justify-content: center;
+  }
+  .appointment-button{
+    display: flex;
+    padding: 30px ;
+    background-color: #ff00b3;
+    color: #fff;
+    font-size: 25px;
+    text-decoration: none;
+    border-radius: 50px;
+    margin-top: 80px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 80%;
+  }
+  .appointment-button:hover {
+    background-color: #0056b3; /* Button background color on hover */
+  }
