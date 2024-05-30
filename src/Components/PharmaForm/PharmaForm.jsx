@@ -55,32 +55,76 @@ const PharmaForm = ({ addEditPharmacyText }) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     debugger;
+    // const newPharmacy = {
+    //   pharmacyName: formData.get("pharmacyName"),
+    //   location: formData.get("location"),
+    //   contactNumber: formData.get("contactNumber"),
+    //   pharmacistName: formData.get("pharmacistName"),
+    //   additionalNote: formData.get("additionalNote"),
+    //   excludedDay: formData.get("excludedDay"),
+    //   startTime: formData.get("startTime"),
+    //   endTime: formData.get("endTime"),
+    //   toDay: formData.get("toDay"),
+    //   fromDay: formData.get("fromDay"),
+    //   medicines: newMedicine,
+    // };
     const newPharmacy = {
-      pharmacyName: formData.get("pharmacyName"),
+      name: formData.get("pharmacyName"),
       location: formData.get("location"),
       contactNumber: formData.get("contactNumber"),
       pharmacistName: formData.get("pharmacistName"),
       additionalNote: formData.get("additionalNote"),
       excludedDay: formData.get("excludedDay"),
-      startTime: formData.get("startTime"),
-      endTime: formData.get("endTime"),
-      toDay: formData.get("toDay"),
-      fromDay: formData.get("fromDay"),
-      medicines: newMedicine,
-    };
-    try {
-      const response = await axios.post(
-        "http://localhost:8080/pharmacy/register",
-        newPharmacy
-      );
-      console.log(response.data);
-      e.target.reset();
-    } catch (error) {
-      console.error("Error:", error);
+      operatingStartTime: formData.get("startTime"),
+      operatingEndTime: formData.get("endTime"),
+      workEndDay: formData.get("toDay"),
+     workStartDay: formData.get("fromDay"), 
+      medicines: newMedicine
     }
-    //setMedicines([...medicines, newMedicine]);
-    //e.target.reset(); // Reset the form after submission
+    try {
+      const response = await fetch('http://localhost:8080/pharmacy/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(newPharmacy),
+      });
+
+      // Check if the response is ok (status in the range 200-299)
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log('Success:', data);
+    } catch (error) {
+      console.error('Error:', error);
+      // setError(error.message);
+    }
   };
+    // try {
+//       fetch('/pharmacy/register', {
+//         method: 'POST',
+//         headers: {
+//           'Content-Type': 'application/json',
+//         },
+//         body: JSON.stringify(newPharmacy),
+//       })
+//       .then(response => response.json())
+// .then(data => console.log(data))
+// .catch(error => console.error('Error:', error));
+    //   const response = await axios.post(
+    //     "http://localhost:8080/pharmacy/register",
+        
+    //   );
+    //   console.log(response.data);
+    //   e.target.reset();
+    // } catch (error) {
+    //   console.error("Error:", error);
+    // }
+    //setMedicines([...medicines, newMedicine]);
+    //e.target.reset(); // Reset the form after submission}
+  
 
   // Function to calculate discounted price
   const calculateDiscountedPrice = (price, discount) => {
