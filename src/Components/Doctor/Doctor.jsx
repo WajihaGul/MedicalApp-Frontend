@@ -5,7 +5,7 @@ import Slider from "react-slick";
 import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 import "./Doctor.css"
 import DoctorSearch from '../Search/DoctorSearch';
-
+{/*import { Link } from 'react-router-dom';*/}
 const Doctor = () => {
     const data = [
         {
@@ -130,7 +130,7 @@ const Doctor = () => {
         </Slider>
       </div>
     
-      <div className="container">
+      <div className="doctor-container">
       <div className="column">
         <div className="section-title mb-45">
           <div className="section-text">
@@ -160,9 +160,9 @@ const Doctor = () => {
       
     </div>
     <div className='chat'>
-      <button className="chat-button">Chat With Me</button>
+    {/*<Link to="" className="chat-button">Chat With Me</Link>*/}
+    <a className="chat-button" href="/">Chat With Me</a>
     </div>
-
     </div>
        
 )

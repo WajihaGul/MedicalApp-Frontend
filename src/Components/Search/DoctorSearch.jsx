@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DoctorList from './DoctorList.jsx';
 import './DoctorSearch.css';
 
@@ -13,6 +13,25 @@ const doctorsData = [
 
 const DoctorSearch = () => {
   const [searchTerm, setSearchTerm] = useState('');
+  const [doctorsData, setDoctorsData] = useState([]);
+
+  useEffect(() => {
+    // Fetch doctor data when the component mounts
+    fetchDoctors();
+  }, []);
+
+  const fetchDoctors = async () => {
+    try {
+      const response = await fetch('/api/doctors'); // Replace '/api/doctors' with your backend endpoint
+      if (!response.ok) {
+        throw new Error('Failed to fetch doctors');
+      }
+      const data = await response.json();
+      setDoctorsData(data.doctors); // Assuming the response contains an array of doctors
+    } catch (error) {
+      console.error('Error fetching doctors:', error);
+    }
+  };
 
   const handleChange = (e) => {
     setSearchTerm(e.target.value);

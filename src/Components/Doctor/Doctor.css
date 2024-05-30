@@ -24,12 +24,13 @@
     margin-top: 5px;
     text-align: center;
 }
-.container {
+.doctor-container {
     display: flex;
     background-color: #020f2bf8;
     margin-top: 70px;
     padding-top: 50px;
     padding-bottom: 60px;
+    width: 100%;
   }
   
   .column {
@@ -144,4 +145,14 @@
   
   .specialties-container {
     padding-top: 0.5rem;
+  }
+  .chat a{
+    display: inline-block;
+    padding: 30px ;
+    background-color: #020f2bf8;
+    color: #fff;
+    font-size: 25px;
+    text-decoration: none;
+    border-radius: 50px;
+    margin-top: 80px;
   }
