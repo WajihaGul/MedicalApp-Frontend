@@ -157,6 +157,10 @@ const Doctor = () => {
           </div>
         </div>
       </div>
+      
+    </div>
+    <div className='chat'>
+      <button className="chat-button">Chat With Me</button>
     </div>
 
     </div>

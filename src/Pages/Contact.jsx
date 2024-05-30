@@ -1,6 +1,5 @@
 import React from 'react';
 import "./Contact.css";
-import Button from "../Layouts/Button.jsx";
 
 const Contact = () => {
   return (
@@ -34,10 +33,9 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      <div>
-        <div className="contact-container1">
-          <div className='contact-content'>
-          <div className="form-container1">
+      <div className="contact-container1">
+      <div className="contact-content">
+        <div className="form-container1">
           <form>
             <h1 className="text">
               Anything On Your Mind
@@ -50,8 +48,6 @@ const Contact = () => {
                 id="userFirstName"
                 placeholder="First Name"
               />
-            </div>
-            <div className="form-row">
               <input
                 className="input-field1"
                 type="text"
@@ -68,8 +64,6 @@ const Contact = () => {
                 id="userEmail"
                 placeholder="Your Email"
               />
-            </div>
-            <div className="form-row">
               <input
                 className="input-field1"
                 type="number"
@@ -78,16 +72,7 @@ const Contact = () => {
                 placeholder="Phone No."
               />
             </div>
-            <div className="form-row">
-              <input
-                className="input-field1"
-                type="text"
-                name="subject"
-                id="subject"
-                placeholder="Subject"
-              />
-            </div>
-            <div className="form-row">
+            <div className="form-row full-width">
               <textarea
                 className="textarea-field input-field1"
                 type="text"
@@ -96,16 +81,14 @@ const Contact = () => {
                 placeholder="Your Message"
               />
             </div>
-            <div className="form-row">
-              <Button title="Submit" />
+            <div className="form-row full-width">
+            <button className="button-submit">Submit</button>
             </div>
           </form>
         </div>
-        </div>
-        </div>
       </div>
-      
     </div>
+      </div>
   );
 }
 

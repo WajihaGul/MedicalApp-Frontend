@@ -17,51 +17,82 @@
     align-items: center;
 }
 .contact-container1 {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        background-color: #d5f2ec;
-  }
-  
-  .appointment {
-    text-align:right;
-    margin: 20;
-  }
-  .text{
-    font-size: 40px;
-  }
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #d5f2ec;
+}
 
-  .form-container1 {
-    display: flex;
-    flex-direction:column;
-  }
-  .form-row {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 15px; /* Add margin between form rows */
-  }
-  .textarea-field {
-    width: 100%; /* Make textarea field full width */
-  }
-  .input-field1{
-    width: 45%; /* Adjust the width of input fields */
-    padding: 20px; /* Add padding to input fields */
-    border: 1px solid #ccc; /* Add border for input fields */
-      background-color: #fff;
-      border-radius: 0.25rem;
-      color: #333;
-      font-size: 30px; 
-      box-sizing: border-box;
-      outline: none;
-  }
-  .contact-content{
-    width: 30%;
-    padding: 20px; /* Add padding to the container */
-    background-color: #ffffff; /* Background color for the form container */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-    justify-content: center;
-  }
+.contact-content {
+  width: 50%;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  border-radius:30px;
+}
+
+.form-container1 {
+  width: 100%;
+}
+
+.text {
+  font-size: 40px;
+  text-align: center; /* Center-align the heading text */
+  margin-bottom: 40px;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+.input-field1 {
+  width: 45%;
+  padding: 20px; /* Adjust padding to fit the form layout better */
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 30px;
+  color: #333;
+  font-size: 20px; /* Adjust font size to fit the input fields */
+  box-sizing: border-box;
+  outline: none;
+ 
+}
+
+.textarea-field {
+  width: 100%;
+  height: 100px; /* Add height for the textarea */
+  resize: vertical; /* Allow vertical resizing */
+  font-size: 20px;
+}
+
+.form-row.full-width {
+  display: flex;
+  width: 100%;
+}
+.button-submit{
+  color: white;               
+  border-radius:30px;       
+  border: none;             
+  cursor: pointer;
+  font-size: 20px;
+  width: 100%; /* Make button full width */
+  padding: 20px; /* Add padding to button */
+  background-color: #ff00b3; /* Button background color */
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+.button-submit:hover {
+  background-color: #0056b3; /* Button background color on hover */
+}
+
   .appointment-button{
     display: flex;
     padding: 30px ;
