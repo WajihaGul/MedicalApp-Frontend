@@ -29,7 +29,8 @@ flex-direction: row;
 }
 
 .divii{
-    margin-left: 70px;
+    margin-top: 30px;
+    margin-bottom: 30px;
     margin-right: -32px;
     margin-left: -32px;
     width: 1080px;
@@ -37,7 +38,9 @@ flex-direction: row;
 
 .ButtonHere{
     margin:150px auto;
-}
+   }
+
+
 
 .mbutton{
     height: 55px;
@@ -46,10 +49,16 @@ flex-direction: row;
     font-size: x-large;
     border-radius: 15px;
     background-color: #32ca0b;
-    color: white;    
+    color: white;
+    display: flex;
+    flex-direction: row;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
 }
 
-.icon{
-    margin-right: 6px;
-    height: 54px;  
+.micon{
+    margin: 9px;
+    
 }

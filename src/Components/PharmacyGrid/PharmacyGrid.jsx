@@ -1,33 +1,141 @@
-// PharmacyGrid.js
+// // PharmacyGrid.js
+// import { FaRegEdit } from "react-icons/fa";
+// import { MdDelete } from "react-icons/md";
+// import React, { useState } from "react";
+// import { Link } from "react-router-dom";
+// import { Table, Button } from "react-bootstrap";
+// import styles from "./PharmacyGrid.module.css"; // Import CSS module
+// import DeletePopup from "../DeletePopup/DeletePopup";
+
+// const PharmacyGrid = ({ pharmacies, addEditPharmacyText }) => {
+//   const handleEdit = (index) => {
+//     // Handle edit action
+//     console.log("Edit clicked for pharmacy at index:", index);
+//   };
+//   const [showDeletePopup, setDeletePopup] = useState(false);
+
+//   const toggleDeletePopup = () => {
+//     setDeletePopup(!showDeletePopup); // Toggle popup visibility
+//   };
+//   const handleDelete = (index) => {
+//     // Handle delete action
+//     toggleDeletePopup();
+//     console.log("Delete clicked for pharmacy at index:", index);
+//   };
+
+//   return (
+//     <div className={styles.tableContainer}>
+//       <div className={styles.gridContainer}>
+//         <div className={styles.addButton}>
+//           {/* Button to add a pharmacy */}
+//           <Link to="/add-pharmacy">
+//             <Button variant="success">
+//               {addEditPharmacyText == null || addEditPharmacyText == ""
+//                 ? "Add a Pharmacy"
+//                 : addEditPharmacyText}
+//             </Button>
+//           </Link>
+//         </div>
+//         <Table striped bordered hover className={styles.table}>
+//           <thead>
+//             <tr>
+//               <th>ID</th>
+//               <th>Name</th>
+//               <th>Contact</th>
+//               <th>Address</th>
+//               <th>Operating Hours</th>
+//               <th>Action</th> {/* Add Action column */}
+//             </tr>
+//           </thead>
+//           <tbody>
+//             {pharmacies.map((pharmacy, index) => (
+//               <tr key={index}>
+//                 <td>{pharmacy.ID}</td>
+//                 <td>{pharmacy.name}</td>
+//                 <td>{pharmacy.contact}</td>
+//                 <td>{pharmacy.address}</td>
+//                 <td>{pharmacy.hours}</td>
+//                 <td>
+//                   {/* Edit button */}
+//                   {/* <Link to="/edit-pharmacy">
+//                     <Button
+//                       className={styles.editButton}
+//                       variant="primary"
+//                       onClick={() => handleEdit(index)}
+//                     >
+//                       <FaRegEdit className={styles.buttonIcon} />
+//                     </Button>
+//                   </Link> */}
+//                   <Link to={`/edit-pharmacy?index=${pharmacy.ID}`}>
+//                     <Button className={styles.editButton} variant="primary">
+//                       <FaRegEdit className={styles.buttonIcon} />
+//                     </Button>
+//                   </Link>
+//                   {/* Delete button */}
+//                   <Button variant="danger" onClick={() => handleDelete(index)}>
+//                     <MdDelete className={styles.buttonIcon} />
+//                   </Button>
+//                 </td>
+//               </tr>
+//             ))}
+//           </tbody>
+//         </Table>
+//       </div>
+//       {showDeletePopup && (
+//         <DeletePopup
+//           onClose={toggleDeletePopup}
+//           onDelete={handleDelete}
+//           text="Are you sure you want to delete this pharmacy?"
+//         />
+//       )}
+//     </div>
+//   );
+// };
+
+// export default PharmacyGrid;
+
 import { FaRegEdit } from "react-icons/fa";
 import { MdDelete } from "react-icons/md";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { Table, Button } from "react-bootstrap";
-import styles from "./PharmacyGrid.module.css"; // Import CSS module
+import styles from "./PharmacyGrid.module.css";
 import DeletePopup from "../DeletePopup/DeletePopup";
+import axios from "axios"; // Import Axios for making HTTP requests
 
 const PharmacyGrid = ({ pharmacies, addEditPharmacyText }) => {
-  const handleEdit = (index) => {
-    // Handle edit action
-    console.log("Edit clicked for pharmacy at index:", index);
-  };
   const [showDeletePopup, setDeletePopup] = useState(false);
+  const [selectedPharmacyIndex, setSelectedPharmacyIndex] = useState(null);
 
   const toggleDeletePopup = () => {
-    setDeletePopup(!showDeletePopup); // Toggle popup visibility
+    setDeletePopup(!showDeletePopup);
   };
-  const handleDelete = (index) => {
-    // Handle delete action
+
+  const handleDelete = async (index) => {
+    setSelectedPharmacyIndex(index);
     toggleDeletePopup();
-    console.log("Delete clicked for pharmacy at index:", index);
+  };
+
+  const confirmDelete = async () => {
+    try {
+      const response = await axios.delete(
+        `http://<backend-ip>:<backend-port>/api/pharmacies/${pharmacies[selectedPharmacyIndex].ID}`
+      );
+      console.log("Delete response:", response.data);
+      // Handle successful deletion, update UI, etc.
+    } catch (error) {
+      console.error("Error deleting pharmacy:", error);
+      // Handle error
+    } finally {
+      setSelectedPharmacyIndex(null);
+      toggleDeletePopup();
+    }
   };
 
   return (
     <div className={styles.tableContainer}>
       <div className={styles.gridContainer}>
         <div className={styles.addButton}>
-          {/* Button to add a pharmacy */}
           <Link to="/add-pharmacy">
             <Button variant="success">
               {addEditPharmacyText == null || addEditPharmacyText == ""
@@ -44,7 +152,7 @@ const PharmacyGrid = ({ pharmacies, addEditPharmacyText }) => {
               <th>Contact</th>
               <th>Address</th>
               <th>Operating Hours</th>
-              <th>Action</th> {/* Add Action column */}
+              <th>Action</th>
             </tr>
           </thead>
           <tbody>
@@ -56,22 +164,11 @@ const PharmacyGrid = ({ pharmacies, addEditPharmacyText }) => {
                 <td>{pharmacy.address}</td>
                 <td>{pharmacy.hours}</td>
                 <td>
-                  {/* Edit button */}
-                  {/* <Link to="/edit-pharmacy">
-                    <Button
-                      className={styles.editButton}
-                      variant="primary"
-                      onClick={() => handleEdit(index)}
-                    >
-                      <FaRegEdit className={styles.buttonIcon} />
-                    </Button>
-                  </Link> */}
                   <Link to={`/edit-pharmacy?index=${pharmacy.ID}`}>
                     <Button className={styles.editButton} variant="primary">
                       <FaRegEdit className={styles.buttonIcon} />
                     </Button>
                   </Link>
-                  {/* Delete button */}
                   <Button variant="danger" onClick={() => handleDelete(index)}>
                     <MdDelete className={styles.buttonIcon} />
                   </Button>
@@ -84,7 +181,7 @@ const PharmacyGrid = ({ pharmacies, addEditPharmacyText }) => {
       {showDeletePopup && (
         <DeletePopup
           onClose={toggleDeletePopup}
-          onDelete={handleDelete}
+          onDelete={confirmDelete}
           text="Are you sure you want to delete this pharmacy?"
         />
       )}

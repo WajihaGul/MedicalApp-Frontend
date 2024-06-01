@@ -2,8 +2,10 @@ import React, { useRef } from 'react'
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
-import { FaArrowLeft } from 'react-icons/fa';
-import { FaArrowRight } from 'react-icons/fa';
+import { FaArrowLeft, FaArrowRight } from 'react-icons/fa';
+import "./Doctor.css"
+import DoctorSearch from '../Search/DoctorSearch';
+{/*import { Link } from 'react-router-dom';*/}
 const Doctor = () => {
     const data = [
         {
@@ -78,26 +80,26 @@ const Doctor = () => {
     };
   
   return (
-    <div className=" min-h-screen flex flex-col justify-center lg:px-32 px-5 pt-16">
-      <div className=" flex flex-col items-center lg:flex-row justify-between mb-10 lg:mb-0">
+    <div className=" flex-div">
+      <div className=" flex-div2">
         <div>
-          <h1 className=" text-4xl font-semibold text-center lg:text-start">
+          <h1 className=" t-tag">
             Our Doctors
           </h1>
-          <p className=" mt-2 text-center lg:text-start">
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Natus,
-            quidem.
+          <p className=" paragraph">
+            Professionals & Care Provider.
           </p>
         </div>
+        <DoctorSearch/>
         <div className="flex gap-5 mt-4 lg:mt-0">
           <button
-            className=" bg-[#d5f2ec] text-backgroundColor px-4 py-2 rounded-lg active:bg-[#ade9dc]"
+            className=" button-left"
             onClick={() => slider.current.slickPrev()}
           >
             <FaArrowLeft size={25} />
           </button>
           <button
-            className=" bg-[#d5f2ec] text-backgroundColor px-4 py-2 rounded-lg active:bg-[#ade9dc]"
+            className=" button-left"
             onClick={() => slider.current.slickNext()}
           >
             <FaArrowRight size={25} />
@@ -108,27 +110,61 @@ const Doctor = () => {
         <Slider ref={slider} {...settings}>
           {data.map((e, index) => (
             <div
-              className="h-[350px] text-black rounded-xl shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px] mb-2 cursor-pointer"
+              className="card"
               key={index}
             >
-              <div>
+              <div className=''>
                 <img
                   src={e.img}
                   alt="img"
-                  className=" h-56 rounded-t-xl w-full"
+                  className=" image"
                 />
               </div>
 
-              <div className=" flex flex-col justify-center items-center">
-                <h1 className=" font-semibold text-xl pt-4">{e.name}</h1>
-                <h3 className=" pt-2">{e.specialties}</h3>
+              <div className=" main-container">
+                <h1 className=" name-container">{e.name}</h1>
+                <h3 className=" specialties-container">{e.specialties}</h3>
               </div>
             </div>
           ))}
         </Slider>
       </div>
+    
+      <div className="doctor-container">
+      <div className="column">
+        <div className="section-title mb-45">
+          <div className="section-text">
+            <h5>We are available 24/7</h5>
+            <h1>We Always Ready For A Challenge.</h1>
+          </div>
+        </div>
+        <div className="section-button mb-30">
+          <a className="primary-btn" href="/contact"><span className="span">+</span> Make Appointment</a>
+          
+        </div>
+      </div>
+      <div className="column">
+        <div className="cta-satisfied">
+          <div className="single-satisfied mb-50">
+            <h1>1M+</h1>
+            <h5>Satisfied Patients</h5>
+            <p>Join a community of over one million satisfied patients who have experienced exceptional care and successful treatments. Trust in our dedicated team of doctors committed to your health and well-being.</p>
+          </div>
+          <div className="single-satisfied mb-50">
+            <h1>100+</h1>
+            <h5>World Awards</h5>
+            <p>Our medical team is recognized globally, having received over 100 prestigious awards. These accolades reflect our unwavering commitment to excellence in patient care and innovative medical practices.</p>
+          </div>
+        </div>
+      </div>
+      
     </div>
-  )
-}
-
+    <div className='chat'>
+    {/*<Link to="" className="chat-button">Chat With Me</Link>*/}
+    <a className="chat-button" href="/">Chat With Me</a>
+    </div>
+    </div>
+       
+)
+ }
 export default Doctor

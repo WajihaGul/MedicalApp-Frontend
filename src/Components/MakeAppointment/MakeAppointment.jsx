@@ -14,7 +14,7 @@ const MakeAppointment = () => {
 
         <div className={styles.ButtonHere}>
           <button className={styles.mbutton} type="button">
-            <RiCalendarScheduleLine className={styles.icon} />
+            <RiCalendarScheduleLine className={styles.micon} />
             Make Appointment
           </button>
         </div>
