@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./PharmaForm.module.css";
 import MedGrid from "../PMedicineGrid/MedGrid";
 import AddMedicinePopup from "./AddMedicinePopup";
@@ -39,7 +39,7 @@ const medicines = [
   },
 ];
 
-const PharmaForm = ({ addEditPharmacyText }) => {
+const PharmaForm = ({ addEditPharmacyText, id }) => {
   // State to store added medicines
   const [medicine, setMedicine] = useState(medicines);
   const [newMedicine, setNewMedicine] = useState();
@@ -47,6 +47,25 @@ const PharmaForm = ({ addEditPharmacyText }) => {
   const togglePopup = () => {
     setShowPopup(!showPopup); // Toggle popup visibility
   };
+  useEffect(() => {
+    const fetchPharmacies = async () => {
+      try {
+        let response;
+        if (id) {
+          response = await axios.get(
+            `http://localhost:8080/pharmacy/register/${id}`
+          );
+        } else {
+          response = await axios.get("http://localhost:8080/pharmacy/register");
+        }
+        setPharmacies(response.data);
+      } catch (error) {
+        console.error("Error fetching pharmacies:", error);
+      }
+    };
+
+    fetchPharmacies();
+  }, [id]);
   const addNewMedicine = (medicine) => {
     setNewMedicine(medicine);
   };
@@ -54,20 +73,7 @@ const PharmaForm = ({ addEditPharmacyText }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-    debugger;
-    // const newPharmacy = {
-    //   pharmacyName: formData.get("pharmacyName"),
-    //   location: formData.get("location"),
-    //   contactNumber: formData.get("contactNumber"),
-    //   pharmacistName: formData.get("pharmacistName"),
-    //   additionalNote: formData.get("additionalNote"),
-    //   excludedDay: formData.get("excludedDay"),
-    //   startTime: formData.get("startTime"),
-    //   endTime: formData.get("endTime"),
-    //   toDay: formData.get("toDay"),
-    //   fromDay: formData.get("fromDay"),
-    //   medicines: newMedicine,
-    // };
+
     const newPharmacy = {
       name: formData.get("pharmacyName"),
       location: formData.get("location"),
@@ -82,51 +88,40 @@ const PharmaForm = ({ addEditPharmacyText }) => {
       medicines: newMedicine
     }
     try {
-      const response = await fetch('http://localhost:8080/pharmacy/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(newPharmacy),
-      });
-
+      let response;
+      if (id > 0) {
+        response = await fetch(
+          `http://localhost:8080/pharmacy/register/${id}`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(newPharmacy),
+          }
+        );
+      } else {
+        response = await fetch("http://localhost:8080/pharmacy/register", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(newPharmacy),
+        });
+      }
       // Check if the response is ok (status in the range 200-299)
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
       }
 
       const data = await response.json();
-      console.log('Success:', data);
+      console.log("Success:", data);
     } catch (error) {
-      console.error('Error:', error);
+      console.error("Error:", error);
       // setError(error.message);
     }
   };
-    // try {
-//       fetch('/pharmacy/register', {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify(newPharmacy),
-//       })
-//       .then(response => response.json())
-// .then(data => console.log(data))
-// .catch(error => console.error('Error:', error));
-    //   const response = await axios.post(
-    //     "http://localhost:8080/pharmacy/register",
-        
-    //   );
-    //   console.log(response.data);
-    //   e.target.reset();
-    // } catch (error) {
-    //   console.error("Error:", error);
-    // }
-    //setMedicines([...medicines, newMedicine]);
-    //e.target.reset(); // Reset the form after submission}
-  
 
-  // Function to calculate discounted price
   const calculateDiscountedPrice = (price, discount) => {
     if (discount && price) {
       const discountedPrice = price - (price * discount) / 100;
