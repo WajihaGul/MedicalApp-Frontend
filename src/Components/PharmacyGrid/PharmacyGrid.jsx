@@ -106,12 +106,13 @@ import axios from "axios"; // Import Axios for making HTTP requests
 const PharmacyGrid = ({ pharmacies, addEditPharmacyText }) => {
   const [showDeletePopup, setDeletePopup] = useState(false);
   const [selectedPharmacyIndex, setSelectedPharmacyIndex] = useState(null);
-
+  const [pharmacyList, setPharmacies] = useState(pharmacies);
   useEffect(() => {
     const fetchPharmacies = async () => {
+ 
       try {
         const response = await fetch(
-          "http://localhost:8080/pharmacy/register",
+          "http://localhost:8080/pharmacy",
           {
             method: "GET",
             headers: {
@@ -126,7 +127,7 @@ const PharmacyGrid = ({ pharmacies, addEditPharmacyText }) => {
         }
 
         const data = await response.json();
-        setPharmacies(response.data);
+        setPharmacies(data);
         console.log("Success:", data);
       } catch (error) {
         console.error("Error:", error);
@@ -142,13 +143,15 @@ const PharmacyGrid = ({ pharmacies, addEditPharmacyText }) => {
   };
 
   const handleDelete = async (index) => {
+    debugger;
     setSelectedPharmacyIndex(index);
     toggleDeletePopup();
   };
   const confirmDelete = async () => {
     try {
+      debugger
       const response = await fetch(
-        `http://localhost:8080/pharmacy/register/${selectedPharmacyIndex}`,
+        `http://localhost:8080/pharmacy/deletePharmacy/${selectedPharmacyIndex}`,
         {
           method: "DELETE",
           headers: {
@@ -161,7 +164,7 @@ const PharmacyGrid = ({ pharmacies, addEditPharmacyText }) => {
       }
       // Removing the deleted pharmacy from the list
       setPharmacies(
-        pharmacies.filter((_, idx) => idx !== selectedPharmacyIndex)
+        pharmacyList.filter((_, idx) => idx !== selectedPharmacyIndex)
       );
       console.log("Delete response:", await response.json());
     } catch (error) {
@@ -196,22 +199,22 @@ const PharmacyGrid = ({ pharmacies, addEditPharmacyText }) => {
             </tr>
           </thead>
           <tbody>
-            {pharmacies.map((pharmacy, index) => (
+            {pharmacyList.map((pharmacy, index) => (
               <tr key={index}>
-                <td>{pharmacy.ID}</td>
+                <td>{pharmacy.id}</td>
                 <td>{pharmacy.name}</td>
-                <td>{pharmacy.contact}</td>
-                <td>{pharmacy.address}</td>
-                <td>{pharmacy.hours}</td>
+                <td>{pharmacy.contactNumber}</td>
+                <td>{pharmacy.location}</td>
+                <td>{pharmacy.operatingStartTime} - {pharmacy.operatingEndTime}</td>
                 <td>
-                  <Link to={`/edit-pharmacy?index=${pharmacy.ID}`}>
+                  <Link to={`/edit-pharmacy?index=${pharmacy.id}`}>
                     <Button className={styles.editButton} variant="primary">
                       <FaRegEdit className={styles.buttonIcon} />
                     </Button>
                   </Link>
                   <Button
                     variant="danger"
-                    onClick={() => handleDelete(pharmacy.ID)}
+                    onClick={() => handleDelete(pharmacy.id)}
                   >
                     <MdDelete className={styles.buttonIcon} />
                   </Button>

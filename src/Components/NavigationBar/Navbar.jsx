@@ -58,18 +58,27 @@ const Navbar = () => {
         </div>
         <div className={styles.navLinks}>
           <div className={styles.allnav}>
-            <Link className={styles.navLinksColor} to="/">
+            {/* <Link className={styles.navLinksColor} to="/">
               Home
-            </Link>
+            </Link> */}
             <Link className={styles.navLinksColor} to="/doctor">
               Search Doctors
             </Link>
             <Link className={styles.navLinksColor} to="/search-medicine">
               Search Pharmacies
             </Link>
-            <Link className={styles.navLinksColor} to="/Contact">
+            {/* <Link className={styles.navLinksColor} to="/Contact">
               Contact Us
-            </Link>
+            </Link> */}
+            <Link className={styles.navLinksColor} to="/pharmacy">
+            Pharmacies
+          </Link>
+          <Link className={styles.navLinksColor} to="/search-medicine">
+            Order/Search Medicine
+          </Link>
+          <Link className={styles.navLinksColor} to="/ViewPatienProfile">
+            Patient Profile
+          </Link>
           </div>
           <div id="navbarNav">
             <ul className="navbar-nav ml-auto">

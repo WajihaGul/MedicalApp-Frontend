@@ -43,22 +43,42 @@ const PharmaForm = ({ addEditPharmacyText, id }) => {
   // State to store added medicines
   const [medicine, setMedicine] = useState(medicines);
   const [newMedicine, setNewMedicine] = useState();
+  const [pharmacy, setPharmacy] = useState();
   const [showPopup, setShowPopup] = useState(false); // State to manage popup visibility
   const togglePopup = () => {
     setShowPopup(!showPopup); // Toggle popup visibility
   };
   useEffect(() => {
     const fetchPharmacies = async () => {
+      debugger;
       try {
-        let response;
         if (id) {
-          response = await axios.get(
-            `http://localhost:8080/pharmacy/register/${id}`
+          const response = await fetch(
+            `http://localhost:8080/pharmacy/${id}`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
           );
-        } else {
-          response = await axios.get("http://localhost:8080/pharmacy/register");
-        }
-        setPharmacies(response.data);
+          const data = await response.json();
+          setPharmacy(data);
+          console.log("Success:", data);
+          const responseForMedicine = await fetch(
+            `http://localhost:8080/medicine/${id}`,
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+              },
+            }
+          );
+          const medicineData = await responseForMedicine.json();
+          //setMedicine(medicineData);
+          console.log("Success:", data);
+        } 
+        
       } catch (error) {
         console.error("Error fetching pharmacies:", error);
       }
@@ -73,7 +93,7 @@ const PharmaForm = ({ addEditPharmacyText, id }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
-
+debugger
     const newPharmacy = {
       name: formData.get("pharmacyName"),
       location: formData.get("location"),
@@ -91,7 +111,7 @@ const PharmaForm = ({ addEditPharmacyText, id }) => {
       let response;
       if (id > 0) {
         response = await fetch(
-          `http://localhost:8080/pharmacy/register/${id}`,
+          `http://localhost:8080/pharmacy/updatePharmacy/${id}`,
           {
             method: "POST",
             headers: {
@@ -152,13 +172,13 @@ const PharmaForm = ({ addEditPharmacyText, id }) => {
           <label htmlFor="pharmacyName">
             Name<span>*</span>:
           </label>
-          <input type="text" id="pharmacyName" name="pharmacyName" required />
+          <input type="text" id="pharmacyName" value={pharmacy?.name} name="pharmacyName" required />
         </div>
         <div className={styles.form_group}>
           <label htmlFor="location">
             Location<span>*</span>:
           </label>
-          <input type="text" id="location" name="location" required />
+          <input type="text" id="location" value={pharmacy?.location} name="location" required />
         </div>
         <div className="mb-3">
           <label htmlFor="contactNumber" className="form-label">
@@ -169,6 +189,7 @@ const PharmaForm = ({ addEditPharmacyText, id }) => {
             className="form-control"
             id="contactNumber"
             name="contactNumber"
+            value={pharmacy?.contactNumber}
             //pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
             required
           />
@@ -182,6 +203,7 @@ const PharmaForm = ({ addEditPharmacyText, id }) => {
             id="pharmacistName"
             name="pharmacistName"
             required
+            value={pharmacy?.pharmacistName}
           />
         </div>
         <div className={styles.form_group}>
@@ -195,6 +217,7 @@ const PharmaForm = ({ addEditPharmacyText, id }) => {
                 id="fromDay"
                 name="fromDay"
                 required
+                value={pharmacy?.workEndDay}
               >
                 <option value="">Select Day</option>
                 <option value="Monday">Monday</option>
@@ -210,7 +233,7 @@ const PharmaForm = ({ addEditPharmacyText, id }) => {
               <label htmlFor="toDay">
                 Operating Days (To)<span>*</span>:
               </label>
-              <select className="form-control" id="toDay" name="toDay" required>
+              <select className="form-control" id="toDay" name="toDay" required value={pharmacy?.workStartDay}>
                 <option value="">Select Day</option>
                 <option value="Monday">Monday</option>
                 <option value="Tuesday">Tuesday</option>
@@ -234,6 +257,7 @@ const PharmaForm = ({ addEditPharmacyText, id }) => {
                     id="startTime"
                     name="startTime"
                     required
+                    value={pharmacy?.operatingStartTime}
                   />
                 </div>
                 <div className="col-md-6">
@@ -243,6 +267,7 @@ const PharmaForm = ({ addEditPharmacyText, id }) => {
                     id="endTime"
                     name="endTime"
                     required
+                    value={pharmacy?.operatingEndTime}
                   />
                 </div>
               </div>
@@ -258,6 +283,7 @@ const PharmaForm = ({ addEditPharmacyText, id }) => {
                 id="excludedDay"
                 name="excludedDay"
                 required
+                value={pharmacy?.excludedDay}
               >
                 <option value="">Select Day</option>
                 <option value="Monday">Monday</option>
@@ -279,6 +305,7 @@ const PharmaForm = ({ addEditPharmacyText, id }) => {
             id="additionalNote"
             name="additionalNote"
             required
+            value={pharmacy?.additionalNote}
           ></textarea>
         </div>
       </form>
