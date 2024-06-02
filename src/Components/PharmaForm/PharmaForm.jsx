@@ -78,7 +78,7 @@ const PharmaForm = ({ addEditPharmacyText }) => {
       operatingStartTime: formData.get("startTime"),
       operatingEndTime: formData.get("endTime"),
       workEndDay: formData.get("toDay"),
-     workStartDay: formData.get("fromDay"), 
+      workStartDay: formData.get("fromDay"), 
       medicines: newMedicine
     }
     try {
