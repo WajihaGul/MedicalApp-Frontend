@@ -37,7 +37,7 @@ const MedGrid = ({ medicines }) => {
     try {
       debugger;
       const response = await fetch(
-        `http://localhost:8080/pharmacy/register/${selectedMedicineIndex}`,
+        `http://localhost:8080/deleteMedicine/${selectedMedicineIndex}`,
         {
           method: "DELETE",
           headers: {
@@ -49,12 +49,12 @@ const MedGrid = ({ medicines }) => {
         throw new Error("Network response was not ok");
       }
       // Removing the deleted pharmacy from the list
-      medicines.filter((_, idx) => idx !== selectedPharmacyIndex);
+      medicines.filter((_, id) => id !== selectedMedicineIndex);
       console.log("Delete response:", await response.json());
     } catch (error) {
       console.error("Error deleting pharmacy:", error);
     } finally {
-      setSelectedMedicineIndex(null);
+      
       toggleDeletePopup();
     }
   };
@@ -79,7 +79,7 @@ const MedGrid = ({ medicines }) => {
           <tbody>
             {medicines.map((medicine, index) => (
               <tr key={index}>
-                <td>{medicine.ID}</td>
+                <td>{medicine.id}</td>
                 <td>{medicine.name}</td>
                 <td>{medicine.description}</td>
                 <td>{medicine.price}</td>
@@ -102,7 +102,7 @@ const MedGrid = ({ medicines }) => {
                   {/* Delete button */}
                   <Button
                     variant="danger"
-                    onClick={() => handleDelete(medicine.ID)}
+                    onClick={() => handleDelete(medicine.id)}
                   >
                     <MdDelete className={styles.buttonIcon} />
                   </Button>

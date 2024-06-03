@@ -1,79 +1,7 @@
-// // // src/components/MedicineCardList.js
-// // import React from "react";
-// // import MedicineCard from "./MedicineCard";
-// // import styles from "./SearchMedicine.module.css";
 
-// // const MedicineCardList = ({ medicines }) => {
-// //   return (
-// //     <div className="container" style={{ marginTop: "150px" }}>
-// //       <div className="row">
-// //         {medicines.map((medicine, index) => (
-// //           <MedicineCard
-// //             key={index}
-// //             image={medicine.image}
-// //             medicineName={medicine.medicineName}
-// //             pharmacyName={medicine.pharmacyName}
-// //             price={medicine.price}
-// //             discountedPrice={medicine.discountedPrice}
-// //             pharmacyLocation={medicine.pharmacyLocation}
-// //             rating={medicine.rating}
-// //           />
-// //         ))}
-// //       </div>
-// //     </div>
-// //   );
-// // };
-
-// // export default MedicineCardList;
-// // src/components/MedicineCardList.js
-//import React, { useState } from "react";
-// import MedicineCard from "./MedicineCard";
-import SearchBar from "./SearchBar";
-// import CartButton from "./CartButton";
-
-// const MedicineCardList = ({ medicines }) => {
-// const [searchTerm, setSearchTerm] = useState("");
-
-// const handleSearchChange = (term) => {
-//   setSearchTerm(term);
-// };
-
-// const filteredMedicines = medicines.filter((medicine) => {
-//   return (
-//     medicine.medicineName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-//     medicine.pharmacyName.toLowerCase().includes(searchTerm.toLowerCase())
-//   );
-// });
-
-//   return (
-//     <div className="container" style={{ marginTop: "150px" }}>
-//       <CartButton />
-//       <SearchBar searchTerm={searchTerm} onSearchChange={handleSearchChange} />
-//       <div className="row">
-//         {filteredMedicines.map((medicine, index) => (
-//           <MedicineCard
-//             key={index}
-//             image={medicine.image}
-//             medicineName={medicine.medicineName}
-//             pharmacyName={medicine.pharmacyName}
-//             pharmacyLocation={medicine.pharmacyLocation}
-//             price={medicine.price}
-//             discountedPrice={medicine.discountedPrice}
-//             rating={medicine.rating}
-//           />
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default MedicineCardList;
-// src/components/MedicineCardList.js
-
-//UNCOMMENT CODE
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import MedicineCard from "./MedicineCard";
-
+import SearchBar from "./SearchBar";
 const MedicineCardList = ({ onAddToCart }) => {
   // Sample medicines data
   const medicines = [
@@ -161,12 +89,41 @@ const MedicineCardList = ({ onAddToCart }) => {
     },
   ];
   const [searchTerm, setSearchTerm] = useState("");
-
+  const [pharmacyList, setPharmacies] = useState(medicines);
   const handleSearchChange = (term) => {
     setSearchTerm(term);
   };
+  useEffect(() => {
+    const fetchPharmacies = async () => {
+debugger
+      try {
+        const response = await fetch(
+          "http://localhost:8080/pharmacy",
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+            },
+          }
+        );
 
-  const filteredMedicines = medicines.filter((medicine) => {
+        // Check if the response is ok (status in the range 200-299)
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        setPharmacies(data);
+        console.log("Success:", data);
+      } catch (error) {
+        console.error("Error:", error);
+        // setError(error.message);
+      }
+    };
+
+    fetchPharmacies();
+  }, []);
+  const filteredMedicines = pharmacyList.filter((medicine) => {
     return (
       medicine.medicineName.toLowerCase().includes(searchTerm.toLowerCase()) ||
       medicine.pharmacyName.toLowerCase().includes(searchTerm.toLowerCase())
@@ -189,52 +146,3 @@ const MedicineCardList = ({ onAddToCart }) => {
 };
 
 export default MedicineCardList;
-// import React, { useState, useEffect } from "react";
-// import axios from "axios";
-// import MedicineCard from "./MedicineCard";
-// import SearchBar from "./SearchBar"; // Assuming you have a SearchBar component
-
-// const MedicineCardList = ({ onAddToCart }) => {
-//   const [medicines, setMedicines] = useState([]);
-//   const [searchTerm, setSearchTerm] = useState("");
-
-//   useEffect(() => {
-//     // Fetch medicines from the backend API
-//     axios
-//       .get("http://<backend-ip>:<backend-port>/api/medicines")
-//       .then((response) => {
-//         setMedicines(response.data);
-//       })
-//       .catch((error) => {
-//         console.error("There was an error fetching the medicines!", error);
-//       });
-//   }, []);
-
-//   const handleSearchChange = (term) => {
-//     setSearchTerm(term);
-//   };
-
-//   const filteredMedicines = medicines.filter((medicine) => {
-//     return (
-//       medicine.medicineName.toLowerCase().includes(searchTerm.toLowerCase()) ||
-//       medicine.pharmacyName.toLowerCase().includes(searchTerm.toLowerCase())
-//     );
-//   });
-
-//   return (
-//     <div className="container">
-//       <SearchBar searchTerm={searchTerm} onSearchChange={handleSearchChange} />
-//       <div className="row">
-//         {filteredMedicines.map((medicine, index) => (
-//           <MedicineCard
-//             key={index}
-//             medicine={medicine}
-//             onAddToCart={onAddToCart}
-//           />
-//         ))}
-//       </div>
-//     </div>
-//   );
-// };
-
-// export default MedicineCardList;

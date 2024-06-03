@@ -67,9 +67,9 @@ const Navbar = () => {
             <Link className={styles.navLinksColor} to="/search-medicine">
               Search Pharmacies
             </Link>
-            {/* <Link className={styles.navLinksColor} to="/Contact">
-              Contact Us
-            </Link> */}
+            <Link className={styles.navLinksColor} to="/ViewPatientProfile">
+              Patient Profile
+            </Link>
             <Link className={styles.navLinksColor} to="/pharmacy">
             Pharmacies
           </Link>

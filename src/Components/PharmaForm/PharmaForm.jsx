@@ -42,7 +42,7 @@ const medicines = [
 const PharmaForm = ({ addEditPharmacyText, id }) => {
   // State to store added medicines
   const [medicine, setMedicine] = useState(medicines);
-  const [newMedicine, setNewMedicine] = useState();
+  const [newMedicine, setNewMedicine] = useState([]);
   const [pharmacy, setPharmacy] = useState();
   const [showPopup, setShowPopup] = useState(false); // State to manage popup visibility
   const togglePopup = () => {
@@ -50,7 +50,7 @@ const PharmaForm = ({ addEditPharmacyText, id }) => {
   };
   useEffect(() => {
     const fetchPharmacies = async () => {
-      debugger;
+ debugger
       try {
         if (id) {
           const response = await fetch(
@@ -65,18 +65,9 @@ const PharmaForm = ({ addEditPharmacyText, id }) => {
           const data = await response.json();
           setPharmacy(data);
           console.log("Success:", data);
-          const responseForMedicine = await fetch(
-            `http://localhost:8080/medicine/${id}`,
-            {
-              method: "GET",
-              headers: {
-                "Content-Type": "application/json",
-              },
-            }
-          );
-          const medicineData = await responseForMedicine.json();
-          //setMedicine(medicineData);
-          console.log("Success:", data);
+          
+          setMedicine(data.medicines);
+         
         } 
         
       } catch (error) {
@@ -86,14 +77,16 @@ const PharmaForm = ({ addEditPharmacyText, id }) => {
 
     fetchPharmacies();
   }, [id]);
-  const addNewMedicine = (medicine) => {
-    setNewMedicine(medicine);
+  const addNewMedicine = (medicine) => {debugger
+    setNewMedicine([medicine]);
+    
   };
   // Function to handle form submission
   const handleSubmit = async (e) => {
+    debugger
     e.preventDefault();
     const formData = new FormData(e.target);
-debugger
+
     const newPharmacy = {
       name: formData.get("pharmacyName"),
       location: formData.get("location"),

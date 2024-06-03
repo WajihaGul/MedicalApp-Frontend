@@ -15,6 +15,7 @@ import ManagePrescription from "./Pages/ManagePrescription";
 import Doctor from "./Components/Doctor/Doctor";
 import ChatApp from "./Components/ChatApp";
 
+
 function App() {
   return (
     <Router>
@@ -27,6 +28,7 @@ function App() {
             element={<ViewPatientProfile />}
           />
           <Route exact path="/add-pharmacy" element={<AddPharmacy />} />
+          <Route exact path="/ViewPatientProfile" element={<ViewPatientProfile />} />
           <Route exact path="/pharmacy" element={<Pharmacy />} />
           <Route exact path="/edit-pharmacy" element={<EditPharmacy />} />
           <Route exact path="/search-medicine" element={<SearchMedicine />} />

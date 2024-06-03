@@ -7,48 +7,43 @@ const AddMedicinePopup = ({ onClose, medicine, addMedicine }) => {
     e.preventDefault();
     const formData = new FormData(e.target);
     const newMedicine = {
-      medicineName: formData.get("medicineName"),
+      name: formData.get("medicineName"),
       description: formData.get("description"),
-      image: formData.get("image"),
+      //image: formData.get("image"),
       price: formData.get("price"),
       discount: formData.get("discount"),
-      inStock: formData.get("inStock"),
+      stock: 11,
     };
-    try {
-      let response;
-      if (medicine.ID > 0) {
+    
+      if (medicine.id > 0) {
+        try {
+          let response;
+          debugger
         response = await fetch(
-          `http://localhost:8080/pharmacy/register/${id}`,
+          `http://localhost:8080/medicine/updateMedicine/${medicine.id}`,
           {
             method: "POST",
             headers: {
               "Content-Type": "application/json",
             },
-            body: JSON.stringify(newPharmacy),
+            body: JSON.stringify(newMedicine),
           }
         );
-      } else {
-        response = await fetch("http://localhost:8080/pharmacy/register", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(newPharmacy),
-        });
-      }
-      // Check if the response is ok (status in the range 200-299)
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      console.log("Success:", data);
-    } catch (error) {
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+  
+        const data = await response.json();
+        console.log("Success:", data);
+      } 
+catch (error) {
       console.error("Error:", error);
       // setError(error.message);
     }
-    console.log(medicine);
+  }
+    else{
     addMedicine(newMedicine);
+    }
     onClose();
   };
 
