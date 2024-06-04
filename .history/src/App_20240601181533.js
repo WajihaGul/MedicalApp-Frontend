@@ -16,7 +16,7 @@ import ManagePrescription from "./Pages/ManagePrescription";
 import Appointment from "./Components/Appointment/Appointment";
 import Doctor from "./Components/Doctor/Doctor";
 import Contact from "./Pages/Contact";
-import ChatApp from "./Components/ChatApp";
+// import ChatApp from "./Components/ChatApp";
 
 function App() {
   return (
@@ -38,7 +38,7 @@ function App() {
           <Route path="/contact" element={<Contact />} />
           <Route path="/appointment" element={<Appointment />} />
           <Route path="/doctor" element={<Doctor />} />
-          <Route path="/chat" element={<ChatApp />} />
+          {/* <Route path="/chat" element={<ChatApp />} /> */}
         </Routes>
       </Layout>
     </Router>

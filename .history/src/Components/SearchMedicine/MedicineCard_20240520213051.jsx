@@ -84,6 +84,7 @@ import React from "react";
 import PropTypes from "prop-types";
 
 const MedicineCard = ({ medicine, onAddToCart }) => {
+  debugger
   const { image, medicineName, pharmacyName, price } = medicine;
 
   return (

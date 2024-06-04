@@ -14,13 +14,49 @@ const ViewCartPopup = ({
     (total, item) => total + item.price * item.quantity,
     0
   );
-
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [contactNumber, setContactNumber] = useState("");
+  const [email, setEmail] = useState("");
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+  };
+  const handleAddressChange = (event) => {
+    setAddress(event.target.value);
+  };
+  const handleContactChange = (event) => {
+    setContactNumber(event.target.value);
+  };
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
+  };
+ 
   const [showOrderDetails, setShowOrderDetails] = useState(false);
 
   const handleProceedToCheckout = () => {
     setShowOrderDetails(true);
   };
-  const handleConfirmOrder = () => {
+  const handleConfirmOrder = async () => {
+    debugger
+    const orderDetails = {
+            items,
+            totalAmount,
+            name,
+            address,
+            contactNumber,
+            email,
+          };
+      console.log(orderDetails);
+          try {
+            const response = await axios.post(
+              "http://<backend-ip>:<backend-port>/api/orders",
+              orderDetails
+            );
+            console.log(response.data);
+            // Handle successful order placement
+          } catch (error) {
+            console.error("There was an error placing the order!", error);
+          }
     //setShowOrderDetails(true);
   };
   return (
@@ -70,37 +106,53 @@ const ViewCartPopup = ({
           <div className="order-details">
             <h3>Order Details</h3>
             <div className="mb-3">
-              <label htmlFor="medicineName" className="form-label">
+              <label htmlFor="name" className="form-label">
+                Name
+              </label>
+              <input
+                type="text"
+                className="form-control"
+                id="name"
+                name="name"
+                required
+                onChange={handleNameChange}
+              />
+            </div>
+            <div className="mb-3">
+              <label htmlFor="address" className="form-label">
                 Address
               </label>
               <textarea
                 className="form-control"
-                id="medicineName"
-                name="medicineDesc"
+                id="address"
+                name="address"
+                onChange={handleAddressChange}
               ></textarea>
             </div>
             <div className="mb-3">
-              <label htmlFor="price" className="form-label">
+              <label htmlFor="contactNumber" className="form-label">
                 Contact Number
               </label>
               <input
-                type="number"
+                type="text"
                 className="form-control"
-                id="price"
-                name="price"
+                id="contactNumber"
+                name="contactNumber"
+                onChange={handleContactChange}
                 required
               />
             </div>
             <div className="mb-3">
-              <label htmlFor="price" className="form-label">
+              <label htmlFor="email" className="form-label">
                 Email
               </label>
               <input
                 type="email"
                 className="form-control"
-                id="price"
-                name="price"
+                id="email"
+                name="email"
                 required
+                onChange={handleEmailChange}
               />
             </div>
             <p className="note">

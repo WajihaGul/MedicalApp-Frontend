@@ -15,7 +15,6 @@ import Appointment from "./Components/Appointment/Appointment";
 import ManagePrescription from "./Pages/ManagePrescription";
 import Doctor from "./Components/Doctor/Doctor";
 import Contact from "./Pages/Contact";
-import ChatApp from "./Components/ChatApp";
 
 function App() {
   return (

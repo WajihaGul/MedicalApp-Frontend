@@ -9,12 +9,10 @@ import EditPharmacy from "./Pages/EditPharmacy";
 import SearchMedicine from "./Pages/SearchMedicine";
 import ViewPatientProfile from "./Pages/ViewPatientProfile";
 import "./App.css";
-import Contact from "./Components/Contact/contact";
+// import Contact from "./Components/Contact/contact";
 import Appointment from "./Components/Appointment/Appointment";
 import ManagePrescription from "./Pages/ManagePrescription";
-import Doctor from "./Components/Doctor/Doctor";
-import ChatApp from "./Components/ChatApp";
-
+// import Doctor from "./Components/Doctor/Doctor";
 
 function App() {
   return (
@@ -32,12 +30,11 @@ function App() {
           <Route exact path="/pharmacy" element={<Pharmacy />} />
           <Route exact path="/edit-pharmacy" element={<EditPharmacy />} />
           <Route exact path="/search-medicine" element={<SearchMedicine />} />
-          <Route exact path="/doctor" element={<Doctor />} />
+          {/* <Route exact path="/doctor" element={<Doctor />} /> */}
           <Route path="/upload-prescription" element={<ManagePrescription />} />
-          <Route path="/contact" element={<Contact />} />
+          {/* <Route path="/contact" element={<Contact />} /> */}
           <Route path="/appointment" element={<Appointment />} />
-          <Route path="/doctor" element={<Doctor />} />
-          <Route path="/chat" element={<ChatApp />} />
+          {/* <Route path="/doctor" element={<Doctor />} /> */}
         </Routes>
       </Layout>
     </Router>
