@@ -3,8 +3,9 @@
     padding: 20px;
     margin-bottom: 100px;
   }
-.doctor-search-wrapper{
+.doctor-search-background{
   width: 100%;
+  text-align: center;
   background-color:#d5f2ec;
   padding: 20px;
   position: relative; 

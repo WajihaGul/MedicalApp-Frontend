@@ -1,0 +1,31 @@
+.help-section {
+    background-color: #002a68; /* Bootstrap primary color or any other shade of blue */
+    width: 100%;
+    margin-bottom: 50px;
+    padding: 50px 0;
+    position: relative; 
+    top: 0;
+    left: 0;
+  }
+  
+  .help-section h2 {
+    margin-bottom: 10px;
+  }
+  
+  .help-section p {
+    margin: 0;
+
+  }
+  .textarea-field {
+    width: 100%;
+    height: 100px; /* Add height for the textarea */
+    resize: vertical; /* Allow vertical resizing */
+    font-size: 20px;
+  }
+  .form-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+    width: 100%;
+    align-items: center;
+  }

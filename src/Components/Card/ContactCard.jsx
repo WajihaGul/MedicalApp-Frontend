@@ -62,8 +62,9 @@ style.innerHTML = `
     border: 2px solid #000;
     border-radius: 50%;
     margin: 0 auto 10px;
-    background-color:#d5f2ec;
+    background-color:#002a68;
     margin-bottom:30px;
+    color:white;
     margin-top:30px;
   }
 `;

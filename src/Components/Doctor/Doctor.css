@@ -100,7 +100,12 @@
     font-size: 22px;
     color: #8f8f8f;
   }
-  
+  .slider-div{
+    display: flex;
+    gap: 1.25rem;
+    margin-top: 30px;
+    justify-content: center;
+  }
   .button-left {
     background-color: #d5f2ec;
     color: #020f2bf8;
@@ -116,14 +121,7 @@
   .button-left:active {
     background-color: #ade9dc; 
   }
-  .card {
-    height: 350px;
-    color: black;
-    border-radius: 20px;
-    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.24);
-    margin-bottom: 20px;
-    cursor: pointer;
-  }
+  
   .image{
     height: 14rem; 
   border-top-left-radius: 1rem; 
@@ -146,13 +144,23 @@
   .specialties-container {
     padding-top: 0.5rem;
   }
-  .chat a{
-    display: inline-block;
-    padding: 30px ;
-    background-color: #020f2bf8;
-    color: #fff;
-    font-size: 25px;
-    text-decoration: none;
-    border-radius: 50px;
-    margin-top: 80px;
-  }
+.doctor-card {
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.doctor-card:hover {
+  transform: scale(1.05);
+}
+.appointment-button{
+  display: inline-block;
+  padding: 30px ;
+  background-color: #ff00b3;
+  color: #fff;
+  font-size: 25px;
+  padding-right: 40px;
+  text-decoration: none;
+  border-radius: 50px;
+  margin-top: 80px;
+  font-weight: bold;
+}

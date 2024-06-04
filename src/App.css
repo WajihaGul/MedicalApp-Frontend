@@ -1,0 +1,11 @@
+.chat-button{
+display: inline-block;
+    padding: 20px ;
+    background-color: #020f2bf8;
+    color: #fff;
+    font-size: 20px;
+    text-decoration: none;
+    border-radius: 50px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+}

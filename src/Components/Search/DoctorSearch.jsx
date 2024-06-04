@@ -1,19 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import DoctorList from './DoctorList.jsx';
 import './DoctorSearch.css';
-
-const doctorsData = [
-  { id: 1, name: 'Dr. Serena Mitchell', specialties: 'Orthopedic Surgeon' },
-  { id: 2, name: 'Dr. Julian Bennett', specialties: 'Cardiologist' },
-  { id: 3, name: 'Dr. Camila Rodriguez', specialties: 'Pediatrician' },
-  { id: 4, name: 'Dr. Victor Nguyen', specialties: 'Neurologist' },
-  { id: 5, name: 'Dr. Ethan Carter', specialties: 'Dermatologist' },
-  { id: 6, name: 'Dr. Olivia Martinez', specialties: 'Ophthalmologist' },
-];
 
 const DoctorSearch = () => {
   const [searchTerm, setSearchTerm] = useState('');
-  const [doctorsData, setDoctorsData] = useState([]);
+  const [doctors, setDoctors] = useState([]);
 
   useEffect(() => {
     // Fetch doctor data when the component mounts
@@ -27,7 +17,7 @@ const DoctorSearch = () => {
         throw new Error('Failed to fetch doctors');
       }
       const data = await response.json();
-      setDoctorsData(data.doctors); // Assuming the response contains an array of doctors
+      setDoctors(data); // Assuming the response contains an array of doctors
     } catch (error) {
       console.error('Error fetching doctors:', error);
     }
@@ -37,27 +27,32 @@ const DoctorSearch = () => {
     setSearchTerm(e.target.value);
   };
 
-  const filteredDoctors = doctorsData.filter((doctor) =>
-    doctor.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    doctor.specialties.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredDoctors = doctors.filter((doctor) =>
+    doctor.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
-    <div className='doctor-search-container'>
-        <div className='doctor-search-wrapper'>
-      <input
-        type="text"
-        placeholder="Search by name or specialty"
-        value={searchTerm}
-        onChange={handleChange}
-        className="search-bar"
-      />
+    <div className='doctor-search-background'>
+      <div className='doctor-search-container'>
+        <input
+          type="text"
+          placeholder="Search Doctors"
+          value={searchTerm}
+          onChange={handleChange}
+          className="search-bar"
+        />
+        <div className="search-results">
+          {filteredDoctors.map((doctor) => (
+            <div key={doctor.id} className="doctor-card">
+              <h3>{doctor.name}</h3>
+              <p>{doctor.specialties}</p>
+            </div>
+          ))}
+        </div>
       </div>
-      <div className="doctor-list-wrapper">
-      {searchTerm && <DoctorList doctors={filteredDoctors} />}
-      </div>
-      </div>
+    </div>
   );
 };
 
 export default DoctorSearch;
+

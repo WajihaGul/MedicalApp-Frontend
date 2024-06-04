@@ -1,31 +1,58 @@
-import React, { useState, } from 'react';
+import React, { useState, useEffect } from 'react';
 import './Appointment.css'; 
 
 const Appointment = () => {
+  const [doctors, setDoctors] = useState([]);
+  const [selectedDoctor, setSelectedDoctor] = useState(null);
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
-  const [specialist, setSpecialist] = useState('');
-  const [doctor, setDoctor] = useState('');
   const [fullName, setFullName] = useState('');
   const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
 
+  useEffect(() => {
+    // Fetch doctor data from backend when component mounts
+    fetchDoctors();
+  }, []);
+
+  // Function to fetch doctors from backend
+  const fetchDoctors = async () => {
+    try {
+      const response = await fetch('/api/doctors'); // Replace '/api/doctors' with your backend endpoint
+      if (!response.ok) {
+        throw new Error('Failed to fetch doctors');
+      }
+      const data = await response.json();
+      setDoctors(data);
+    } catch (error) {
+      console.error('Error fetching doctors:', error);
+    }
+  };
+
   // Event handlers for input changes
   const handleDateChange = (e) => setDate(e.target.value);
   const handleTimeChange = (e) => setTime(e.target.value);
-  const handleSpecialistChange = (e) => setSpecialist(e.target.value);
-  const handleDoctorChange = (e) => setDoctor(e.target.value);
   const handleFullNameChange = (e) => setFullName(e.target.value);
   const handlePhoneChange = (e) => setPhone(e.target.value);
   const handleMessageChange = (e) => setMessage(e.target.value);
 
+  // Function to handle doctor selection
+  const handleDoctorSelection = (doctor) => {
+    setSelectedDoctor(doctor);
+  };
+
   // Function to handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const appointmentData = { date, time, specialist, doctor, fullName, phone, message };
+    if (!selectedDoctor) {
+      console.error('No doctor selected');
+      return;
+    }
+
+    const appointmentData = { date, time, doctor: selectedDoctor, fullName, phone, message };
 
     try {
-      const response = await fetch('/api/appointments', { // Replace '/api/appointments' with your backend endpoint
+      const response = await fetch('/api/appointments', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -43,46 +70,36 @@ const Appointment = () => {
       // Reset the form
       setDate('');
       setTime('');
-      setSpecialist('');
-      setDoctor('');
       setFullName('');
       setPhone('');
       setMessage('');
+      setSelectedDoctor(null);
     } catch (error) {
       console.error('Error submitting appointment:', error);
     }
   };
+
   return (
     <div className="appointment-container">
       <div className="appointment-content">
-          <h1 className="title-tag">Book Appointment</h1>
+        <h1 className="title-tag">Book Appointment</h1>
         <div className="form-container">
+          <div className="search-doctors">
+            {/* Doctor search component goes here */}
+            {/* Display doctors */}
+            <ul>
+              {doctors.map((doctor) => (
+                <li key={doctor.id} onClick={() => handleDoctorSelection(doctor)}>
+                  {doctor.name} - {doctor.specialty}
+                </li>
+              ))}
+            </ul>
+          </div>
           <form onSubmit={handleSubmit}>
-            <div className="form-row">
-            <select id="Specalist" className="input-field" value={specialist} onChange={handleSpecialistChange} required>
-                <option selected>Specialists</option>
-                <option value="ortho">Orthopedic Surgeon</option>
-                <option value="Cardio">Cardiologist</option>
-                <option value="Ped">Pediatrician</option>
-                <option value="Neuro">Neurologist</option>
-                <option value="Derma">Dermatologist</option>
-                <option value="Op">Ophthalmologist</option>
-              </select>
-              <select id="doctor" className="input-field" value={doctor} onChange={handleDoctorChange} required>
-              <option selected>Doctor</option>
-                <option value="1">Dr. Serena Mitchell</option>
-                <option value="2">Dr. Julian Bennett</option>
-                <option value="3">Dr. Camila Rodriguez</option>
-                <option value="4">Dr. Victor Nguyen'</option>
-                <option value="5">Dr. Ethan Carter'</option>
-                <option value="6">Dr. Julian Bennett</option>
-                <option value="7">Dr. Olivia Martinez</option>
-              </select>
-            </div>
-            <div className="form-row">
-              <input type="text" id="full_name" className="input-field" placeholder="Your Full Name" value={fullName} onChange={handleFullNameChange} required />
-              <input type="text" id="phone-input" aria-describedby="helper-text-explanation" className="input-field" placeholder="Your Phone Number" value={phone} onChange={handlePhoneChange} required />
-            </div>
+            {/* Appointment form */}
+            <div className='form-row'>
+            <input type="text" className='input-field' placeholder="Doctor Name" value={selectedDoctor ? selectedDoctor.name : ''} readOnly />
+            </div>{/* Other input fields */}
             <div className="form-row">
               <input
                 type="date"
@@ -103,9 +120,7 @@ const Appointment = () => {
                 required
               />
             </div>
-            <div className="form-row">
-              <textarea id="message" rows="4" className="textarea-field input-field" value={message} onChange={handleMessageChange} placeholder="Special Request"></textarea>
-            </div>
+            {/* Remaining input fields */}
             <div className="form-row">
               <button className="button-1">Submit</button>
             </div>
@@ -113,9 +128,7 @@ const Appointment = () => {
         </div>
       </div>
     </div>
-    
   );
-}
+};
 
 export default Appointment;
-
