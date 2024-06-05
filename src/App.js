@@ -41,8 +41,8 @@ function App() {
           <Route exact path="/edit-pharmacy" element={<EditPharmacy />} />
           <Route exact path="/search-medicine" element={<SearchMedicine />} />
           <Route path="/doctors" element={<Doctor doctors={doctors} />} />
-          <Route path="/doctor/:id" element={<DoctorData doctors={doctors} />} />
-        <Route path="/doctor/:doctorId/book" element={<Appointment doctors={doctors} />} />
+          <Route path="/doctors/:id" element={<DoctorData doctors={doctors} />} />
+        <Route path="/doctors/:doctorId/book" element={<Appointment doctors={doctors} />} />
           <Route path="/upload-prescription" element={<ManagePrescription />} />
          <Route path="/contact" element={<Contact />} /> 
           <Route path="/appointment" element={<Appointment />} />
