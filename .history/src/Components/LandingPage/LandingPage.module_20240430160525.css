@@ -1,0 +1,26 @@
+/* Add this CSS to your global stylesheet or within a CSS file that is applied to the LandingPage component */
+
+.carousel {
+  overflow: hidden; /* Hide any overflow */
+  height: 400px; /* Set a fixed height for the carousel */
+}
+
+.carousel-item img {
+  object-fit: cover; /* Ensure images cover the entire carousel area */
+  width: 100%; /* Ensure images fill the entire width of the carousel */
+  height: 100%; /* Ensure images fill the entire height of the carousel */
+}
+
+.carousel-caption {
+  background-color: rgba(0, 0, 0, 0.5); /* Add a semi-transparent background to captions for better readability */
+}
+
+.sliders_h {
+  color: #fff; /* Set text color for headings */
+  font-size: 24px; /* Adjust font size as needed */
+}
+
+.sliders_p {
+  color: #fff; /* Set text color for paragraphs */
+  font-size: 16px; /* Adjust font size as needed */
+}

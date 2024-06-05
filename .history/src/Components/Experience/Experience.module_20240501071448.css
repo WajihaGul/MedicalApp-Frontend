@@ -1,0 +1,11 @@
+.container{
+  margin:0;
+  padding: 0;
+}
+
+.logo , .experience , .story{
+  padding:0 auto;
+  float: left;
+  width: 280px;
+  margin: 40px;
+}

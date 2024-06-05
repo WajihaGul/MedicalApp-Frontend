@@ -1,0 +1,20 @@
+nav{
+        display: flex;
+        justify-content: space-between;
+        height: 72px;
+        align-items: center;
+        font-size: xx-large;
+        background-color: cadetblue;
+        color: white;
+}
+
+  nav ul {
+    display: flex;
+    gap: 43px;
+    list-style-type: none;
+    font-weight: 500;
+  }
+
+  button{
+    size: 90px;
+  }

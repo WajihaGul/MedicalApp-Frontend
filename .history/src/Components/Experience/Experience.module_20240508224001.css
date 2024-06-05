@@ -1,0 +1,35 @@
+.container{
+  margin: 0 auto;
+  width: 1200px;
+  margin-top: 138px;
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 138px;
+}
+
+.logo, .experience , .story{
+  margin: 10px; 
+  height: 100px !important;
+}
+
+.story_p{
+  padding: 49px;
+    text-align: justify;
+    font-size: 20px;
+    width: 673px;
+}
+.divimg{
+  padding-top: 31px;
+  padding-right: 30px;
+}
+.ehead1{
+  font-size: 69px;
+}
+
+.eimg{
+  height: 131px;
+    padding-top: 30px;
+}
+
+
+

@@ -1,0 +1,21 @@
+.container{
+    padding-top: 80px;
+    scroll-padding-top: 80px;
+    height: 1000px;
+    width: 100%;
+    background-color: rgb(209 221 253);
+}
+
+.ddivi , .ddivii{
+    float: left;
+    width: 280px;
+}
+
+.divih1{
+    margin-left: 416px;
+    margin-top: 73px;
+    color: white;
+    font-family: cursive;
+    font-weight: 700;
+    font-size: large
+}

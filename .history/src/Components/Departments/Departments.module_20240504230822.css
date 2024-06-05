@@ -1,0 +1,12 @@
+.container{
+    padding-top: 80px;
+    scroll-padding-top: 80px;
+    height: 1000px;
+    width: 100%;
+    background-color: rgb(209 221 253);
+}
+
+.ddivi , .ddivii{
+    float: left;
+    width: 280px;
+}

@@ -1,0 +1,30 @@
+.container{
+  margin:0 auto;
+  width: 900px;
+  padding-top: 30px;
+    margin-top: 30px;
+}
+
+.logo , .experience , .story{
+  float: left;
+  width: 280px;
+  margin: 10px; 
+}
+
+.story_p{
+  width: 467px;
+  text-align: justify;
+}
+
+.head1{
+  font-size: 3.5rem;
+}
+
+.logo{
+  width: 91px;
+  /* text-align: center; */
+  margin-top: 46px;
+  /* margin-right: 10px; */
+  margin-left: 119px
+}
+

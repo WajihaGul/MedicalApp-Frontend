@@ -1,0 +1,14 @@
+.container{
+  margin:0 auto;
+  width: 900px;
+}
+
+.logo , .experience , .story{
+  float: left;
+  width: 280px;
+  margin: 10px; 
+}
+
+.logo{
+  height: 20px;
+}

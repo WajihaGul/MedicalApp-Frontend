@@ -1,0 +1,21 @@
+.container{
+    margin: 0 auto ;
+    padding: 0 auto;
+    width: 100%;
+    background-color: #0571b4;
+    height: 340px;
+}
+
+.head1{
+    margin-top: 81px;
+    color: white;
+    font-family: cursive;
+    margin-left: 290px;
+}
+.head3{
+    margin-top: 81px;
+    color: white;
+    font-family: cursive;
+    margin-left: 290px;
+    padding-top: 10px;
+}

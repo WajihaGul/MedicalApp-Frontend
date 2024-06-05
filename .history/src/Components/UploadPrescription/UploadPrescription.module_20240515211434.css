@@ -1,0 +1,23 @@
+
+.container {
+    margin: 150px;
+  }
+  .note {
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .note p {
+    margin: 0;
+  }
+  
+  .note a {
+    color: #007bff;
+    text-decoration: none;
+  }
+  
+  .note a:hover {
+    text-decoration: underline;
+  }
+  

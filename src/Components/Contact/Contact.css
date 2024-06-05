@@ -1,0 +1,53 @@
+.contact-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.contact-container1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background-color: #d5f2ec;
+}
+
+.contact-content {
+  width: 50%;
+  padding: 20px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; 
+  border-radius:30px;
+}
+
+.form-container1 {
+  width: 100%;
+}
+
+.text {
+  font-size: 40px;
+  text-align: center; /* Center-align the heading text */
+  margin-bottom: 40px;
+}
+
+
+  .appointment-button{
+    display: flex;
+    padding: 30px ;
+    background-color: #ff00b3;
+    color: #fff;
+    font-size: 25px;
+    text-decoration: none;
+    border-radius: 50px;
+    margin-top: 80px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-left: 80%;
+    margin-bottom: 50px;
+  }
+  .appointment-button:hover {
+    background-color: #0056b3; /* Button background color on hover */
+  }

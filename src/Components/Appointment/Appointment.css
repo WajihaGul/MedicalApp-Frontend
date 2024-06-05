@@ -1,0 +1,68 @@
+
+.appointment-container {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  height: 100vh;
+  background-image: url('/src/Assets/appointment.jpg');
+  background-size: cover;
+}
+
+.appointment-content {
+  width: 30%;
+   margin-left: 10%;
+  padding: 20px; /* Add padding to the container */
+  background-color: #ffffff; /* Background color for the form container */
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); /* Add box shadow for depth */
+}
+
+.title-tag {
+  margin-bottom: 50px; 
+}
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 15px; /* Add margin between form rows */
+}
+
+.input-field {
+  width: 45%; /* Adjust the width of input fields */
+  padding: 10px; /* Add padding to input fields */
+  border: 1px solid #ccc; /* Add border for input fields */
+    background-color: #fff;
+    border-radius: 0.25rem;
+    color: #333;
+    font-size: 20px; 
+    box-sizing: border-box;
+    outline: none;
+}
+.input-field:focus {
+  border-color: #007bff;
+}
+
+.textarea-field {
+  width: 100%; /* Make textarea field full width */
+}
+
+.button-1 {
+  font-size: 20px;
+  width: 100%; /* Make button full width */
+  padding: 20px; /* Add padding to button */
+  background-color: #ff00b3; /* Button background color */
+  color: #ffffff; /* Button text color */
+  border: none; /* Remove button border */
+  cursor: pointer; 
+  margin-top: 20px;
+  margin-bottom: 0;
+}
+
+.button-1:hover {
+  background-color: #0056b3; /* Button background color on hover */
+}
+  

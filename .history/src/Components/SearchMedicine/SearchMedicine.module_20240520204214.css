@@ -1,0 +1,60 @@
+/* src/components/MedicineCard.css */
+.medicine-image {
+  height: 250px;
+  object-fit: cover;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+/* src/components/SearchMedicine.module.css */
+.medicine-image {
+  height: 75%;
+  object-fit: cover;
+}
+
+.card-title .faPills, 
+.card-text .faStore, 
+.card-text .faMapMarkerAlt, 
+.card-text .faStar {
+  margin-right: 8px;
+}
+
+.text-warning {
+  color: #ffc107 !important;
+}
+
+.text-muted {
+  color: #e4e5e9 !important;
+}
+.search-bar {
+  width: 500px; /* Adjust width as needed */
+  margin: 0 auto;
+}
+
+.search-bar .form-control {
+  border-radius: 20px !important;
+  border: 1px solid #d3d3d3;
+  box-shadow: none;
+  padding-left: 40px;
+  padding-right: 40px;
+}
+
+.search-bar .input-group-append {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+
+.search-bar .input-group-text.search-icon {
+  background-color: transparent;
+  border: none;
+  color: #606060;
+  cursor: pointer;
+}

@@ -1,0 +1,88 @@
+/* PatientProfile.module.css */
+.view_profile_container {
+  width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-family: Arial, sans-serif;
+}
+
+.view_profile_container h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.profile_image_container {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.upload_label {
+  display: inline-block;
+  cursor: pointer;
+  padding: 10px 20px;
+  background-color: #007bff;
+  color: #fff;
+  border-radius: 5px;
+}
+
+.upload_input {
+  display: none;
+}
+
+.upload_text {
+  font-weight: bold;
+}
+
+.form_group {
+  margin-bottom: 15px;
+}
+
+.form_row {
+  margin-bottom: 10px;
+}
+
+.profileLabel {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.input_field,
+.select_field,
+.textarea_field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.checkbox_label {
+  margin-left: 5px;
+}
+
+.submit_btn {
+  background-color: #007bff;
+  color: #fff;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.submit_btn:hover {
+  background-color: #0056b3;
+}
+
+.input_field,
+.select_field,
+.textarea_field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}

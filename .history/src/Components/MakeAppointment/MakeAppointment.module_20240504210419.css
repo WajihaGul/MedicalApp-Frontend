@@ -1,0 +1,52 @@
+.container{
+    width: 100%;
+    background-color: #c0ccf0;
+    height: 340px;
+    margin-top: 152px
+}
+.head3{
+    color: white;
+    font-family: cursive;
+    margin-left: 290px;
+    padding-top: 46px;
+    width: 800px;
+}
+.head1{
+    margin-top: 44px;
+    color: white;
+    font-family: cursive;
+    margin-left: 290px;
+    font-size: xxx-large;
+    width: 800px;
+}
+
+.ButtonHere, .divii{
+    float: left;
+    width: 280px;
+    margin: 10px;
+}
+
+.divii{
+    margin-left: 70px;
+    margin-right: -32px;
+}
+
+.ButtonHere{
+    margin-left: 1000px;
+    margin-top: 200px;
+}
+
+.button{
+    height: 55px;
+    width: 286px;
+    border-color: transparent;
+    font-size: x-large;
+    border-radius: 15px;
+    background-color: #32ca0b;
+    color: white;    
+}
+
+.icon{
+    margin-right: 6px;
+    height: 54px;  
+}

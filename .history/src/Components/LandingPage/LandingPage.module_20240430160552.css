@@ -1,0 +1,13 @@
+/* Add this CSS to your global stylesheet or within a CSS file that is applied to the LandingPage component */
+
+.carousel {
+  overflow: hidden; /* Hide any overflow */
+}
+
+.carousel-item img {
+  max-width: 100%; /* Ensure images don't exceed the width of the container */
+  max-height: calc(100vh - 200px); /* Adjust the height as needed to fit within the viewport */
+  margin: auto; /* Center the images horizontally */
+}
+
+
