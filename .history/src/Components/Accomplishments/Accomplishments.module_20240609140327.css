@@ -1,0 +1,40 @@
+.container {
+  max-width: 100%;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.innerContainer {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px; /* Add gap between columns */
+}
+
+.column1, .column2, .column3 {
+  width: calc(33.33% - 30px); /* Adjust column width for responsiveness */
+  text-align: center;
+}
+
+.cols_img {
+  width: 100px; /* Adjust image size */
+  height: 100px; /* Adjust image size */
+}
+
+.explanationi {
+  font-size: 3em; /* Adjust font size */
+}
+
+.explanationii {
+  color: green;
+  font-size: 1.5em; /* Adjust font size */
+  font-style: italic;
+  margin-top: -10px; /* Adjust margin */
+}
+
+.explanationiii {
+  font-size: 1em; /* Adjust font size */
+  text-align: center;
+}
