@@ -54,7 +54,7 @@
   font-size: 20px;
   width: 100%; /* Make button full width */
   padding: 20px; /* Add padding to button */
-  background-color: #ff00b3; /* Button background color */
+  background-color: #4f4fa1; 
   color: #ffffff; /* Button text color */
   border: none; /* Remove button border */
   cursor: pointer; 
@@ -63,6 +63,6 @@
 }
 
 .button-1:hover {
-  background-color: #0056b3; /* Button background color on hover */
+  background-color: #ff00b3;  
 }
   

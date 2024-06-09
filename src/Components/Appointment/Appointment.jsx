@@ -6,8 +6,6 @@ const Appointment = () => {
   const [selectedDoctor, setSelectedDoctor] = useState(null);
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
-  const [fullName, setFullName] = useState('');
-  const [phone, setPhone] = useState('');
   const [message, setMessage] = useState('');
 
   useEffect(() => {
@@ -32,8 +30,6 @@ const Appointment = () => {
   // Event handlers for input changes
   const handleDateChange = (e) => setDate(e.target.value);
   const handleTimeChange = (e) => setTime(e.target.value);
-  const handleFullNameChange = (e) => setFullName(e.target.value);
-  const handlePhoneChange = (e) => setPhone(e.target.value);
   const handleMessageChange = (e) => setMessage(e.target.value);
 
   // Function to handle doctor selection
@@ -70,8 +66,6 @@ const Appointment = () => {
       // Reset the form
       setDate('');
       setTime('');
-      setFullName('');
-      setPhone('');
       setMessage('');
       setSelectedDoctor(null);
     } catch (error) {
@@ -99,7 +93,7 @@ const Appointment = () => {
             {/* Appointment form */}
             <div className='form-row'>
             <input type="text" className='input-field' placeholder="Doctor Name" value={selectedDoctor ? selectedDoctor.name : ''} readOnly />
-            </div>{/* Other input fields */}
+            </div>
             <div className="form-row">
               <input
                 type="date"
@@ -120,7 +114,6 @@ const Appointment = () => {
                 required
               />
             </div>
-            {/* Remaining input fields */}
             <div className="form-row">
               <button className="button-1">Submit</button>
             </div>

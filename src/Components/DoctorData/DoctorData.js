@@ -1,7 +1,8 @@
-import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import React, {useState} from "react";
 import "./DoctorData.css";
-import { Button } from 'react-bootstrap';
+import { useNavigate, useParams } from 'react-router-dom';
+import { Button } from "react-bootstrap";
+import ChatComponent from "../Chat/ChatComponent";
 
 const DoctorData = ({ doctors }) => {
   const { doctorId } = useParams();
@@ -9,54 +10,45 @@ const DoctorData = ({ doctors }) => {
   const doctor = doctors.find((doc) => doc.id === parseInt(doctorId));
 
   if (!doctor) {
-    return <div>Doctor not found</div>;
+    return <p>Doctor not found</p>;
   }
+  const [isChatOpen, setIsChatOpen] = useState(false);
 
-  const goToAppointmentBooking = () => {
-    navigate(`/doctor/${doctorId}/book`);
-
-    const handleBookAppointment = async (doctorId) => {
-      try {
-        // Make a POST request to your Java backend's API endpoint
-        const response = await fetch(`http://your-java-backend.com/api/appointments`, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ doctorId }),
-        });
-    
-        // Check if the request was successful
-        if (response.ok) {
-          // Handle the successful response
-          console.log('Appointment booked successfully!');
-        } else {
-          // Handle any errors or bad responses
-          console.error('Failed to book appointment:', response.statusText);
-        }
-      } catch (error) {
-        // Handle any network errors
-        console.error('Error booking appointment:', error);
-      }
-    };
+  // Function to toggle chat visibility
+  const toggleChat = () => {
+    setIsChatOpen(!isChatOpen);
   };
-    // Render the doctor profile
-    return (
-      <div className="doctor-profile">
-        <h2>{doctor.name}</h2>
-        <p>Specialties: {doctor.specialties}</p>
-        {/* Additional details about the doctor */}
-        <div>
-          <h3>About {doctor.name}</h3>
-          <p>Dr. Ethan Carter is a highly esteemed dermatologist known for his expertise and dedication in the field of dermatology. With years of experience, Dr. Carter has become renowned for his compassionate patient care and commitment to delivering top-quality dermatological treatments. Specializing in a wide range of dermatological conditions, Dr. Carter utilizes the latest advancements in dermatology to provide personalized care tailored to each patient's unique needs.</p>
-          <p>Patients appreciate Dr. Carter's thorough approach to diagnosis and treatment, as well as his ability to explain complex medical concepts in a clear and understandable manner. Known for his attention to detail and gentle bedside manner, Dr. Carter ensures that his patients feel comfortable and well-informed throughout their treatment journey.</p>
-          <p>Patients appreciate Dr. Carter's thorough approach to diagnosis and treatment, as well as his ability to explain complex medical concepts in a clear and understandable manner. Known for his attention to detail and gentle bedside manner, Dr. Carter ensures that his patients feel comfortable and well-informed throughout their treatment journey.</p>
-          {/* Add additional details here */}
-        </div>
-        {/* Button to book appointment */}
-        <Button onClick={handleBookAppointment} variant="primary">Book an Appointment</Button>
+  const goToAppointmentBooking = () => {
+    navigate(`/doctors/${doctorId}/book`);
+  };
+  return (
+    <div className="doctor-profile">
+      <h2>{doctor.name}</h2>
+      <p>{doctor.specialties}</p>
+      <div className="image-doc">
+      <img src={doctor.imageUrl} alt={doctor.name} />
       </div>
+      <p>{doctor.name} is a highly esteemed {doctor.specialty} known for his expertise and dedication in the field of dermatology. With years of experience, {doctor.name}  has become renowned for his compassionate patient care and commitment to delivering top-quality dermatological treatments. Specializing in a wide range of {doctor.specialty} conditions, {doctor.name}  utilizes the latest advancements in dermatology to provide personalized care tailored to each patient's unique needs.</p>
+          <p>Patients appreciate {doctor.name} thorough approach to diagnosis and treatment, as well as his ability to explain complex medical concepts in a clear and understandable manner. Known for his attention to detail and gentle bedside manner, {doctor.name} ensures that his patients feel comfortable and well-informed throughout their treatment journey.</p>
+      <div className="div-button2">
+                  <Button
+                    className="custom-button3"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      goToAppointmentBooking(doctor.id);
+                    }}
+                  >
+                    Book an Appointment
+                  </Button>
+                </div>
+                <button onClick={toggleChat} className="chat-button">
+                  Chat With Me
+                </button>{" "}
+                {isChatOpen && <ChatComponent />}{" "}
+          
+              </div>
   );
 };
 
 export default DoctorData;
+

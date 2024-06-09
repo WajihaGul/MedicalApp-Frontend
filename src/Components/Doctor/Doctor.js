@@ -1,12 +1,12 @@
 import React, { useRef, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom"; // Import useHistory from react-router-dom
+import { useNavigate, useParams } from "react-router-dom"; 
 import Slider from "react-slick";
 import DoctorSearch from "../Search/DoctorSearch";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Doctor.css";
-import { Button } from "react-bootstrap";
+
 
 const Doctor = ({ doctors }) => {
   const { doctorId } = useParams();
@@ -49,19 +49,6 @@ const Doctor = ({ doctors }) => {
       },
     ],
   };
-  const [isChatOpen, setIsChatOpen] = useState(false);
-
-  // Function to toggle chat visibility
-  const toggleChat = () => {
-    setIsChatOpen(!isChatOpen);
-  };
-  const goToAppointmentBooking = () => {
-    navigate(`/doctor/${doctorId}/book`);
-  };
-
-  const goToDoctorProfile = (doctorId) => {
-    navigate(`/doctor/${doctorId}`);
-  };
 
   return (
     <div>
@@ -74,32 +61,17 @@ const Doctor = ({ doctors }) => {
       </div>
       <div className="mt-5">
         <Slider ref={slider} {...settings}>
-          {doctors.map((doctor) => (
+          { doctors.map((doctor) => ( 
             <div
               className="card doctor-card"
               key={doctor.id}
-              onClick={() => goToDoctorProfile(doctor.id)}
+              onClick={() => navigate(`/doctors/${doctor.id}`)}
             >
               <div className="card-body">
+                <img src={doctor.imageUrl} className="card-image"/>
                 <h5 className="card-title">{doctor.name}</h5>
                 <p className="card-text">{doctor.specialties}</p>
-                <div className="div-button2">
-                  <Button
-                    className="custom-button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      goToAppointmentBooking(doctor.id);
-                    }}
-                  >
-                    Book an Appointment
-                  </Button>
-                </div>
-                <button onClick={toggleChat} className="chat-button">
-                  Chat With Me
-                </button>{" "}
-                {/* Button to open chat */}
-                {isChatOpen && <ChatComponent />}{" "}
-                {/* Render chat component if open */}
+          
               </div>
             </div>
           ))}

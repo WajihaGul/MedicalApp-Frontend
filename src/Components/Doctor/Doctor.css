@@ -144,48 +144,6 @@ width: 100%;
 .specialties-container {
   padding-top: 0.5rem;
 }
-.doctor-card {
-cursor: pointer;
-transition: transform 0.2s;
-}
-
-.doctor-card:hover {
-transform: scale(1.05);
-}
-/* CustomButton.css */
-.custom-button {
-background-color: #4CAF50; /* Green background */
-border: none; /* Remove borders */
-color: white; /* White text */
-padding: 15px 32px; /* Some padding */
-text-align: center; /* Centered text */
-text-decoration: none; /* Remove underline */
-display: inline-block; /* Make the link look like a button */
-font-size: 16px; /* Increase font size */
-margin: 4px 2px; /* Some margin */
-cursor: pointer; /* Pointer/hand icon */
-border-radius: 8px; /* Rounded corners */
-}
-
-.custom-button:hover {
-background-color: #45a049; /* Darker green */
-}
-
-.div-button2{
-justify-content:center;
-align-items: center;
-}
-.chat-button{
-display: inline-block;
-    padding: 20px ;
-    background-color: #020f2bf8;
-    color: #fff;
-    font-size: 20px;
-    text-decoration: none;
-    border-radius: 50px;
-    margin-top: 80px;
-    margin-bottom: 80px;
-}
 
 .health-tips-section{
   background: #aec7da2e;
@@ -204,4 +162,24 @@ font-family: emoji;
 padding-left: 134px;
   font-size: x-large;
   list-style: circle;
+}
+.card-body{
+    display: flex;
+    flex-direction: column ;
+    background-color: #d5f2ec;
+    border: 1px solid grey;
+    border-radius: 5px;
+    padding: 20px;
+    cursor:  pointer;
+    -moz-osx-font-smoothing: grayscale;
+    backface-visibility: hidden;
+    transform: translateZ(0) ;
+    transition: transform 0.25s ease-out;
+}
+.card-body:hover{
+  transform: scale(1.05);
+}
+.card-image {
+  height: 500px; 
+  object-fit: cover;
 }

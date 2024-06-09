@@ -42,3 +42,5 @@ const DoctorSearch = () => {
 };
 
 export default DoctorSearch;
+
+
