@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import { useNavigate, useParams } from "react-router-dom"; // Import useHistory from react-router-dom
 import Slider from "react-slick";
 import DoctorSearch from "../Search/DoctorSearch";
@@ -65,7 +65,7 @@ const Doctor = ({ doctors }) => {
 
   return (
     <div>
-      <div style={{ marginTop: "150px" }}>
+      <div>
         <h1 className=" t-tag">Our Doctors</h1>
         <p className=" paragraph">Professionals & Care Provider.</p>
       </div>
@@ -158,46 +158,6 @@ const Doctor = ({ doctors }) => {
             </div>
           </div>
         </div>
-      </div>
-      <div className="health-tips-section">
-        <h2>Health Tips & Advice</h2>
-        <ul>
-          <li>Drink plenty of water throughout the day to stay hydrated.</li>
-          <li>
-            Eat a balanced diet rich in fruits, vegetables, and whole grains.
-          </li>
-          <li>
-            Get regular exercise to maintain a healthy weight and improve your
-            overall well-being.
-          </li>
-          <li>
-            Get enough sleep each night to allow your body to rest and recharge.
-          </li>
-          <li>
-            Manage stress through relaxation techniques such as deep breathing,
-            meditation, or yoga.
-          </li>
-          <li>
-            Limit your intake of processed foods, sugary drinks, and unhealthy
-            snacks.
-          </li>
-          <li>
-            Schedule regular check-ups with your doctor for preventive care and
-            early detection of any health issues.
-          </li>
-          <li>
-            Practice good hygiene habits such as washing your hands frequently
-            and covering your mouth when you cough or sneeze.
-          </li>
-          <li>
-            Avoid smoking and limit alcohol consumption to reduce your risk of
-            chronic diseases.
-          </li>
-          <li>
-            Take breaks from screens and digital devices to reduce eye strain
-            and promote mental health.
-          </li>
-        </ul>
       </div>
     </div>
   );

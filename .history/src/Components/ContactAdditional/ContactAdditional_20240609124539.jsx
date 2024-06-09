@@ -1,58 +1,38 @@
-import React from "react";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import "./ContactAdditional.css";
+import React from 'react';
+import { Container, Row, Col, Form, Button } from 'react-bootstrap';
+import './ContactAdditional.css';
 
 const ContactAdditional = () => {
   return (
     <Container className="my-5 position-relative top-0 start-0">
-      <div className="help-section text-center">
-        <Row className="text-center mb-8">
-          <Col>
-            <h2 className="font-weight-bold text-white">How can we help?</h2>
-            <p className="text-white">Send us a message!</p>
-          </Col>
-        </Row>
+         <div className="help-section text-center">
+      <Row className="text-center mb-8">
+        <Col>
+          <h2 className="font-weight-bold text-white">How can we help?</h2>
+          <p className="text-white">Send us a message!</p>
+        </Col>
+      </Row>
       </div>
       <Row>
         <Col md={6}>
           <Form>
             <Form.Group controlId="formFirstName">
               <Form.Label>First Name</Form.Label>
-              <Form.Control
-                className="input-field1"
-                type="text"
-                placeholder="First Name"
-              />
+              <Form.Control className="input-field1" type="text" placeholder="First Name" />
             </Form.Group>
             <Form.Group controlId="formLastName">
               <Form.Label>Last Name</Form.Label>
-              <Form.Control
-                className="input-field1"
-                type="text"
-                placeholder="Last Name"
-              />
+              <Form.Control className="input-field1" type="text" placeholder="Last Name" />
             </Form.Group>
             <Form.Group controlId="formEmail">
               <Form.Label>Email</Form.Label>
-              <Form.Control
-                className="input-field1"
-                type="email"
-                placeholder="Email"
-              />
+              <Form.Control className="input-field1" type="email" placeholder="Email" />
             </Form.Group>
             <Form.Group controlId="formMessage">
               <Form.Label>Message</Form.Label>
-              <Form.Control
-                className="textarea-field"
-                as="textarea"
-                rows={3}
-                placeholder="I'm interested in learning more about..."
-              />
+              <Form.Control className="textarea-field" as="textarea" rows={3} placeholder="I'm interested in learning more about..." />
             </Form.Group>
-            <Button
-              type="submit"
-              className="mt-3 form-row full-width custom-button"
-            >
+            <Button type="submit" className="mt-3 form-row full-width">
               Send Message
             </Button>
           </Form>
