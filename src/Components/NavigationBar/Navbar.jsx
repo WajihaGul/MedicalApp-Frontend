@@ -37,6 +37,7 @@ const Navbar = () => {
     setIsLoggedIn(false);
     localStorage.removeItem("email");
     localStorage.removeItem("password");
+    logout({ returnTo: window.location.origin });
   };
 
   const handleLoginSubmit = () => {
@@ -76,69 +77,84 @@ const Navbar = () => {
 
   return (
     <>
-    const Navbar = ({ isAuthenticated, user, handleLogout, handleLogin }) => {
-  return (
-    <nav className={`navbar navbar-expand-lg ${styles.container}`}>
-      <div className={styles.logo}>
-        <img
-          className={styles.nav_img}
-          src="https://cdn.icon-icons.com/icons2/1465/PNG/512/588hospital_100778.png"
-          alt="logo"
-        />
-        <Link to="/" className={styles.nav_head_link}>
-          <h1 className={styles.nav_head}>HealthBuddy</h1>
-        </Link>
-      </div>
-      <div className={`collapse navbar-collapse ${styles.navLinks}`} id="navbarNav">
-        <ul className="navbar-nav ml-auto">
-          <li className="nav-item">
-            <Link className={`nav-link ${styles.navLinksColor}`} to="/">Home</Link>
-          </li>
-          <li className="nav-item">
-            <Link className={`nav-link ${styles.navLinksColor}`} to="/doctors">Doctors</Link>
-          </li>
-          <li className="nav-item">
-            <Link className={`nav-link ${styles.navLinksColor}`} to="/search-medicine">Pharmacy</Link>
-          </li>
-          <li className="nav-item">
-            <Link className={`nav-link ${styles.navLinksColor}`} to="/contact">Contact Us</Link>
-          </li>
-          {isAuthenticated ? (
-            <li className={`nav-item dropdown ${styles.authli}`}>
-              <a
-                className={`nav-link dropdown-toggle ${styles.customButton}`}
-                href="#"
-                id="dropdownMenuButton"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
+      <nav className={`navbar navbar-expand-lg ${styles.container}`}>
+        <div className={styles.logo}>
+          <img
+            className={styles.nav_img}
+            src="https://cdn.icon-icons.com/icons2/1465/PNG/512/588hospital_100778.png"
+            alt="logo"
+          />
+          <Link to="/" className={styles.nav_head_link}>
+            <h1 className={styles.nav_head}>HealthBuddy</h1>
+          </Link>
+        </div>
+        <div
+          className={`collapse navbar-collapse ${styles.navLinks}`}
+          id="navbarNav"
+        >
+          <ul className="navbar-nav ml-auto">
+            <li className="nav-item">
+              <Link className={`nav-link ${styles.navLinksColor}`} to="/">
+                Home
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className={`nav-link ${styles.navLinksColor}`}
+                to="/doctors"
               >
-                Welcome, {user.name}
-              </a>
-              <div className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <button className="dropdown-item">View Profile</button>
-                <button
-                  className="dropdown-item"
-                  onClick={() => {
-                    handleLogout();
-                    logout({ returnTo: window.location.origin });
-                  }}
+                Doctors
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className={`nav-link ${styles.navLinksColor}`}
+                to="/search-medicine"
+              >
+                Pharmacy
+              </Link>
+            </li>
+            <li className="nav-item">
+              <Link
+                className={`nav-link ${styles.navLinksColor}`}
+                to="/contact"
+              >
+                Contact Us
+              </Link>
+            </li>
+            {isAuthenticated ? (
+              <li className={`nav-item dropdown ${styles.authli}`}>
+                <a
+                  className={`nav-link dropdown-toggle ${styles.customButton}`}
+                  href="#"
+                  id="dropdownMenuButton"
+                  role="button"
+                  data-toggle="dropdown"
+                  aria-haspopup="true"
+                  aria-expanded="false"
                 >
-                  Log Out
+                  Welcome, {user.name}
+                </a>
+                <div
+                  className="dropdown-menu"
+                  aria-labelledby="dropdownMenuButton"
+                >
+                  <button className="dropdown-item">View Profile</button>
+                  <button className="dropdown-item" onClick={handleLogout}>
+                    Log Out
+                  </button>
+                </div>
+              </li>
+            ) : (
+              <li className={styles.authli}>
+                <button className={styles.customButton} onClick={handleLogin}>
+                  Log In
                 </button>
-              </div>
-            </li>
-          ) : (
-            <li className={styles.authli}>
-              <button className={styles.customButton} onClick={handleLogin}>Log In</button>
-            </li>
-          )}
-        </ul>
-      </div>
-    </nav>
-  );
-
+              </li>
+            )}
+          </ul>
+        </div>
+      </nav>
 
       {/* Login Modal */}
       <Modal
@@ -280,8 +296,7 @@ const Navbar = () => {
         </Modal.Body>
       </Modal>
     </>
-    }
   );
-
+};
 
 export default Navbar;

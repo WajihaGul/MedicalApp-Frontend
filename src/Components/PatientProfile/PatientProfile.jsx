@@ -202,9 +202,9 @@ const PatientProfile = () => {
       image: formData.get("imageUpload"),
       name: formData.get("name"),
       dateOFBirth: formData.get("dob"),
-      phone: formData.get("contactNumber"),
+      phone: formData.get("phone"),
       bloodType: formData.get("bloodType"),
-      gender: formData.get("gender"),
+      gender: gender,
       dietaryPreference: formData.get("dietaryPreference"),
       activityLevel: formData.get("activityLevel"),
       medicalHistory: formData.get("patientHistory"),
@@ -216,6 +216,7 @@ const PatientProfile = () => {
         headers: {
           'Content-Type': 'application/json',
         },
+        
         body: JSON.stringify(newPatient),
       });
 
@@ -272,7 +273,7 @@ name="name"          />
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             pattern="[\+]?[0-9\s\-]+"
-            placeholder="+92 0123456789"
+            placeholder="+923244201338"
             required
           />
         </div>
