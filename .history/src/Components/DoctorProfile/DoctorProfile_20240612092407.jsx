@@ -303,27 +303,6 @@ const DoctorProfile = ({ addEditPharmacyText }) => {
       awards: formData.get("awards"),
       additionalNotes: formData.get("additionalNotes"),
   };
-  try {
-    const response = await fetch("http://localhost:8080/registerDoctor", {
-      method: "POST",
-
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newDoctor),
-    });
-
-    // Check if the response is ok (status in the range 200-299)
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
-
-    const data = await response.json();
-    console.log("Success:", data);
-  } catch (error) {
-    console.error("Error:", error);
-    // setError(error.message);
-  }
 
   return (
     <div className={styles.container}>
@@ -362,9 +341,10 @@ const DoctorProfile = ({ addEditPharmacyText }) => {
             Full Name<span>*</span>:
           </label>
           <input
-             type="text"
+            type="text"
             id="fullName"
-            name="name"
+            value={fullName}
+            onChange={(e) => setFullName(e.target.value)}
             required
           />
         </div>
@@ -411,19 +391,6 @@ const DoctorProfile = ({ addEditPharmacyText }) => {
           />
         </div>
 
-        <div className={styles.form_row}>
-          <label htmlFor="gender">Gender:</label>
-          <select
-            value={gender}
-            onChange={(e) => setGender(e.target.value)}
-            required
-          >
-            <option value="">Select Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-          </select>
-        </div>
-        
         <div className={styles.form_group}>
           <label htmlFor="clinicName">
             Clinic/Hospital Name<span>*</span>:

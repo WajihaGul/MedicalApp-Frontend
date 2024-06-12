@@ -299,7 +299,6 @@ const PatientProfile = () => {
             <option value="female">Female</option>
           </select>
         </div>
-
         <div className={styles.form_row}>
           <label htmlFor="bloodType">Blood Type:</label>
           <select

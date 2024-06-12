@@ -88,7 +88,7 @@ const Navbar = () => {
     } else if (storedRole === "Patient") {
       navigate("/ViewPatientProfile");
     } else if (storedRole === "Pharmacy") {
-      navigate("/AddPharmacy");
+      navigate("addPharmacy");
     }
   };
 
