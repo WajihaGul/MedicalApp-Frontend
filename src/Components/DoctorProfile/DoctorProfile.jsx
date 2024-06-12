@@ -20,9 +20,7 @@ const DoctorProfile = ({ addEditPharmacyText }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    debugger;
-    const newDoctor = {
+    console.log({
       imageUpload: formData.get("imageUpload"),
       fullName: formData.get("fullname"),
       gender: gender,
@@ -37,7 +35,7 @@ const DoctorProfile = ({ addEditPharmacyText }) => {
       excludeDay: formData.get("excludeDay"),
       awards: formData.get("awards"),
       additionalNotes: formData.get("additionalNotes"),
-    }
+    });
     try {
       const response = await fetch("http://localhost:8080/registerPatient", {
         method: "POST",

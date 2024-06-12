@@ -1,6 +1,6 @@
 import styles from "./Navbar.module.css";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -26,7 +26,7 @@ const Navbar = () => {
     localStorage.getItem("role") || ""
   );
 
-  const navigate = useNavigate();
+  const history = useHistory();
 
   useEffect(() => {
     if (storedEmail && storedPassword) {
@@ -42,7 +42,8 @@ const Navbar = () => {
     setIsLoggedIn(false);
     localStorage.removeItem("email");
     localStorage.removeItem("password");
-    localStorage.removeItem("password");
+    localStorage.removeItem("role");
+    logout({ returnTo: window.location.origin });
   };
 
   const handleLoginSubmit = () => {
@@ -83,11 +84,11 @@ const Navbar = () => {
 
   const handleProfileView = () => {
     if (storedRole === "Doctor") {
-      navigate("/ViewDoctorProfile");
+      history.push("/doctor-profile");
     } else if (storedRole === "Patient") {
-      navigate("/ViewPatientProfile");
+      history.push("/patient-profile");
     } else if (storedRole === "Pharmacy") {
-      navigate("/AddPharmacy");
+      history.push("/pharmacy-profile");
     }
   };
 

@@ -84,12 +84,10 @@ function App() {
             path="/ViewDoctorProfile"
             element={<ViewDoctorProfile />}
           />
-          <Route exact path="/chatComponent" element={<ChatComponent />} />
           <Route exact path="/pharmacy" element={<Pharmacy />} />
           <Route exact path="/edit-pharmacy" element={<EditPharmacy />} />
           <Route exact path="/search-medicine" element={<SearchMedicine />} />
           <Route path="/doctors" element={<Doctor doctors={doctors} />} />
-
           <Route
             path="/doctors/:doctorId/book"
             element={<Appointment doctors={doctors} />}

@@ -8,7 +8,6 @@ import AddPharmacy from "./Pages/AddPharmacy";
 import EditPharmacy from "./Pages/EditPharmacy";
 import SearchMedicine from "./Pages/SearchMedicine";
 import ViewPatientProfile from "./Pages/ViewPatientProfile";
-import ViewDoctorProfile from "./Pages/ViewDoctorProfile";
 import "./App.css";
 import DoctorData from "./Components/DoctorData/DoctorData";
 import Contact from "./Components/Contact/contact";
@@ -78,18 +77,16 @@ function App() {
             path="/ViewPatientProfile"
             element={<ViewPatientProfile />}
           />
-          {/* <Route exact path="/ViewPatientProfile" element={<ViewPProfile />} /> */}
+          <Route exact path="/ViewPatientProfile" element={<ViewPProfile />} />
           <Route
             exact
             path="/ViewDoctorProfile"
             element={<ViewDoctorProfile />}
           />
-          <Route exact path="/chatComponent" element={<ChatComponent />} />
           <Route exact path="/pharmacy" element={<Pharmacy />} />
           <Route exact path="/edit-pharmacy" element={<EditPharmacy />} />
           <Route exact path="/search-medicine" element={<SearchMedicine />} />
           <Route path="/doctors" element={<Doctor doctors={doctors} />} />
-
           <Route
             path="/doctors/:doctorId/book"
             element={<Appointment doctors={doctors} />}

@@ -42,7 +42,8 @@ const Navbar = () => {
     setIsLoggedIn(false);
     localStorage.removeItem("email");
     localStorage.removeItem("password");
-    localStorage.removeItem("password");
+    localStorage.removeItem("role");
+    logout({ returnTo: window.location.origin });
   };
 
   const handleLoginSubmit = () => {
@@ -83,11 +84,11 @@ const Navbar = () => {
 
   const handleProfileView = () => {
     if (storedRole === "Doctor") {
-      navigate("/ViewDoctorProfile");
+      navigate("/doctor-profile");
     } else if (storedRole === "Patient") {
-      navigate("/ViewPatientProfile");
+      navigate("/patient-profile");
     } else if (storedRole === "Pharmacy") {
-      navigate("/AddPharmacy");
+      navigate("/pharmacy-profile");
     }
   };
 

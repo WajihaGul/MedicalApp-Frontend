@@ -200,9 +200,9 @@ const PatientProfile = () => {
       image: formData.get("imageUpload"),
       name: formData.get("name"),
       dateOFBirth: formData.get("dob"),
-      phone: formData.get("phone"),
+      phone: formData.get("contactNumber"),
       bloodType: formData.get("bloodType"),
-      gender: gender,
+      gender: formData.get("gender"),
       dietaryPreference: formData.get("dietaryPreference"),
       activityLevel: formData.get("activityLevel"),
       medicalHistory: formData.get("patientHistory"),
@@ -214,7 +214,6 @@ const PatientProfile = () => {
         headers: {
           "Content-Type": "application/json",
         },
-        
         body: JSON.stringify(newPatient),
       });
 
@@ -272,7 +271,7 @@ const PatientProfile = () => {
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             pattern="[\+]?[0-9\s\-]+"
-            placeholder="+923244201338"
+            placeholder="+92 0123456789"
             required
           />
         </div>
@@ -300,7 +299,6 @@ const PatientProfile = () => {
             <option value="female">Female</option>
           </select>
         </div>
-
         <div className={styles.form_row}>
           <label htmlFor="bloodType">Blood Type:</label>
           <select

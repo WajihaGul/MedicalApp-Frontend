@@ -42,7 +42,8 @@ const Navbar = () => {
     setIsLoggedIn(false);
     localStorage.removeItem("email");
     localStorage.removeItem("password");
-    localStorage.removeItem("password");
+    localStorage.removeItem("role");
+    logout({ returnTo: window.location.origin });
   };
 
   const handleLoginSubmit = () => {
@@ -87,7 +88,7 @@ const Navbar = () => {
     } else if (storedRole === "Patient") {
       navigate("/ViewPatientProfile");
     } else if (storedRole === "Pharmacy") {
-      navigate("/AddPharmacy");
+      navigate("addPharmacy");
     }
   };
 

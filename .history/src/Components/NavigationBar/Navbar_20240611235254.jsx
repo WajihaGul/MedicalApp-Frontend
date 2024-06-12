@@ -42,7 +42,8 @@ const Navbar = () => {
     setIsLoggedIn(false);
     localStorage.removeItem("email");
     localStorage.removeItem("password");
-    localStorage.removeItem("password");
+    localStorage.removeItem("role");
+    logout({ returnTo: window.location.origin });
   };
 
   const handleLoginSubmit = () => {

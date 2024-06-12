@@ -1,6 +1,6 @@
 import styles from "./Navbar.module.css";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import React, { useState, useEffect } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -22,11 +22,6 @@ const Navbar = () => {
   const [storedPassword, setStoredPassword] = useState(
     localStorage.getItem("password") || ""
   );
-  const [storedRole, setStoredRole] = useState(
-    localStorage.getItem("role") || ""
-  );
-
-  const navigate = useNavigate();
 
   useEffect(() => {
     if (storedEmail && storedPassword) {
@@ -42,7 +37,7 @@ const Navbar = () => {
     setIsLoggedIn(false);
     localStorage.removeItem("email");
     localStorage.removeItem("password");
-    localStorage.removeItem("password");
+    logout({ returnTo: window.location.origin });
   };
 
   const handleLoginSubmit = () => {
@@ -73,21 +68,10 @@ const Navbar = () => {
       localStorage.setItem("role", role);
       setStoredEmail(email);
       setStoredPassword(hashedPassword);
-      setStoredRole(role);
       setIsLoggedIn(true);
       setShowRegisterModal(false);
     } else {
       alert("Passwords do not match");
-    }
-  };
-
-  const handleProfileView = () => {
-    if (storedRole === "Doctor") {
-      navigate("/ViewDoctorProfile");
-    } else if (storedRole === "Patient") {
-      navigate("/ViewPatientProfile");
-    } else if (storedRole === "Pharmacy") {
-      navigate("/AddPharmacy");
     }
   };
 
@@ -155,9 +139,7 @@ const Navbar = () => {
                   className="dropdown-menu"
                   aria-labelledby="dropdownMenuButton"
                 >
-                  <button className="dropdown-item" onClick={handleProfileView}>
-                    View Profile
-                  </button>
+                  <button className="dropdown-item">View Profile</button>
                   <button className="dropdown-item" onClick={handleLogout}>
                     Log Out
                   </button>
