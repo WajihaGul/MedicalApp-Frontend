@@ -23,13 +23,13 @@ const DoctorData = ({ doctors }) => {
   };
   return (
     <div className="doctor-profile">
-      <h2>{doctor.name}</h2>
-      <p>{doctor.specialties}</p>
+      <h2>{doctor.fullName}</h2>
+      <p>{doctor.specialization}</p>
       <div className="image-doc">
-      <img src={doctor.imageUrl} alt={doctor.name} />
+      <img src={doctor.imageUpload}  />
       </div>
-      <p>{doctor.name} is a highly esteemed {doctor.specialty} known for his expertise and dedication in the field of dermatology. With years of experience, {doctor.name}  has become renowned for his compassionate patient care and commitment to delivering top-quality dermatological treatments. Specializing in a wide range of {doctor.specialty} conditions, {doctor.name}  utilizes the latest advancements in dermatology to provide personalized care tailored to each patient's unique needs.</p>
-          <p>Patients appreciate {doctor.name} thorough approach to diagnosis and treatment, as well as his ability to explain complex medical concepts in a clear and understandable manner. Known for his attention to detail and gentle bedside manner, {doctor.name} ensures that his patients feel comfortable and well-informed throughout their treatment journey.</p>
+      <p>{doctor.fullName} is a highly esteemed {doctor.specialization} known for his expertise and dedication in the field of dermatology. With years of experience, {doctor.fullName}  has become renowned for his compassionate patient care and commitment to delivering top-quality dermatological treatments. Specializing in a wide range of {doctor.specialization} conditions, {doctor.fullName}  utilizes the latest advancements in dermatology to provide personalized care tailored to each patient's unique needs.</p>
+          <p>Patients appreciate {doctor.fullName} thorough approach to diagnosis and treatment, as well as his ability to explain complex medical concepts in a clear and understandable manner. Known for his attention to detail and gentle bedside manner, {doctor.fullName} ensures that his patients feel comfortable and well-informed throughout their treatment journey.</p>
       <div className="div-button2">
                   <Button
                     className="custom-button3"

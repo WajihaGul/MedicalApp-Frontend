@@ -6,6 +6,7 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Doctor.css";
+import DoctorCard from "../Search/DoctorCard";
 
 
 const Doctor = ({ doctors }) => {
@@ -57,22 +58,23 @@ const Doctor = ({ doctors }) => {
         <p className=" paragraph">Professionals & Care Provider.</p>
       </div>
       <div>
-        <DoctorSearch />
+        <DoctorSearch backendUrl="http://localhost:8080" /> {/* Pass backend URL as prop */}
       </div>
       <div className="mt-5">
         <Slider ref={slider} {...settings}>
           { doctors.map((doctor) => ( 
             <div
-              className="card doctor-card"
+              className="card"
               key={doctor.id}
               onClick={() => navigate(`/doctors/${doctor.id}`)}
             >
               <div className="card-body">
-                <img src={doctor.imageUrl} className="card-image"/>
-                <h5 className="card-title">{doctor.name}</h5>
-                <p className="card-text">{doctor.specialties}</p>
+                <img src={doctor.imageUpload} className="card-image"/>
+                <h5 className="card-title">{doctor.fullName}</h5>
+                <p className="card-text">{doctor.specialization}</p>
           
               </div>
+              <DoctorCard />
             </div>
           ))}
         </Slider>
@@ -101,7 +103,7 @@ const Doctor = ({ doctors }) => {
             </div>
           </div>
           <div className="section-button mb-30">
-            <a className="primary-btn" href="/contact">
+            <a className="primary-btn" href="/book">
               <span className="span">+</span> Make Appointment
             </a>
           </div>

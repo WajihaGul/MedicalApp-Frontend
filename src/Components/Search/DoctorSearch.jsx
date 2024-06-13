@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+{/*import React, { useState } from 'react';
 import DoctorList from './DoctorList.jsx';
 import './DoctorSearch.css';
-
 const doctorsData = [
   { id: 1, name: 'Dr. Serena Mitchell', specialties: 'Orthopedic Surgeon' },
   { id: 2, name: 'Dr. Julian Bennett', specialties: 'Cardiologist' },
@@ -41,6 +40,69 @@ const DoctorSearch = () => {
   );
 };
 
+export default DoctorSearch;*/}
+
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import DoctorSearchBar from "./DoctorSearchBar";
+import DoctorCard from "./DoctorCard";
+import "./DoctorSearch.css";
+
+const DoctorSearch = ({ backendUrl }) => {
+  const [query, setQuery] = useState("");
+  const [doctors, setDoctors] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const handleSearchChange = (value) => {
+    setQuery(value);
+  };
+
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+    try {
+      const response = await fetch(`${backendUrl}/api/doctors?search=${query}`);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      setDoctors(data);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+  const addDoctor = (newDoctor) => {
+    setDoctors((prevDoctors) => [...prevDoctors, newDoctor]);
+  };
+  const filteredDoctors = doctors.filter((doctor) =>
+    doctor.fullName.toLowerCase().includes(searchTerm.toLowerCase())
+  );
+  return (
+    <div className="doctor-search-background1">
+      <form onSubmit={handleSearch}>
+        <DoctorSearchBar searchTerm={query} onSearchChange={handleSearchChange} />
+      </form>
+      {loading && <p>Loading...</p>}
+      {error && <p className="text-danger">{error}</p>}
+      <div className="row">
+        {filteredDoctors.map((doctor, index) => (
+          <DoctorCard key={index} doctor={doctor} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+DoctorSearch.propTypes = {
+  backendUrl: PropTypes.string.isRequired,
+};
+
 export default DoctorSearch;
+
+
 
 

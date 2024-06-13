@@ -1,22 +1,24 @@
 import React, { useState, useEffect } from 'react';
 import './Appointment.css'; 
+import DoctorProfile from "../DoctorProfile/DoctorProfile";
 
 const Appointment = () => {
   const [doctors, setDoctors] = useState([]);
   const [selectedDoctor, setSelectedDoctor] = useState(null);
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
-  const [message, setMessage] = useState('');
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupMessage, setPopupMessage] = useState('');
+  const [availableDates, setAvailableDates] = useState([]);
+  const [availableTimes, setAvailableTimes] = useState([]);
 
   useEffect(() => {
-    // Fetch doctor data from backend when component mounts
     fetchDoctors();
   }, []);
 
-  // Function to fetch doctors from backend
   const fetchDoctors = async () => {
     try {
-      const response = await fetch('/api/doctors'); // Replace '/api/doctors' with your backend endpoint
+      const response = await fetch('http://localhost:8080/api/doctors');
       if (!response.ok) {
         throw new Error('Failed to fetch doctors');
       }
@@ -27,28 +29,76 @@ const Appointment = () => {
     }
   };
 
-  // Event handlers for input changes
   const handleDateChange = (e) => setDate(e.target.value);
   const handleTimeChange = (e) => setTime(e.target.value);
-  const handleMessageChange = (e) => setMessage(e.target.value);
 
-  // Function to handle doctor selection
   const handleDoctorSelection = (doctor) => {
     setSelectedDoctor(doctor);
+    setAvailableDates(getAvailableDates(doctor));
+    setAvailableTimes(getAvailableTimes(doctor));
   };
 
-  // Function to handle form submission
+  const getAvailableDates = (doctor) => {
+    const { fromDay, toDay } = doctor;
+    const daysMap = {
+      Sunday: 1,
+      Monday: 2,
+      Tuesday: 3,
+      Wednesday: 4,
+      Thursday: 5,
+      Friday: 6,
+      Saturday: 7,
+    };
+
+    const fromDayIndex = daysMap[fromDay];
+    const toDayIndex = daysMap[toDay];
+    const dates = [];
+    const today = new Date();
+
+    for (let i = 0; i < 14; i++) {
+      const date = new Date(today);
+      date.setDate(today.getDate() + i);
+      const dayIndex = date.getDay();
+
+      if (
+        (fromDayIndex <= toDayIndex && dayIndex >= fromDayIndex && dayIndex <= toDayIndex) ||
+        (fromDayIndex > toDayIndex && (dayIndex >= fromDayIndex || dayIndex <= toDayIndex))
+      ) {
+        dates.push(date.toISOString().split('T')[0]);
+      }
+    }
+
+    return dates;
+  };
+
+  const getAvailableTimes = (doctor) => {
+    const { startTime, endTime } = doctor;
+    const times = [];
+    const start = new Date(`1970-01-01T${startTime}:00`);
+    const end = new Date(`1970-01-01T${endTime}:00`);
+
+    let current = start;
+    while (current <= end) {
+      times.push(current.toTimeString().split(' ')[0].substring(0, 5));
+      current.setMinutes(current.getMinutes() + 30); // increment by 30 minutes
+    }
+
+    return times;
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!selectedDoctor) {
       console.error('No doctor selected');
+      setPopupMessage('Please select a doctor');
+      setShowPopup(true);
       return;
     }
 
-    const appointmentData = { date, time, doctor: selectedDoctor, fullName, phone, message };
+    const appointmentData = { date, time, doctor: selectedDoctor };
 
     try {
-      const response = await fetch('/api/appointments', {
+      const response = await fetch('http://localhost:8080/api/appointments', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -63,56 +113,76 @@ const Appointment = () => {
       const data = await response.json();
       console.log('Appointment submitted successfully:', data);
 
-      // Reset the form
       setDate('');
       setTime('');
-      setMessage('');
       setSelectedDoctor(null);
+      setPopupMessage('Appointment submitted successfully!');
+      setShowPopup(true);
     } catch (error) {
       console.error('Error submitting appointment:', error);
+      setPopupMessage('Failed to submit appointment. Please try again.');
+      setShowPopup(true);
     }
   };
-
   return (
     <div className="appointment-container">
+       {showPopup && (
+        <div className="popup">
+          <div className="popup-inner">
+            <p>{popupMessage}</p>
+            <button onClick={() => setShowPopup(false)}>Close</button>
+          </div>
+        </div>
+      )}
       <div className="appointment-content">
         <h1 className="title-tag">Book Appointment</h1>
         <div className="form-container">
           <div className="search-doctors">
-            {/* Doctor search component goes here */}
-            {/* Display doctors */}
             <ul>
               {doctors.map((doctor) => (
                 <li key={doctor.id} onClick={() => handleDoctorSelection(doctor)}>
-                  {doctor.name} - {doctor.specialty}
+                  {doctor.fullName} - {doctor.specialization}
                 </li>
               ))}
             </ul>
           </div>
+          {selectedDoctor && <DoctorProfile doctor={selectedDoctor} />}
           <form onSubmit={handleSubmit}>
             {/* Appointment form */}
             <div className='form-row'>
-            <input type="text" className='input-field' placeholder="Doctor Name" value={selectedDoctor ? selectedDoctor.name : ''} readOnly />
+            <input type="text" className='input-field' placeholder="Doctor Name" value={selectedDoctor ? selectedDoctor.fullName : ''} readOnly />
             </div>
             <div className="form-row">
-              <input
-                type="date"
+            <select
                 id="date"
                 name="date"
                 value={date}
                 onChange={handleDateChange}
                 className="input-field"
                 required
-              />
-              <input
-                type="time"
+              >
+                <option value="">Select Date</option>
+                {availableDates.map((availableDate) => (
+                  <option key={availableDate} value={availableDate}>
+                    {availableDate}
+                  </option>
+                ))}
+              </select>
+              <select
                 id="time"
                 name="time"
                 value={time}
                 onChange={handleTimeChange}
                 className="input-field"
                 required
-              />
+              >
+                <option value="">Select Time</option>
+                {availableTimes.map((availableTime) => (
+                  <option key={availableTime} value={availableTime}>
+                    {availableTime}
+                  </option>
+                ))}
+              </select>
             </div>
             <div className="form-row">
               <button className="button-1">Submit</button>
