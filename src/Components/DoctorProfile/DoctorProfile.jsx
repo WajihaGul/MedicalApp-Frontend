@@ -15,29 +15,32 @@ const DoctorProfile = ({ addEditPharmacyText }) => {
   const [endTime, setEndTime] = useState("");
   const [excludeDay, setExcludeDay] = useState("");
   const [awards, setAwards] = useState("");
+  const [gender, setGender] = useState("");
 
   const [additionalNotes, setAdditionalNotes] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({
+    const formData = new FormData(e.target);
+    debugger;
+    const newDoctor = {
       imageUpload: formData.get("imageUpload"),
-      fullName: formData.get("fullname"),
+      doctorName: fullName,
       gender: gender,
-      specialization: formData.get("specialization"),
-      education: formData.get("education"),
-      phone: formData.get("phone"),
-      clinicName: formData.get("clinicName"),
-      fromDay: formData.get("fromDay"),
-      toDay: formData.get("toDay"),
-      startTime: formData.get("startTime"),
-      endTime: formData.get("endTime"),
-      excludeDay: formData.get("excludeDay"),
-      awards: formData.get("awards"),
-      additionalNotes: formData.get("additionalNotes"),
-    });
+      specialization: specialization,
+      qualification: education,
+      phone: phone,
+      clinicName: clinicName,
+      workDayStart: fromDay,
+      workDayEnd: toDay,
+      startTime: startTime,
+      endTime: endTime,
+      excludeDay: excludeDay,
+      awards: awards,
+      additionalNotes:additionalNotes,
+    };
     try {
-      const response = await fetch("http://localhost:8080/registerPatient", {
+      const response = await fetch("http://localhost:8080/registerDoctor", {
         method: "POST",
 
         headers: {
@@ -74,7 +77,7 @@ const DoctorProfile = ({ addEditPharmacyText }) => {
           <span className={styles.upload_text}>Upload Image</span>
         </label>
       </div>
-
+      
       <form onSubmit={handleSubmit}>
         <div className={styles.form_group}>
           <label htmlFor="fullName">
@@ -84,9 +87,22 @@ const DoctorProfile = ({ addEditPharmacyText }) => {
             type="text"
             id="fullName"
             value={fullName}
+            name="fullName"
             onChange={(e) => setFullName(e.target.value)}
             required
           />
+        </div>
+        <div className={styles.form_row}>
+          <label htmlFor="gender">Gender:</label>
+          <select
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
+            required
+          >
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
         </div>
         <div className={styles.form_group}>
           <label>
