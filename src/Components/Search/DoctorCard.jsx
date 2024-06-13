@@ -32,7 +32,7 @@ DoctorCard.propTypes = {
     imageUpload: PropTypes.string.isRequired,
     fullName: PropTypes.string.isRequired,
     specialization: PropTypes.string.isRequired,
-  }).isOptional,
+  }).isRequired,
 };
 
 export default DoctorCard;

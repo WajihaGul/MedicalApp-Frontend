@@ -18,7 +18,7 @@ const Appointment = () => {
 
   const fetchDoctors = async () => {
     try {
-      const response = await fetch('http://localhost:8080/api/doctors');
+      const response = await fetch('http://localhost:8080/bookAppointments');
       if (!response.ok) {
         throw new Error('Failed to fetch doctors');
       }
@@ -98,7 +98,7 @@ const Appointment = () => {
     const appointmentData = { date, time, doctor: selectedDoctor };
 
     try {
-      const response = await fetch('http://localhost:8080/api/appointments', {
+      const response = await fetch('http://localhost:8080/bookAppointments', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

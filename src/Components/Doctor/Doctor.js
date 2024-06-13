@@ -13,6 +13,7 @@ const Doctor = ({ doctors }) => {
   const { doctorId } = useParams();
   const slider = useRef(null);
   const navigate = useNavigate();
+  const backendUrl = "http://localhost:8080"; 
 
   const settings = {
     accessibility: true,
@@ -58,7 +59,7 @@ const Doctor = ({ doctors }) => {
         <p className=" paragraph">Professionals & Care Provider.</p>
       </div>
       <div>
-        <DoctorSearch backendUrl="http://localhost:8080" /> {/* Pass backend URL as prop */}
+        <DoctorSearch backendUrl={backendUrl} /> {/* Pass backend URL as prop */}
       </div>
       <div className="mt-5">
         <Slider ref={slider} {...settings}>

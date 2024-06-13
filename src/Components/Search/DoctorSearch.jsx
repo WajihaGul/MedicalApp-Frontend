@@ -63,7 +63,7 @@ const DoctorSearch = ({ backendUrl }) => {
     setLoading(true);
     setError(null);
     try {
-      const response = await fetch(`${backendUrl}/api/doctors?search=${query}`);
+      const response = await fetch(`${backendUrl}/doctors/name?search=${query}`);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
@@ -75,12 +75,11 @@ const DoctorSearch = ({ backendUrl }) => {
       setLoading(false);
     }
   };
-  const addDoctor = (newDoctor) => {
-    setDoctors((prevDoctors) => [...prevDoctors, newDoctor]);
-  };
+
   const filteredDoctors = doctors.filter((doctor) =>
-    doctor.fullName.toLowerCase().includes(searchTerm.toLowerCase())
+    doctor.fullName.toLowerCase().includes(query.toLowerCase())
   );
+
   return (
     <div className="doctor-search-background1">
       <form onSubmit={handleSearch}>
@@ -102,7 +101,3 @@ DoctorSearch.propTypes = {
 };
 
 export default DoctorSearch;
-
-
-
-
