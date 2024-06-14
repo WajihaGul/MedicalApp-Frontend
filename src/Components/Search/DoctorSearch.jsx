@@ -42,7 +42,7 @@ const DoctorSearch = () => {
 
 export default DoctorSearch;*/}
 
-import React, { useState } from "react";
+{/*import React, { useState } from "react";
 import PropTypes from "prop-types";
 import DoctorSearchBar from "./DoctorSearchBar";
 import DoctorCard from "./DoctorCard";
@@ -89,7 +89,80 @@ const DoctorSearch = ({ backendUrl }) => {
       {error && <p className="text-danger">{error}</p>}
       <div className="row">
         {filteredDoctors.map((doctor, index) => (
-          <DoctorCard key={index} doctor={doctor} />
+          <DoctorCard key={doctor.id}
+           doctor={doctor} />
+        ))}
+      </div>
+    </div>
+  );
+};
+
+DoctorSearch.propTypes = {
+  backendUrl: PropTypes.string.isRequired,
+};
+
+export default DoctorSearch;*/}
+
+import React, { useState } from "react";
+import PropTypes from "prop-types";
+import DoctorSearchBar from "./DoctorSearchBar";
+import DoctorCard from "./DoctorCard";
+import "./DoctorSearch.css";
+
+const DoctorSearch = ({ backendUrl }) => {
+  const [query, setQuery] = useState("");
+  const [searchType, setSearchType] = useState("name"); // New state for search type
+  const [doctors, setDoctors] = useState([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+
+  const handleSearchChange = (value) => {
+    setQuery(value);
+  };
+
+  const handleSearchTypeChange = (e) => {
+    setSearchType(e.target.value);
+  };
+
+  const handleSearch = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
+    try {
+      let url;
+      if (searchType === "name") {
+        url = `${backendUrl}/doctors/name?search=${query}`;
+      } else if (searchType === "specialization") {
+        url = `${backendUrl}/doctors/specialization/${query}`;
+      }
+
+      const response = await fetch(url);
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const data = await response.json();
+      setDoctors(data);
+    } catch (error) {
+      setError(error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  return (
+    <div className="doctor-search-background1">
+      <form onSubmit={handleSearch}>
+        <select value={searchType} onChange={handleSearchTypeChange} className="select-search">
+          <option value="name">Search by Name</option>
+          <option value="specialization">Search by Specialization</option>
+        </select>
+        <DoctorSearchBar searchTerm={query} onSearchChange={handleSearchChange} />
+      </form>
+      {loading && <p>Loading...</p>}
+      {error && <p className="text-danger">{error}</p>}
+      <div className="row">
+        {doctors.map((doctor) => (
+          <DoctorCard key={doctor.id} doctor={doctor} />
         ))}
       </div>
     </div>
@@ -101,3 +174,4 @@ DoctorSearch.propTypes = {
 };
 
 export default DoctorSearch;
+

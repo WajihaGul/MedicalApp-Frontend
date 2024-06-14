@@ -10,6 +10,7 @@ import SearchMedicine from "./Pages/SearchMedicine";
 import ViewPatientProfile from "./Pages/ViewPatientProfile";
 import ViewDoctorProfile from "./Pages/ViewDoctorProfile";
 import "./App.css";
+import DoctorSearch from "./Components/Search/DoctorSearch";
 import DoctorData from "./Components/DoctorData/DoctorData";
 import Contact from "./Components/Contact/contact";
 import Appointment from "./Components/Appointment/Appointment";
@@ -97,6 +98,7 @@ function App() {
           <Route path="/upload-prescription" element={<ManagePrescription />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/appointment" element={<Appointment />} />
+          <Route path="/doctors" element={<DoctorSearch backendUrl="http://localhost:8080" />} />
           <Route
             path="/doctors/:doctorId"
             element={<DoctorData doctors={doctors} />}

@@ -1,6 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
-import "./DoctorCard.css"; // Make sure to create and style this CSS file
+import "./DoctorCard.css"; 
 
 const DoctorCard = ({ doctor }) => {
     if (!doctor) {
@@ -29,6 +29,7 @@ const DoctorCard = ({ doctor }) => {
 
 DoctorCard.propTypes = {
   doctor: PropTypes.shape({
+    id: PropTypes.string.isRequired,
     imageUpload: PropTypes.string.isRequired,
     fullName: PropTypes.string.isRequired,
     specialization: PropTypes.string.isRequired,
