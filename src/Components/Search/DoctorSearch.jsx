@@ -103,7 +103,7 @@ DoctorSearch.propTypes = {
 
 export default DoctorSearch;*/}
 
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import PropTypes from "prop-types";
 import DoctorSearchBar from "./DoctorSearchBar";
 import DoctorCard from "./DoctorCard";
@@ -113,6 +113,7 @@ const DoctorSearch = ({ backendUrl }) => {
   const [query, setQuery] = useState("");
   const [searchType, setSearchType] = useState("name"); // New state for search type
   const [doctors, setDoctors] = useState([]);
+  const [filteredDoctors, setFilteredDoctors] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const specialization = "";
@@ -143,12 +144,28 @@ const DoctorSearch = ({ backendUrl }) => {
       }
       const data = await response.json();
       setDoctors(data);
+      setFilteredDoctors(data);
     } catch (error) {
       setError(error.message);
     } finally {
       setLoading(false);
     }
   };
+  useEffect(() => {
+    const filterDoctors = () => {
+      const filtered = doctors.filter((doctor) => {
+        if (searchType === "name") {
+          return doctor.name.toLowerCase().includes(query.toLowerCase());
+        } else if (searchType === "specialization") {
+          return doctor.specialization.toLowerCase().includes(query.toLowerCase());
+        }
+        return false;
+      });
+      setFilteredDoctors(filtered);
+    };
+
+    filterDoctors();
+  }, [query, searchType, doctors]);
 
   return (
     <div className="doctor-search-background1">
@@ -162,7 +179,7 @@ const DoctorSearch = ({ backendUrl }) => {
       {loading && <p>Loading...</p>}
       {error && <p className="text-danger">{error}</p>}
       <div className="row">
-        {doctors.map((doctor) => (
+        {filteredDoctors.map((doctor) => (
           <DoctorCard key={index} doctor={doctor} />
         ))}
       </div>
