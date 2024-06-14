@@ -115,6 +115,7 @@ const DoctorSearch = ({ backendUrl }) => {
   const [doctors, setDoctors] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const specialization = "";
 
   const handleSearchChange = (value) => {
     setQuery(value);
@@ -133,7 +134,7 @@ const DoctorSearch = ({ backendUrl }) => {
       if (searchType === "name") {
         url = `${backendUrl}/doctors/name?search=${query}`;
       } else if (searchType === "specialization") {
-        url = `${backendUrl}/doctors/specialization/${query}`;
+        url = `${backendUrl}/doctors/specialization/${specialization}`;
       }
 
       const response = await fetch(url);
@@ -162,7 +163,7 @@ const DoctorSearch = ({ backendUrl }) => {
       {error && <p className="text-danger">{error}</p>}
       <div className="row">
         {doctors.map((doctor) => (
-          <DoctorCard key={doctor.id} doctor={doctor} />
+          <DoctorCard key={index} doctor={doctor} />
         ))}
       </div>
     </div>
