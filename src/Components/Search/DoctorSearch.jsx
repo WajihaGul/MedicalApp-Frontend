@@ -113,6 +113,7 @@ const DoctorSearch = ({ backendUrl }) => {
   const [query, setQuery] = useState("");
   const [searchType, setSearchType] = useState("name"); // New state for search type
   const [doctors, setDoctors] = useState([]);
+  const [specialization, setSpecialization] = useState([]);
   const [filteredDoctors, setFilteredDoctors] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
@@ -133,18 +134,19 @@ const DoctorSearch = ({ backendUrl }) => {
     try {
       let url;
       if (searchType === "name") {
-        url = `${backendUrl}/doctors/name?search=${query}`;
+        url = `${backendUrl}/doctors/name/${query}`;
       } else if (searchType === "specialization") {
-        url = `${backendUrl}/doctors/specialization/${specialization}`;
+        url = `${backendUrl}/doctors/specialization/${query}`;
       }
 
       const response = await fetch(url);
+
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
       const data = await response.json();
-      setDoctors(data);
-      setFilteredDoctors(data);
+      setSpecialization(data);
+      // setFilteredDoctors(data);
     } catch (error) {
       setError(error.message);
     } finally {
@@ -176,11 +178,13 @@ const DoctorSearch = ({ backendUrl }) => {
         </select>
         <DoctorSearchBar searchTerm={query} onSearchChange={handleSearchChange} />
       </form>
-      {loading && <p>Loading...</p>}
+      {loading}
       {error && <p className="text-danger">{error}</p>}
       <div className="row">
-        {filteredDoctors.map((doctor) => (
-          <DoctorCard key={index} doctor={doctor} />
+        { specialization.map((doctor, index) => (
+          <DoctorCard key={index}
+            doctor= {doctor}
+          />
         ))}
       </div>
     </div>

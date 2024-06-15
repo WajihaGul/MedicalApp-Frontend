@@ -25,7 +25,7 @@ import Doc5 from "./Assets/img/doc5.jpg";
 import Doc6 from "./Assets/img/doc6.jpg";
 
 function App() {
-  const doctors = [
+ const doctors = [
     {
       id: 1,
       imageUpload: Doc1,

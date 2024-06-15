@@ -1,5 +1,4 @@
 import React, {useState} from "react";
-import "./DoctorData.css";
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button } from "react-bootstrap";
 import ChatComponent from "../Chat/ChatComponent";
