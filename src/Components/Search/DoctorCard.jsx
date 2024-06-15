@@ -1,12 +1,13 @@
 import React, {useState} from "react";
 import PropTypes from "prop-types";
 import "./DoctorCard.css"; 
-import "./DoctorData.css";
+import "../DoctorData/DoctorData.css";
 import { useNavigate, useParams } from 'react-router-dom';
 import { Button } from "react-bootstrap";
 import ChatComponent from "../Chat/ChatComponent";
 
 const DoctorCard = ({ doctor }) => {
+  const { doctorId } = useParams();
   const navigate = useNavigate();
     if (!doctor) {
         return null; // Handle the case when the doctor object is undefined

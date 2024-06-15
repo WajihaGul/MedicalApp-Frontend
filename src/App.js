@@ -17,15 +17,15 @@ import Appointment from "./Components/Appointment/Appointment";
 import ManagePrescription from "./Pages/ManagePrescription";
 import ChatComponent from "./Components/Chat/ChatComponent";
 import Doctor from "./Components/Doctor/Doctor";
-{/*import Doc1 from "./Assets/img/doc1.jpg";
+import Doc1 from "./Assets/img/doc1.jpg";
 import Doc2 from "./Assets/img/doc2.jpg";
 import Doc3 from "./Assets/img/doc3.jpg";
 import Doc4 from "./Assets/img/doc4.jpg";
 import Doc5 from "./Assets/img/doc5.jpg";
-import Doc6 from "./Assets/img/doc6.jpg";*/}
+import Doc6 from "./Assets/img/doc6.jpg";
 
 function App() {
- {/* const doctors = [
+ const doctors = [
     {
       id: 1,
       imageUpload: Doc1,
@@ -62,7 +62,7 @@ function App() {
       fullName: "Dr. Olivia Martinez",
       specialization: "Ophthalmologist",
     },
-  ];*/}
+  ];
   return (
     <Router>
       <Layout>
