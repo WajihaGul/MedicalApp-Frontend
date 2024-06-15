@@ -61,7 +61,7 @@ const Doctor = ({ doctors }) => {
       <div>
         <DoctorSearch backendUrl={backendUrl} /> {/* Pass backend URL as prop */}
       </div>
-      <div className="mt-5">
+     {/*  <div className="mt-5">
         <Slider ref={slider} {...settings}>
           { doctors.map((doctor) => ( 
             <div
@@ -69,12 +69,12 @@ const Doctor = ({ doctors }) => {
               key={doctor.id}
               onClick={() => navigate(`/doctors/${doctor.id}`)}
             >
-              <div className="card-body">
+             <div className="card-body">
                 <img src={doctor.imageUpload} className="card-image"/>
                 <h5 className="card-title">{doctor.fullName}</h5>
                 <p className="card-text">{doctor.specialization}</p>
           
-              </div>
+          </div>
               <DoctorCard />
             </div>
           ))}
@@ -94,7 +94,7 @@ const Doctor = ({ doctors }) => {
         >
           <FaArrowRight size={25} />
         </button>
-      </div>
+      </div>*/}
       <div className="doctor-container">
         <div className="column">
           <div className="section-title mb-45">

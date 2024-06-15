@@ -116,7 +116,7 @@ const DoctorSearch = ({ backendUrl }) => {
   const [filteredDoctors, setFilteredDoctors] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
-  const specialization = "";
+  
 
   const handleSearchChange = (value) => {
     setQuery(value);
@@ -192,4 +192,5 @@ DoctorSearch.propTypes = {
 };
 
 export default DoctorSearch;
+
 
