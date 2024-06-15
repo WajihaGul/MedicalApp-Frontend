@@ -11,11 +11,11 @@ import DoctorCard from "../Search/DoctorCard";
 
 const Doctor = ({ doctors }) => {
   const { doctorId } = useParams();
-  const slider = useRef(null);
-  const navigate = useNavigate();
+  {/*const slider = useRef(null);
+  const navigate = useNavigate();*/}
   const backendUrl = "http://localhost:8080"; 
 
-  const settings = {
+  {/*const settings = {
     accessibility: true,
     dots: true,
     infinite: true,
@@ -50,7 +50,7 @@ const Doctor = ({ doctors }) => {
         },
       },
     ],
-  };
+  };*/}
 
   return (
     <div>
@@ -59,9 +59,10 @@ const Doctor = ({ doctors }) => {
         <p className=" paragraph">Professionals & Care Provider.</p>
       </div>
       <div>
-        <DoctorSearch backendUrl={backendUrl} /> {/* Pass backend URL as prop */}
+        <DoctorSearch backendUrl={backendUrl} /> 
       </div>
-      <div className="mt-5">
+      <DoctorCard />
+     {/*} <div className="mt-5">
         <Slider ref={slider} {...settings}>
           { doctors.map((doctor) => ( 
             <div
@@ -75,7 +76,7 @@ const Doctor = ({ doctors }) => {
                 <p className="card-text">{doctor.specialization}</p>
           
               </div>
-              <DoctorCard />
+              
             </div>
           ))}
         </Slider>
@@ -94,8 +95,8 @@ const Doctor = ({ doctors }) => {
         >
           <FaArrowRight size={25} />
         </button>
-      </div>
-      <div className="doctor-container">
+      </div>*/}
+            <div className="doctor-container">
         <div className="column">
           <div className="section-title mb-45">
             <div className="section-text">
