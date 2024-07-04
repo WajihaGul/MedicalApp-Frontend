@@ -196,7 +196,7 @@ const Appointment = () => {
 
 export default Appointment;*/}
 
-import React, { useState, useEffect } from 'react';
+{/*import React, { useState, useEffect } from 'react';
 import './Appointment.css'; 
 import DoctorProfile from "../DoctorProfile/DoctorProfile";
 import ChatComponent from '../Chat/ChatComponent';
@@ -372,7 +372,7 @@ const Appointment = ({ backendUrl }) => {
           </div>
           {selectedDoctor && <DoctorProfile doctor={selectedDoctor} />}
           <form onSubmit={handleSubmit}>
-            {/* Appointment form */}
+      
             <div className='form-row'>
               <input type="text" className='input-field' placeholder="Doctor Name" value={selectedDoctor ? selectedDoctor.fullName : ''} readOnly />
             </div>
@@ -419,6 +419,168 @@ const Appointment = ({ backendUrl }) => {
   );
 };
 
+export default Appointment;*/}
+
+import React, { useState, useEffect } from 'react';
+import './Appointment.css';
+import DoctorProfile from "../DoctorProfile/DoctorProfile";
+import ChatComponent from '../Chat/ChatComponent';
+
+const Appointment = ({ backendUrl }) => {
+  const [doctors, setDoctors] = useState([]);
+  const [selectedDoctor, setSelectedDoctor] = useState(null);
+  const [date, setDate] = useState('');
+  const [time, setTime] = useState('');
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupMessage, setPopupMessage] = useState('');
+  const [appointmentId, setAppointmentId] = useState(null);
+  const [chatActive, setChatActive] = useState(false);
+
+  useEffect(() => {
+    fetchDoctors();
+  }, []);
+
+  const fetchDoctors = async () => {
+    try {
+      const response = await fetch(`${backendUrl}/bookAppointments`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch doctors');
+      }
+      const data = await response.json();
+      setDoctors(data);
+    } catch (error) {
+      console.error('Error fetching doctors:', error);
+    }
+  };
+
+  const handleDateChange = (e) => setDate(e.target.value);
+  const handleTimeChange = (e) => setTime(e.target.value);
+
+  const handleDoctorSelection = (doctor) => {
+    setSelectedDoctor(doctor);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!selectedDoctor) {
+      setPopupMessage('Please select a doctor');
+      setShowPopup(true);
+      return;
+    }
+
+    const appointmentData = { date, time, doctor: selectedDoctor };
+
+    try {
+      const response = await fetch(`${backendUrl}/bookAppointments`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(appointmentData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit appointment');
+      }
+
+      const data = await response.json();
+      setAppointmentId(data.appointmentId);
+      setPopupMessage('Appointment booked successfully!');
+      setShowPopup(true);
+
+      setDate('');
+      setTime('');
+      setSelectedDoctor(null);
+    } catch (error) {
+      setPopupMessage('Failed to book appointment. Please try again.');
+      setShowPopup(true);
+    }
+  };
+
+  const checkChatStatus = async () => {
+    if (!appointmentId) return;
+
+    try {
+      const response = await fetch(`${backendUrl}/appointments/startChat/${appointmentId}`);
+      if (response.ok) {
+        setChatActive(true);
+      } else {
+        setPopupMessage('Chat is not active until the appointment is accepted');
+        setShowPopup(true);
+      }
+    } catch (error) {
+      setPopupMessage('Failed to check chat status. Please try again.');
+      setShowPopup(true);
+    }
+  };
+
+  useEffect(() => {
+    checkChatStatus();
+  }, [appointmentId]);
+
+  return (
+    <div className="appointment-container">
+      {showPopup && (
+        <div className="popup">
+          <div className="popup-inner">
+            <p>{popupMessage}</p>
+            <button onClick={() => setShowPopup(false)}>Close</button>
+          </div>
+        </div>
+      )}
+      <div className="appointment-content">
+        <h1 className="title-tag">Book Appointment</h1>
+        <div className="form-container">
+          <div className="search-doctors">
+            <ul>
+              {doctors.map((doctor) => (
+                <li key={doctor.id} onClick={() => handleDoctorSelection(doctor)}>
+                  {doctor.fullName} - {doctor.specialization}
+                </li>
+              ))}
+            </ul>
+          </div>
+          {selectedDoctor && <DoctorProfile doctor={selectedDoctor} />}
+          <form onSubmit={handleSubmit}>
+            {selectedDoctor && (
+              <div className='form-row'>
+                <p className='doctor-name'>{selectedDoctor.fullName}</p>
+              </div>
+            )}
+            <div className="form-row">
+              <input
+                type="date"
+                id="date"
+                name="date"
+                value={date}
+                onChange={handleDateChange}
+                className="input-field"
+                required
+              />
+              <input
+                type="time"
+                id="time"
+                name="time"
+                value={time}
+                onChange={handleTimeChange}
+                className="input-field"
+                required
+              />
+            </div>
+            <div className="form-row">
+              <button className="button-1">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      {chatActive && <ChatComponent backendUrl={backendUrl} />}
+    </div>
+  );
+};
+
 export default Appointment;
+
+
+
 
 

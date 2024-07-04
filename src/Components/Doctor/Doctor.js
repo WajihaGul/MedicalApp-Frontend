@@ -6,11 +6,13 @@ import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "./Doctor.css";
+import { Button } from "react-bootstrap";
 import DoctorCard from "../Search/DoctorCard";
 
 
 const Doctor = ({ doctors }) => {
   const { doctorId } = useParams();
+
   {/*const slider = useRef(null);
   const navigate = useNavigate();*/}
   const backendUrl = "http://localhost:8080"; 
@@ -51,7 +53,7 @@ const Doctor = ({ doctors }) => {
       },
     ],
   };*/}
-
+  
   return (
     <div>
     <div style={{ marginTop: "150px" }}>
@@ -96,6 +98,7 @@ const Doctor = ({ doctors }) => {
         <FaArrowRight size={25} />
       </button>
     </div>*/}
+  
           <div className="doctor-container">
       <div className="column">
         <div className="section-title mb-45">
