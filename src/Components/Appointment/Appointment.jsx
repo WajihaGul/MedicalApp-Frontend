@@ -438,6 +438,11 @@ const Appointment = ({ backendUrl }) => {
   const [chatActive, setChatActive] = useState(false);
   const [patient, setPatient] = useState(null);
 
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+ const patientId = searchParams.get('patientId'); 
+ const doctorId = searchParams.get('doctorId');
+
  {/* useEffect(() => {
     fetchDoctors();
   }, []);
@@ -492,7 +497,7 @@ http://localhost:8080/listDoctors`);
   useEffect(() => {
     const fetchDoctor = async () => {
       try {
-        const response = await fetch(`${backendUrl}/doctors/${doctorId}`);
+        const response = await fetch(`http://localhost:8080/registerDoctor/${doctorId}`);
         if (!response.ok) {
           throw new Error('Failed to fetch doctor details');
         }
@@ -506,12 +511,12 @@ http://localhost:8080/listDoctors`);
     if (doctorId) {
       fetchDoctor();
     }
-  }, [doctorId, backendUrl]);
+  }, [doctorId]);
 
   useEffect(() => {
     const fetchPatient = async () => {
       try {
-        const response = await fetch(`${backendUrl}/patients/${patientId}`);
+        const response = await fetch(`http://localhost:8080/registerPatient${patientId}`);
         if (!response.ok) {
           throw new Error('Failed to fetch patient details');
         }
@@ -521,9 +526,10 @@ http://localhost:8080/listDoctors`);
         console.error('Error fetching patient details:', error);
       }
     };
-
+  
     fetchPatient();
-  }, [patientId, backendUrl]);
+  
+  }, [patientId]);
 
   const handleDateChange = (e) => setDate(e.target.value);
   const handleTimeChange = (e) => setTime(e.target.value);
@@ -539,10 +545,7 @@ http://localhost:8080/listDoctors`);
   //     setShowPopup(true);
   //  return;
   //  }
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
- const patientId = searchParams.get('patientId'); 
- const doctorId = searchParams.get('doctorId');
+
     const appointmentData = { date, time, patientId, doctorId};
     console.log(appointmentData);
     try {
