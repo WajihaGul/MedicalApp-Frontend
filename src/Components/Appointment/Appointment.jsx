@@ -497,7 +497,7 @@ http://localhost:8080/listDoctors`);
   useEffect(() => {
     const fetchDoctor = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/registerDoctor/${doctorId}`);
+        const response = await fetch(`http://localhost:8080/registerDoctor`);
         if (!response.ok) {
           throw new Error('Failed to fetch doctor details');
         }
@@ -516,7 +516,7 @@ http://localhost:8080/listDoctors`);
   useEffect(() => {
     const fetchPatient = async () => {
       try {
-        const response = await fetch(`http://localhost:8080/registerPatient${patientId}`);
+        const response = await fetch(`http://localhost:8080/registerPatient`);
         if (!response.ok) {
           throw new Error('Failed to fetch patient details');
         }
