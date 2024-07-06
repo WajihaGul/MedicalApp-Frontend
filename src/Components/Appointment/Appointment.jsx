@@ -422,6 +422,7 @@ const Appointment = ({ backendUrl }) => {
 export default Appointment;*/}
 
 import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import './Appointment.css';
 import DoctorProfile from "../DoctorProfile/DoctorProfile";
 import ChatComponent from '../Chat/ChatComponent';
@@ -435,10 +436,11 @@ const Appointment = ({ backendUrl }) => {
   const [popupMessage, setPopupMessage] = useState('');
   const [appointmentId, setAppointmentId] = useState(null);
   const [chatActive, setChatActive] = useState(false);
+  const [patient, setPatient] = useState(null);
 
  {/* useEffect(() => {
     fetchDoctors();
-  }, []);*/}
+  }, []);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -486,7 +488,42 @@ http://localhost:8080/listDoctors`);
     } catch (error) {
       console.error('Error fetching doctors:', error);
     }
-  };
+  };*/}
+  useEffect(() => {
+    const fetchDoctor = async () => {
+      try {
+        const response = await fetch(`${backendUrl}/doctors/${doctorId}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch doctor details');
+        }
+        const data = await response.json();
+        setDoctor(data);
+      } catch (error) {
+        console.error('Error fetching doctor details:', error);
+      }
+    };
+
+    if (doctorId) {
+      fetchDoctor();
+    }
+  }, [doctorId, backendUrl]);
+
+  useEffect(() => {
+    const fetchPatient = async () => {
+      try {
+        const response = await fetch(`${backendUrl}/patients/${patientId}`);
+        if (!response.ok) {
+          throw new Error('Failed to fetch patient details');
+        }
+        const data = await response.json();
+        setPatient(data);
+      } catch (error) {
+        console.error('Error fetching patient details:', error);
+      }
+    };
+
+    fetchPatient();
+  }, [patientId, backendUrl]);
 
   const handleDateChange = (e) => setDate(e.target.value);
   const handleTimeChange = (e) => setTime(e.target.value);
@@ -502,8 +539,10 @@ http://localhost:8080/listDoctors`);
   //     setShowPopup(true);
   //  return;
   //  }
- const patientId = 14;
- const doctorId = 3;
+  const location = useLocation();
+  const searchParams = new URLSearchParams(location.search);
+ const patientId = searchParams.get('patientId'); 
+ const doctorId = searchParams.get('doctorId');
     const appointmentData = { date, time, patientId, doctorId};
     console.log(appointmentData);
     try {
@@ -529,7 +568,7 @@ http://localhost:8080/listDoctors`);
       setSelectedDoctor(null);
     } catch (error) {
       setPopupMessage('Failed to book appointment. Please try again.');
-      setShowPopup(true);
+      setShowPopup(false);
     }
   };
 

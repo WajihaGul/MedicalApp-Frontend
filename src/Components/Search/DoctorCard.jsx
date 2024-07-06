@@ -2,7 +2,7 @@ import React, {useState} from "react";
 import PropTypes from "prop-types";
 import "./DoctorCard.css"; 
 import "../DoctorData/DoctorData.css";
-import { useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams, Link } from 'react-router-dom';
 import { Button } from "react-bootstrap";
 import ChatComponent from "../Chat/ChatComponent";
 
@@ -21,7 +21,7 @@ const DoctorCard = ({ doctor }) => {
   const goToAppointmentBooking = () => {
     navigate(`/doctors/${doctorId}/book`);
   };
-  const { imageUpload, fullName, specialization } = doctor;
+  const { imageUpload, id, fullName, specialization } = doctor;
 
   return (
     <div className="col-md-3 mb-4 doctor-card">
@@ -37,7 +37,7 @@ const DoctorCard = ({ doctor }) => {
           <h5 className="card-title">{fullName}</h5>
           <p className="card-text">{specialization}</p>
           <div className="div-button2">
-                  <Button
+                 {/*<Button
                     className="custom-button3"
                     onClick={(e) => {
                       e.stopPropagation();
@@ -45,7 +45,8 @@ const DoctorCard = ({ doctor }) => {
                     }}
                   >
                     Book an Appointment
-                  </Button>
+                  </Button>*/}
+                  <Link to={`/appointment?doctorId=${id}`}>Book Appointment</Link>
                 </div>
                 <button onClick={toggleChat} className="chat-button">
                   Chat With Me
