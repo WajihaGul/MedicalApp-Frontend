@@ -436,17 +436,52 @@ const Appointment = ({ backendUrl }) => {
   const [appointmentId, setAppointmentId] = useState(null);
   const [chatActive, setChatActive] = useState(false);
 
-  useEffect(() => {
+ {/* useEffect(() => {
     fetchDoctors();
+  }, []);*/}
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const doctors = await fetchDoctors();
+        // Handle the fetched doctors data
+        async function fetchDoctors() {
+          try {
+            const baseUrl = 'http://localhost:8080';
+            const endpoint = '/listDoctors';
+            const url = `${baseUrl}${endpoint}`;
+        
+            console.log('Fetching from URL:', url); // Add this line to debug
+        
+            const response = await fetch(url);
+            if (!response.ok) {
+              throw new Error(`Error fetching doctors: ${response.status} ${response.statusText}`);
+            }
+            const data = await response.json();
+            return data;
+          } catch (error) {
+            console.error('Error fetching doctors:', error);
+            // Handle the error appropriately in your application
+          }
+        }
+        
+      } catch (error) {
+        console.error('Error fetching doctors:', error);
+      }
+    };
+  
+    fetchData();
   }, []);
+  
 
   const fetchDoctors = async () => {
     try {
-      const response = await fetch(`${backendUrl}/bookAppointments`);
+      const response = await fetch(`$
+http://localhost:8080/listDoctors`);
       if (!response.ok) {
         throw new Error('Failed to fetch doctors');
       }
       const data = await response.json();
+      console.log(data);
       setDoctors(data);
     } catch (error) {
       console.error('Error fetching doctors:', error);
@@ -462,16 +497,17 @@ const Appointment = ({ backendUrl }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!selectedDoctor) {
-      setPopupMessage('Please select a doctor');
-      setShowPopup(true);
-      return;
-    }
-
-    const appointmentData = { date, time, doctor: selectedDoctor };
-
+  //   if (!selectedDoctor) {
+  //     setPopupMessage('Please select a doctor');
+  //     setShowPopup(true);
+  //  return;
+  //  }
+ const patientId = 14;
+ const doctorId = 3;
+    const appointmentData = { date, time, patientId, doctorId};
+    console.log(appointmentData);
     try {
-      const response = await fetch(`${backendUrl}/bookAppointments`, {
+      const response = await fetch(`http://localhost:8080/bookAppointment`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -520,7 +556,7 @@ const Appointment = ({ backendUrl }) => {
 
   return (
     <div className="appointment-container">
-      {showPopup && (
+     {showPopup && (
         <div className="popup">
           <div className="popup-inner">
             <p>{popupMessage}</p>
@@ -531,7 +567,7 @@ const Appointment = ({ backendUrl }) => {
       <div className="appointment-content">
         <h1 className="title-tag">Book Appointment</h1>
         <div className="form-container">
-          <div className="search-doctors">
+         {/* <div className="search-doctors">
             <ul>
               {doctors.map((doctor) => (
                 <li key={doctor.id} onClick={() => handleDoctorSelection(doctor)}>
@@ -539,14 +575,14 @@ const Appointment = ({ backendUrl }) => {
                 </li>
               ))}
             </ul>
-          </div>
-          {selectedDoctor && <DoctorProfile doctor={selectedDoctor} />}
+            </div>
+          {selectedDoctor && <DoctorProfile doctor={selectedDoctor} />} */}
           <form onSubmit={handleSubmit}>
-            {selectedDoctor && (
+            {/* {selectedDoctor && (
               <div className='form-row'>
                 <p className='doctor-name'>{selectedDoctor.fullName}</p>
               </div>
-            )}
+            )} */}
             <div className="form-row">
               <input
                 type="date"
