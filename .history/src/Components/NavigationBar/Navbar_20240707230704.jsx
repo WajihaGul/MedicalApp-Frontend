@@ -319,7 +319,6 @@
 // };
 
 // export default Navbar;
-
 import { GoogleLogin } from "@react-oauth/google";
 import styles from "./Navbar.module.css";
 import { Link, useNavigate } from "react-router-dom";
@@ -332,6 +331,7 @@ const Navbar = () => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
   const [showRegisterModal, setShowRegisterModal] = useState(false);
+  const [showGoogleLoginModal, setShowGoogleLoginModal] = useState(false); // State for Google Login modal
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -374,6 +374,7 @@ const Navbar = () => {
     setStoredPassword(hashedPassword);
     setIsLoggedIn(true);
     setShowLoginModal(false);
+    setShowGoogleLoginModal(true); // Show Google login modal
   };
 
   const handleRegisterSubmit = () => {
@@ -525,27 +526,19 @@ const Navbar = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </Form.Group>
-            <Row className="align-items-center">
-              <Col>
-                <Button
-                  style={{ margin: "8px" }}
-                  variant="primary"
-                  onClick={handleLoginSubmit}
-                >
-                  Login
-                </Button>
-              </Col>
-              <Col>
-                <GoogleLogin
-                  onSuccess={(credentialResponse) => {
-                    console.log(credentialResponse);
-                  }}
-                  onError={() => {
-                    console.log("Login Failed");
-                  }}
-                />
-              </Col>
-            </Row>
+            <div className="d-flex justify-content-between align-items-center">
+              <Button variant="primary" onClick={handleLoginSubmit}>
+                Login
+              </Button>
+              <GoogleLogin
+                onSuccess={(credentialResponse) => {
+                  console.log(credentialResponse);
+                }}
+                onError={() => {
+                  console.log("Login Failed");
+                }}
+              />
+            </div>
             <h2 style={{ fontSize: "larger", paddingLeft: "8px" }}>
               Are you new here?
               <span
@@ -560,6 +553,32 @@ const Navbar = () => {
               </span>
             </h2>
           </Form>
+        </Modal.Body>
+      </Modal>
+
+      {/* Google Login Modal */}
+      <Modal
+        show={showGoogleLoginModal}
+        onHide={() => setShowGoogleLoginModal(false)}
+        dialogClassName="modal-dialog-centered"
+        contentClassName="custom-modal-content"
+      >
+        <Modal.Header closeButton>
+          <Modal.Title>Login with Google</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
+          {/* Google Login Component here */}
+          <GoogleLogin
+            onSuccess={(credentialResponse) => {
+              console.log(credentialResponse);
+              // Handle Google login success
+              setShowGoogleLoginModal(false); // Close Google login modal on success
+            }}
+            onError={() => {
+              console.log("Login Failed");
+              setShowGoogleLoginModal(false); // Close Google login modal on error
+            }}
+          />
         </Modal.Body>
       </Modal>
 

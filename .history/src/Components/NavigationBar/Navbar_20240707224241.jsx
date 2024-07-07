@@ -324,7 +324,7 @@ import { GoogleLogin } from "@react-oauth/google";
 import styles from "./Navbar.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import React, { useState, useEffect } from "react";
-import { Modal, Button, Form, Row, Col } from "react-bootstrap";
+import { Modal, Button, Form } from "react-bootstrap";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
@@ -525,27 +525,13 @@ const Navbar = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </Form.Group>
-            <Row className="align-items-center">
-              <Col>
-                <Button
-                  style={{ margin: "8px" }}
-                  variant="primary"
-                  onClick={handleLoginSubmit}
-                >
-                  Login
-                </Button>
-              </Col>
-              <Col>
-                <GoogleLogin
-                  onSuccess={(credentialResponse) => {
-                    console.log(credentialResponse);
-                  }}
-                  onError={() => {
-                    console.log("Login Failed");
-                  }}
-                />
-              </Col>
-            </Row>
+            <Button
+              style={{ margin: "8px" }}
+              variant="primary"
+              onClick={handleLoginSubmit}
+            >
+              Login
+            </Button>
             <h2 style={{ fontSize: "larger", paddingLeft: "8px" }}>
               Are you new here?
               <span
@@ -559,6 +545,16 @@ const Navbar = () => {
                 Register Yourself Now
               </span>
             </h2>
+            <div style={{ textAlign: "center", marginTop: "20px" }}>
+              <GoogleLogin
+                onSuccess={(credentialResponse) => {
+                  console.log(credentialResponse);
+                }}
+                onError={() => {
+                  console.log("Login Failed");
+                }}
+              />
+            </div>
           </Form>
         </Modal.Body>
       </Modal>

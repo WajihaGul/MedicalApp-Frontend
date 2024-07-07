@@ -525,27 +525,19 @@ const Navbar = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </Form.Group>
-            <Row className="align-items-center">
-              <Col>
-                <Button
-                  style={{ margin: "8px" }}
-                  variant="primary"
-                  onClick={handleLoginSubmit}
-                >
-                  Login
-                </Button>
-              </Col>
-              <Col>
-                <GoogleLogin
-                  onSuccess={(credentialResponse) => {
-                    console.log(credentialResponse);
-                  }}
-                  onError={() => {
-                    console.log("Login Failed");
-                  }}
-                />
-              </Col>
-            </Row>
+            <div className="d-flex justify-content-between align-items-center">
+              <Button variant="primary" onClick={handleLoginSubmit}>
+                Login
+              </Button>
+              <GoogleLogin
+                onSuccess={(credentialResponse) => {
+                  console.log(credentialResponse);
+                }}
+                onError={() => {
+                  console.log("Login Failed");
+                }}
+              />
+            </div>
             <h2 style={{ fontSize: "larger", paddingLeft: "8px" }}>
               Are you new here?
               <span

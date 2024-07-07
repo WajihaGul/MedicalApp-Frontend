@@ -534,8 +534,6 @@ const Navbar = () => {
                 >
                   Login
                 </Button>
-              </Col>
-              <Col>
                 <GoogleLogin
                   onSuccess={(credentialResponse) => {
                     console.log(credentialResponse);
