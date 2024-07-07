@@ -15,11 +15,16 @@ const DoctorProfile = ({ addEditPharmacyText }) => {
   const [endTime, setEndTime] = useState("");
   const [excludeDay, setExcludeDay] = useState("");
   const [awards, setAwards] = useState("");
+<<<<<<< HEAD
+=======
+  const [gender, setGender] = useState("");
+>>>>>>> 283e16fb4dba1525cfb87a969f57284cf7ad1d66
 
   const [additionalNotes, setAdditionalNotes] = useState("");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+<<<<<<< HEAD
     console.log({
       imageUpload: formData.get("imageUpload"),
       fullName: fullname,
@@ -30,10 +35,25 @@ const DoctorProfile = ({ addEditPharmacyText }) => {
       clinicName: clinicName,
       fromDay: fromDay,
       toDay: toDay,
+=======
+    const formData = new FormData(e.target);
+    debugger;
+    const newDoctor = {
+      imageUpload: formData.get("imageUpload"),
+      doctorName: fullName,
+      gender: gender,
+      specialization: specialization,
+      qualification: education,
+      phone: phone,
+      clinicName: clinicName,
+      workDayStart: fromDay,
+      workDayEnd: toDay,
+>>>>>>> 283e16fb4dba1525cfb87a969f57284cf7ad1d66
       startTime: startTime,
       endTime: endTime,
       excludeDay: excludeDay,
       awards: awards,
+<<<<<<< HEAD
       additionalNotes: additionalNotes,
     });
     try {
@@ -46,6 +66,20 @@ const DoctorProfile = ({ addEditPharmacyText }) => {
         body: JSON.stringify(newDoctor),
       });
 
+=======
+      additionalNotes:additionalNotes,
+    };
+    try {
+      const response = await fetch("http://localhost:8080/registerDoctor", {
+        method: "POST",
+
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(newDoctor),
+      });
+
+>>>>>>> 283e16fb4dba1525cfb87a969f57284cf7ad1d66
       // Check if the response is ok (status in the range 200-299)
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -74,7 +108,7 @@ const DoctorProfile = ({ addEditPharmacyText }) => {
           <span className={styles.upload_text}>Upload Image</span>
         </label>
       </div>
-
+      
       <form onSubmit={handleSubmit}>
         <div className={styles.form_group}>
           <label htmlFor="fullName">
@@ -84,9 +118,25 @@ const DoctorProfile = ({ addEditPharmacyText }) => {
             type="text"
             id="fullName"
             value={fullName}
+<<<<<<< HEAD
+=======
+            name="fullName"
+>>>>>>> 283e16fb4dba1525cfb87a969f57284cf7ad1d66
             onChange={(e) => setFullName(e.target.value)}
             required
           />
+        </div>
+        <div className={styles.form_row}>
+          <label htmlFor="gender">Gender:</label>
+          <select
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
+            required
+          >
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
         </div>
         <div className={styles.form_group}>
           <label>

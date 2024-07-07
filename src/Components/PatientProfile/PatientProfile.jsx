@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 import styles from "./PatientProfile.module.css";
+import id from "flowbite-datepicker/locales/id";
 
 const PatientProfile = () => {
+
   // State variables for form fields
   const [phone, setPhone] = useState("");
   const [dateOFBirth, setDateOFBirth] = useState("");
@@ -10,7 +12,7 @@ const PatientProfile = () => {
   const [medicalHistory, setMedicaltHistory] = useState("");
   // const [activityLevel, setActivityLevel] = useState("");
   // const [dietaryPreference, setDietaryPreference] = useState("");
-
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData(e.target);
@@ -19,20 +21,21 @@ const PatientProfile = () => {
       image: formData.get("imageUpload"),
       name: formData.get("name"),
       dateOFBirth: formData.get("dob"),
-      phone: formData.get("contactNumber"),
+      phone: formData.get("phone"),
       bloodType: formData.get("bloodType"),
-      gender: formData.get("gender"),
+      gender: gender,
       dietaryPreference: formData.get("dietaryPreference"),
       activityLevel: formData.get("activityLevel"),
       medicalHistory: formData.get("patientHistory"),
-    };
+    }
     try {
-      const response = await fetch("http://localhost:8080/registerPatient", {
-        method: "POST",
-
+      const response = await fetch('http://localhost:8080/registerPatient', {
+        method: 'POST',
+    
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
+        
         body: JSON.stringify(newPatient),
       });
 
@@ -42,12 +45,12 @@ const PatientProfile = () => {
       }
 
       const data = await response.json();
-      console.log("Success:", data);
+      console.log('Success:', data);
     } catch (error) {
-      console.error("Error:", error);
+      console.error('Error:', error);
       // setError(error.message);
     }
-  };
+  }
   return (
     <div className={styles.view_profile_container}>
       <h2>View Profile</h2>
@@ -66,19 +69,18 @@ const PatientProfile = () => {
       </div>
 
       <form className={styles.form_group} onSubmit={handleSubmit}>
-        <div></div>
+      <div>
+          
+          </div>
         <div className={styles.form_row}>
-          <label htmlFor="name" className={styles.profileLabel}>
-            Name:
-          </label>
+          <label htmlFor="name" className={styles.profileLabel}>Name:</label>
           <input
             className={styles.input_field}
             type="text"
             id="name"
-            name="name"
-          />
+name="name"          />
         </div>
-
+       
         <div className={styles.form_group}>
           <label htmlFor="phone">
             Contact Number<span>*</span>:
@@ -90,7 +92,7 @@ const PatientProfile = () => {
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             pattern="[\+]?[0-9\s\-]+"
-            placeholder="+92 0123456789"
+            placeholder="3244201338"
             required
           />
         </div>
@@ -118,7 +120,6 @@ const PatientProfile = () => {
             <option value="female">Female</option>
           </select>
         </div>
-
         <div className={styles.form_row}>
           <label htmlFor="bloodType">Blood Type:</label>
           <select
@@ -148,24 +149,17 @@ const PatientProfile = () => {
             value={medicalHistory}
             onChange={(e) => setMedicaltHistory(e.target.value)}
             placeholder="Write about your previous medications, medical conditions, family medical history, immunization history, mental health history"
-            required
-            id="patientHistory"
-            name="patientHistory"
+            required id="patientHistory" name="patientHistory"
           ></textarea>
         </div>
         <div className={styles.form_row}>
           <label htmlFor="activityLevel">Activity Level:</label>
-          <textarea
-            className={styles.textarea_field}
-            required
-            id="activityLevel"
-            name="activityLevel"
-          ></textarea>
+          <textarea className={styles.textarea_field} required id="activityLevel" name="activityLevel"></textarea>
         </div>
 
         <div className={styles.form_row}>
           <label htmlFor="dietaryPreference">Dietary Preference</label>
-          <textarea className={styles.textarea_field}></textarea>
+          <textarea className={styles.textarea_field}   ></textarea>
         </div>
 
         <button className={styles.submit_btn} type="submit">

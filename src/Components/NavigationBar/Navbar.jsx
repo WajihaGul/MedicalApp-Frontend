@@ -363,7 +363,11 @@ const Navbar = () => {
     setIsLoggedIn(false);
     localStorage.removeItem("email");
     localStorage.removeItem("password");
+<<<<<<< HEAD
     localStorage.removeItem("role");
+=======
+    localStorage.removeItem("password");
+>>>>>>> 283e16fb4dba1525cfb87a969f57284cf7ad1d66
   };
 
   const handleLoginSubmit = () => {

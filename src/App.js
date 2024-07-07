@@ -10,6 +10,7 @@ import SearchMedicine from "./Pages/SearchMedicine";
 import ViewPatientProfile from "./Pages/ViewPatientProfile";
 import ViewDoctorProfile from "./Pages/ViewDoctorProfile";
 import "./App.css";
+import DoctorSearch from "./Components/Search/DoctorSearch";
 import DoctorData from "./Components/DoctorData/DoctorData";
 import Contact from "./Components/Contact/contact";
 import Appointment from "./Components/Appointment/Appointment";
@@ -22,44 +23,45 @@ import Doc3 from "./Assets/img/doc3.jpg";
 import Doc4 from "./Assets/img/doc4.jpg";
 import Doc5 from "./Assets/img/doc5.jpg";
 import Doc6 from "./Assets/img/doc6.jpg";
+import DoctorDashboard from "./Components/Doctor/DoctorDashboard";
 
 function App() {
-  const doctors = [
+ const doctors = [
     {
       id: 1,
-      imageUrl: Doc1,
-      name: "Dr. Serena Mitchell",
-      specialties: "Orthopedic Surgeon",
+      imageUpload: Doc1,
+      fullName: "Dr. Serena Mitchell",
+      specialization: "Orthopedic Surgeon",
     },
     {
       id: 2,
-      imageUrl: Doc2,
-      name: "Dr. Julian Bennett",
-      specialties: "Cardiologist",
+      imageUpload: Doc2,
+      fullName: "Dr. Julian Bennett",
+      specialization: "Cardiologist",
     },
     {
       id: 3,
-      imageUrl: Doc3,
-      name: "Dr. Camila Rodriguez",
-      specialties: "Pediatrician",
+      imageUpload: Doc3,
+      fullName: "Dr. Camila Rodriguez",
+      specialization: "Pediatrician",
     },
     {
       id: 4,
-      imageUrl: Doc4,
-      name: "Dr. Victor Nguyen",
-      specialties: "Neurologist",
+      imageUpload: Doc4,
+      fullName: "Dr. Victor Nguyen",
+      specialization: "Neurologist",
     },
     {
       id: 5,
-      imageUrl: Doc5,
-      name: "Dr. Ethan Carter",
-      specialties: "Dermatology",
+      imageUpload: Doc5,
+      fullName: "Dr. Ethan Carter",
+      specialization: "Dermatology",
     },
     {
       id: 6,
-      imageUrl: Doc6,
-      name: "Dr. Olivia Martinez",
-      specialties: "Ophthalmologist",
+      imageUpload: Doc6,
+      fullName: "Dr. Olivia Martinez",
+      specialization: "Ophthalmologist",
     },
   ];
   return (
@@ -97,6 +99,8 @@ function App() {
           <Route path="/upload-prescription" element={<ManagePrescription />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/appointment" element={<Appointment />} />
+          <Route path="/doctor-dashboard" element={<DoctorDashboard/>} />
+          <Route path="/doctors" element={<DoctorSearch backendUrl="http://localhost:8080" />} />
           <Route
             path="/doctors/:doctorId"
             element={<DoctorData doctors={doctors} />}
