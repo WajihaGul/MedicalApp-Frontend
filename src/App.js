@@ -23,6 +23,7 @@ import Doc3 from "./Assets/img/doc3.jpg";
 import Doc4 from "./Assets/img/doc4.jpg";
 import Doc5 from "./Assets/img/doc5.jpg";
 import Doc6 from "./Assets/img/doc6.jpg";
+import DoctorDashboard from "./Components/Doctor/DoctorDashboard";
 
 function App() {
  const doctors = [
@@ -98,6 +99,7 @@ function App() {
           <Route path="/upload-prescription" element={<ManagePrescription />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/appointment" element={<Appointment />} />
+          <Route path="/doctor-dashboard" element={<DoctorDashboard/>} />
           <Route path="/doctors" element={<DoctorSearch backendUrl="http://localhost:8080" />} />
           <Route
             path="/doctors/:doctorId"

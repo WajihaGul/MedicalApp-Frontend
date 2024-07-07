@@ -438,10 +438,10 @@ const Appointment = ({ backendUrl }) => {
   const [chatActive, setChatActive] = useState(false);
   const [patient, setPatient] = useState(null);
 
-  const location = useLocation();
-  const searchParams = new URLSearchParams(location.search);
- const patientId = searchParams.get('patientId'); 
- const doctorId = searchParams.get('doctorId');
+ // const location = useLocation();
+  //const searchParams = new URLSearchParams(location.search);
+ const patientId =3; {/*searchParams.get('patientId');*/} 
+ const doctorId = 5;  {/*searchParams.get('doctorId');*/}
 
  {/* useEffect(() => {
     fetchDoctors();
@@ -494,7 +494,7 @@ http://localhost:8080/listDoctors`);
       console.error('Error fetching doctors:', error);
     }
   };*/}
-  useEffect(() => {
+ {/*useEffect(() => {
     const fetchDoctor = async () => {
       try {
         const response = await fetch(`http://localhost:8080/registerDoctor`);
@@ -529,7 +529,7 @@ http://localhost:8080/listDoctors`);
   
     fetchPatient();
   
-  }, [patientId]);
+  }, [patientId]);*/}
 
   const handleDateChange = (e) => setDate(e.target.value);
   const handleTimeChange = (e) => setTime(e.target.value);

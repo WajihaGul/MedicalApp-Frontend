@@ -12,6 +12,7 @@ const DoctorCard = ({ doctor }) => {
     if (!doctor) {
         return null; // Handle the case when the doctor object is undefined
       }
+    
     const [isChatOpen, setIsChatOpen] = useState(false);
 
   // Function to toggle chat visibility
@@ -21,7 +22,7 @@ const DoctorCard = ({ doctor }) => {
   const goToAppointmentBooking = () => {
     navigate(`/doctors/${doctorId}/book`);
   };
-  const { imageUpload, id, fullName, specialization } = doctor;
+  const { id, imageUpload, fullName, specialization } = doctor;
 
   return (
     <div className="col-md-3 mb-4 doctor-card">
@@ -61,7 +62,7 @@ const DoctorCard = ({ doctor }) => {
 DoctorCard.propTypes = {
   doctor: PropTypes.shape({
     id: PropTypes.string.isRequired,
-    imageUpload: PropTypes.string.isRequired,
+    imagUpload: PropTypes.string.isRequired,
     fullName: PropTypes.string.isRequired,
     specialization: PropTypes.string.isRequired,
   }).isRequired,
