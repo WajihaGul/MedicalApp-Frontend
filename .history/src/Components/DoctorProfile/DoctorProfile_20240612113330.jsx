@@ -15,48 +15,27 @@ const DoctorProfile = ({ addEditPharmacyText }) => {
   const [endTime, setEndTime] = useState("");
   const [excludeDay, setExcludeDay] = useState("");
   const [awards, setAwards] = useState("");
-
+  const [patientCareApproach, setPatientCareApproach] = useState("");
   const [additionalNotes, setAdditionalNotes] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log({
-      imageUpload: formData.get("imageUpload"),
-      fullName: fullname,
-      gender: gender,
-      specialization: specialization,
-      education: education,
-      phone: phone,
-      clinicName: clinicName,
-      fromDay: fromDay,
-      toDay: toDay,
-      startTime: startTime,
-      endTime: endTime,
-      excludeDay: excludeDay,
-      awards: awards,
-      additionalNotes: additionalNotes,
+      imageUpload,
+      fullName,
+      specialization,
+      education,
+      phone,
+      clinicName,
+      fromDay,
+      toDay,
+      startTime,
+      endTime,
+      excludeDay,
+      awards,
+      patientCareApproach,
+      additionalNotes,
     });
-    try {
-      const response = await fetch("http://localhost:8080/registerPatient", {
-        method: "POST",
-
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newDoctor),
-      });
-
-      // Check if the response is ok (status in the range 200-299)
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      console.log("Success:", data);
-    } catch (error) {
-      console.error("Error:", error);
-      // setError(error.message);
-    }
   };
 
   return (
@@ -126,7 +105,7 @@ const DoctorProfile = ({ addEditPharmacyText }) => {
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             pattern="[\+]?[0-9\s\-]+"
-            placeholder="+923244201338"
+            placeholder="+92 3244201338"
             required
           />
         </div>
@@ -234,7 +213,14 @@ const DoctorProfile = ({ addEditPharmacyText }) => {
             <option value="Sunday">Sunday</option>
           </select>
         </div>
-
+        <div className={styles.form_group}>
+          <label htmlFor="patientCareApproach">Approach to Patient Care:</label>
+          <textarea
+            id="patientCareApproach"
+            value={patientCareApproach}
+            onChange={(e) => setPatientCareApproach(e.target.value)}
+          ></textarea>
+        </div>
         <div className={styles.form_group}>
           <label htmlFor="awards">Awards, Honors, Recognitions</label>
           <textarea

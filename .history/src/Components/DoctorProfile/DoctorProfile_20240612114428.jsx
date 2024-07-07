@@ -15,49 +15,49 @@ const DoctorProfile = ({ addEditPharmacyText }) => {
   const [endTime, setEndTime] = useState("");
   const [excludeDay, setExcludeDay] = useState("");
   const [awards, setAwards] = useState("");
-
+  
   const [additionalNotes, setAdditionalNotes] = useState("");
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     console.log({
       imageUpload: formData.get("imageUpload"),
-      fullName: fullname,
+      fullName: formData.get("fullname"),
       gender: gender,
-      specialization: specialization,
-      education: education,
-      phone: phone,
-      clinicName: clinicName,
-      fromDay: fromDay,
-      toDay: toDay,
-      startTime: startTime,
-      endTime: endTime,
-      excludeDay: excludeDay,
-      awards: awards,
-      additionalNotes: additionalNotes,
+      specialization: formData.get("specialization"),
+      education: formData.get("education"),
+      phone: formData.get("phone"),
+      clinicName: formData.get("clinicName"),
+      fromDay: formData.get("fromDay"),
+      toDay: formData.get("toDay"),
+      startTime: formData.get("startTime"),
+      endTime: formData.get("endTime"),
+      excludeDay: formData.get("excludeDay"),
+      awards: formData.get("awards"),
+      additionalNotes: formData.get("additionalNotes"),
     });
-    try {
-      const response = await fetch("http://localhost:8080/registerPatient", {
-        method: "POST",
+  try {
+    const response = await fetch("http://localhost:8080/registerPatient", {
+      method: "POST",
 
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newDoctor),
-      });
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newDoctor),
+    });
 
-      // Check if the response is ok (status in the range 200-299)
-      if (!response.ok) {
-        throw new Error(`HTTP error! status: ${response.status}`);
-      }
-
-      const data = await response.json();
-      console.log("Success:", data);
-    } catch (error) {
-      console.error("Error:", error);
-      // setError(error.message);
+    // Check if the response is ok (status in the range 200-299)
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
     }
-  };
+
+    const data = await response.json();
+    console.log("Success:", data);
+  } catch (error) {
+    console.error("Error:", error);
+    // setError(error.message);
+  }
+};
 
   return (
     <div className={styles.container}>
@@ -234,7 +234,7 @@ const DoctorProfile = ({ addEditPharmacyText }) => {
             <option value="Sunday">Sunday</option>
           </select>
         </div>
-
+        
         <div className={styles.form_group}>
           <label htmlFor="awards">Awards, Honors, Recognitions</label>
           <textarea

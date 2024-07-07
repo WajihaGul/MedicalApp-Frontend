@@ -22,19 +22,19 @@ const DoctorProfile = ({ addEditPharmacyText }) => {
     e.preventDefault();
     console.log({
       imageUpload: formData.get("imageUpload"),
-      fullName: fullname,
+      fullName: formData.get("fullname"),
       gender: gender,
-      specialization: specialization,
-      education: education,
-      phone: phone,
-      clinicName: clinicName,
-      fromDay: fromDay,
-      toDay: toDay,
-      startTime: startTime,
-      endTime: endTime,
-      excludeDay: excludeDay,
-      awards: awards,
-      additionalNotes: additionalNotes,
+      specialization: formData.get("specialization"),
+      education: formData.get("education"),
+      phone: formData.get("phone"),
+      clinicName: formData.get("clinicName"),
+      fromDay: formData.get("fromDay"),
+      toDay: formData.get("toDay"),
+      startTime: formData.get("startTime"),
+      endTime: formData.get("endTime"),
+      excludeDay: formData.get("excludeDay"),
+      awards: formData.get("awards"),
+      additionalNotes: formData.get("additionalNotes"),
     });
     try {
       const response = await fetch("http://localhost:8080/registerPatient", {
