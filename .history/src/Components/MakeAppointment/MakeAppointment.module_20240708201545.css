@@ -1,0 +1,80 @@
+.container {
+    background-color: rgb(126, 144, 195);
+    height: auto; /* Adjusted height to auto for dynamic content */
+    padding: 30px; /* Added padding for spacing */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.head3 {
+    color: white;
+    font-family: cursive;
+    font-size: 3rem; /* Adjusted font size for large heading */
+    margin: 30px 0; /* Added margin for spacing */
+}
+
+.head1 {
+    color: white;
+    font-family: cursive;
+    font-size: 3rem; /* Adjusted font size for subheading */
+    width: 1000%; /* Adjusted width for responsiveness */
+    max-width: 1085px; /* Added max-width for larger screens */
+    margin: 30px 0; /* Added margin for spacing */
+}
+
+.divii {
+    width: 100%; /* Adjusted width for responsiveness */
+    max-width: 1080px; /* Added max-width for larger screens */
+    margin: 30px auto; /* Centered and added margin for spacing */
+}
+
+.ButtonHere {
+    margin: 4px auto; /* Adjusted margin for spacing */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.mbutton {
+    height: 55px;
+    width: 100%; /* Adjusted width to full width */
+    max-width: 321px; /* Added max-width for larger screens */
+    border: none; /* Changed border to none */
+    font-size: 1.5rem; /* Adjusted font size */
+    border-radius: 15px;
+    background-color: #32ca0b;
+    color: white;
+    padding: 10px; /* Combined padding shorthand */
+    margin: 0 10px; /* Added margin for button spacing */
+}
+
+.micon {
+    margin: 0 5px; /* Adjusted margin for icon spacing */
+}
+
+@media (max-width: 768px) {
+    .head3 {
+        font-size: 2rem; /* Adjusted font size for smaller screens */
+        margin: 20px 0; /* Adjusted margin for smaller screens */
+    }
+
+    .head1 {
+        font-size: 1.5rem; /* Adjusted font size for smaller screens */
+    }
+
+    .divii {
+        max-width: 100%; /* Full width for smaller screens */
+    }
+
+    .ButtonHere {
+        flex-direction: column; /* Stack buttons vertically on smaller screens */
+    }
+
+    .mbutton {
+        width: 100%; /* Full width for buttons on smaller screens */
+        margin: 10px 0; /* Adjusted margin for button spacing */
+    }
+}

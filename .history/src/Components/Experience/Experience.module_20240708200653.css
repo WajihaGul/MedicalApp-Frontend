@@ -1,0 +1,57 @@
+.container {
+  max-width: 1200px;
+  margin: 138px auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.divimg {
+  text-align: center;
+}
+
+.eimg {
+  height: auto; /* Adjust image height to maintain aspect ratio */
+  max-width: 100%; /* Ensure image does not exceed its container */
+  margin: 30px 0; /* Adjust margins as needed */
+}
+
+.ehead1 {
+  font-size: 4rem; /* Adjust font size for large heading */
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.ehead6 {
+  color: #339e46;
+  font-size: 1.5rem; /* Adjust font size for subtitle */
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.story_p {
+  text-align: justify;
+  font-size: 1rem; /* Adjust font size for paragraph */
+  line-height: 1.6;
+  max-width: 900px;
+  margin: 0 auto; /* Center the paragraph within its container */
+  padding: 0 20px; /* Adjust padding for better readability */
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 20px;
+  }
+  
+  .ehead1 {
+    font-size: 3rem;
+  }
+
+  .ehead6 {
+    font-size: 1.2rem;
+  }
+
+  .story_p {
+    font-size: 0.9rem;
+  }
+}

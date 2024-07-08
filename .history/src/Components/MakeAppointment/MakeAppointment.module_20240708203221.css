@@ -1,0 +1,79 @@
+.container {
+    background-color: rgb(126, 144, 195);
+    height: auto; /* Adjusted height to auto for dynamic content */
+    padding: 30px; /* Added padding for spacing */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.head3 {
+    color: white;
+    font-family: cursive;
+    font-size: 3rem; /* Adjusted font size for large heading */
+    margin: 30px 0; /* Added margin for spacing */
+}
+
+.head1 {
+    color: white;
+    font-family: cursive;
+    font-size: 3rem; /* Adjusted font size for subheading */
+    width: 100%; /* Adjusted width for responsiveness */
+    max-width: 1085px; /* Added max-width for larger screens */
+}
+
+
+.divii {
+    width: 100%; /* Adjusted width for responsiveness */
+    max-width: 1080px; /* Added max-width for larger screens */
+    margin: 30px auto; /* Centered and added margin for spacing */
+}
+
+.ButtonHere {
+    text-align: center;
+  margin-top: 20px; /* Adjust as needed */
+}
+
+.mbutton {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    transition: background-color 0.3s ease;
+}
+.mbutton:hover {
+    background-color: #0056b3;
+  }
+.micon {
+    margin-right: 10px;
+  font-size: 20px;
+}
+
+@media (max-width: 768px) {
+    .head3 {
+        font-size: 2rem; /* Adjusted font size for smaller screens */
+        margin: 20px 0; /* Adjusted margin for smaller screens */
+    }
+
+    .head1 {
+        font-size: 1.5rem; /* Adjusted font size for smaller screens */
+    }
+
+    .divii {
+        max-width: 100%; /* Full width for smaller screens */
+    }
+
+    .ButtonHere {
+        flex-direction: column; /* Stack buttons vertically on smaller screens */
+    }
+
+    .mbutton {
+        width: 100%; /* Full width for buttons on smaller screens */
+        margin: 10px 0; /* Adjusted margin for button spacing */
+    }
+}

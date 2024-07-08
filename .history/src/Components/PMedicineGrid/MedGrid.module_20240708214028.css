@@ -1,0 +1,24 @@
+/* MedGrid.module.css */
+
+.tableContainer {
+  margin: 50px;
+}
+
+.addButton {
+  margin-bottom: 20px; /* Add margin to the right of the button */
+  float: right; /* Float the button to the left */
+}
+
+.editButton {
+  margin: 5px;
+}
+
+.buttonIcon {
+  margin-bottom: 5px;
+}
+
+@media (max-width: 768px) {
+  .tableContainer {
+    margin: 20px;
+  }
+}

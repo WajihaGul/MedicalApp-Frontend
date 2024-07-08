@@ -1,0 +1,113 @@
+/* Navbar.module.css */
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 80px;
+  padding: 0 30px;
+  background-color: #4f4fa1;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  z-index: 10;
+}
+
+.allnav {
+  display: flex;
+  align-items: center;
+  gap: 50px; /* Adjusted gap between items */
+  flex-wrap: wrap; /* Ensure items wrap on smaller screens */
+}
+
+.navLinks {
+  display: flex;
+  gap: 30px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  font-size: large; /* Adjusted font size for better readability */
+  box-sizing: border-box;
+  font-family: cursive;
+  font-weight: 800;
+  text-decoration: none !important;
+}
+
+.navLinksColor {
+  color: white;
+}
+
+.navLinks a {
+  text-decoration: none !important;
+}
+
+.navbar-item {
+  position: relative;
+}
+
+.navbar-item a {
+  text-decoration: none !important;
+  color: #fff;
+  font-weight: bold;
+  padding: 15px 20px;
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-item a:hover {
+  background-color: rgba(255, 255, 255, 0.2); /* Semi-transparent background on hover */
+}
+
+.customButton {
+  background-color: #f0f1ff;
+  border: none;
+  font-family: cursive;
+  color: #2259b1;
+  padding: 0px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+  font-size: large; /* Adjusted font size */
+  height: 54px;
+  font-weight: 700;
+}
+
+@media (max-width: 991.98px) {
+  .allnav {
+    gap: 20px; /* Adjusted gap for smaller screens */
+    justify-content: center; /* Center items */
+  }
+
+  .navLinks {
+    display: none; /* Hide links by default on smaller screens */
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    top: 80px; /* Adjusted top position */
+    left: 0;
+    width: 100%;
+    background-color: #4f4fa1;
+    padding: 10px 0;
+    z-index: 1000;
+  }
+
+  .navLinks.show {
+    display: flex; /* Show links when navbar toggler is clicked */
+  }
+
+  .navbar-item {
+    margin-bottom: 10px; /* Adjusted margin for items */
+  }
+
+  .customButton {
+    display: none; /* Hide custom button on smaller screens */
+  }
+}
+
+/* Keep other styles as they are */

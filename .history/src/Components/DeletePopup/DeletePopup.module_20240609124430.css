@@ -1,0 +1,47 @@
+.popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .popupContent {
+    background-color: #fff;
+    padding: 20px;
+    width: 400px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+  }
+  
+  .buttons {
+    margin-top: 20px;
+  }
+  
+  .deleteBtn {
+    margin-right: 10px;
+  }
+  
+  .cancelBtn {
+    background-color: #6c757d; /* Gray background color */
+    border-color: #6c757d; /* Gray border color */
+    color: #fff; /* White text color */
+  }
+  
+  .deleteBtn,
+  .cancelBtn {
+    padding: 10px 20px;
+    border-radius: 5px;
+  }
+  
+  .deleteBtn:hover,
+  .cancelBtn:hover {
+    background-color: #dc3545; /* Red background color on hover */
+    border-color: #dc3545; /* Red border color on hover */
+  }
+  

@@ -1,0 +1,62 @@
+src/components/MedicineCard.css
+.medicine-image {
+  height: 250px;
+  object-fit: cover;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+/* src/components/SearchMedicine.module.css */
+.medicine-image {
+  height: 75%;
+  object-fit: cover;
+}
+
+.card-title .faPills, 
+.card-text .faStore, 
+.card-text .faMapMarkerAlt, 
+.card-text .faStar {
+  margin-right: 8px;
+}
+
+.text-warning {
+  color: #ffc107 !important;
+}
+
+.text-muted {
+  color: #e4e5e9 !important;
+}
+.search-bar {
+  width: 250px; /* Adjust width as needed */
+  margin: 0 auto;
+  border-radius: 50px
+
+}
+/* src/components/MedicineCard.css */
+.medicine-card {
+  position: relative;
+}
+
+.medicine-card .card-body {
+  position: relative;
+}
+
+.medicine-card .btn-add-to-cart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  visibility: hidden; /* Hide the button initially */
+}
+
+.medicine-card:hover .btn-add-to-cart {
+  visibility: visible; /* Show the button on hover */
+}
+
+.medicine-card:hover .card-img-top {
+  filter: blur(4px);
+}
+

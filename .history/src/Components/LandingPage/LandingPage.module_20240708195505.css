@@ -1,0 +1,40 @@
+.carouselContainer {
+  width: 100%; /* Full viewport width */
+  
+}
+
+.carouselImage {
+  height: 100vh; /* Adjust height as needed */
+  object-fit: cover;
+}
+
+.carouselCaption {
+  text-align: center;
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background for better contrast */
+  padding: 20px;
+  color: #fff;
+}
+
+.sliders_h {
+  font-size: 2.5rem;
+  font-weight: bold;
+}
+
+.sliders_p {
+  font-size: 1.5rem;
+  margin-bottom: 0;
+}
+
+@media (max-width: 768px) {
+  .carouselImage {
+    height: 40vh; /* Adjust height for smaller screens */
+  }
+
+  .sliders_h {
+    font-size: 2rem;
+  }
+
+  .sliders_p {
+    font-size: 1.2rem;
+  }
+}
