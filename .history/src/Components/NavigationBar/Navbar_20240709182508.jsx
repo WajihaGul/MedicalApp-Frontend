@@ -28,8 +28,6 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("Stored Email:", storedEmail);
-    console.log("Stored Password:", storedPassword);
     if (storedEmail && storedPassword) {
       setIsLoggedIn(true);
     }
@@ -57,7 +55,6 @@ const Navbar = () => {
     setStoredPassword(hashedPassword);
     setIsLoggedIn(true);
     setShowLoginModal(false);
-    console.log("Login submitted:", email);
   };
 
   const handleRegisterSubmit = () => {
@@ -81,7 +78,6 @@ const Navbar = () => {
       setStoredRole(role);
       setIsLoggedIn(true);
       setShowRegisterModal(false);
-      console.log("Register submitted:", email);
     } else {
       alert("Passwords do not match");
     }
@@ -155,7 +151,7 @@ const Navbar = () => {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  Welcome Wajiha {storedEmail}
+                  Welcome, {storedEmail}
                 </a>
                 <div
                   className="dropdown-menu"

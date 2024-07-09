@@ -155,7 +155,7 @@ const Navbar = () => {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  Welcome Wajiha {storedEmail}
+                  Welcome, Wajiha {storedEmail}
                 </a>
                 <div
                   className="dropdown-menu"

@@ -15,25 +15,20 @@ const Navbar = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [role, setRole] = useState("");
 
-  const [storedEmail, setStoredEmail] = useState(
-    localStorage.getItem("email") || ""
-  );
-  const [storedPassword, setStoredPassword] = useState(
-    localStorage.getItem("password") || ""
-  );
-  const [storedRole, setStoredRole] = useState(
-    localStorage.getItem("role") || ""
-  );
-
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("Stored Email:", storedEmail);
-    console.log("Stored Password:", storedPassword);
+    const storedEmail = localStorage.getItem("email") || "";
+    const storedPassword = localStorage.getItem("password") || "";
+    const storedRole = localStorage.getItem("role") || "";
+
     if (storedEmail && storedPassword) {
       setIsLoggedIn(true);
+      setEmail(storedEmail);
+      setPassword(storedPassword);
+      setRole(storedRole);
     }
-  }, [storedEmail, storedPassword]);
+  }, []);
 
   const handleLogin = () => {
     setShowLoginModal(true);
@@ -44,20 +39,17 @@ const Navbar = () => {
     localStorage.removeItem("email");
     localStorage.removeItem("password");
     localStorage.removeItem("role");
-    setStoredEmail("");
-    setStoredPassword("");
-    setStoredRole("");
+    setEmail("");
+    setPassword("");
+    setRole("");
   };
 
   const handleLoginSubmit = () => {
     const hashedPassword = btoa(password); // Basic encoding, use a proper hashing method in production
     localStorage.setItem("email", email);
     localStorage.setItem("password", hashedPassword);
-    setStoredEmail(email);
-    setStoredPassword(hashedPassword);
     setIsLoggedIn(true);
     setShowLoginModal(false);
-    console.log("Login submitted:", email);
   };
 
   const handleRegisterSubmit = () => {
@@ -76,23 +68,19 @@ const Navbar = () => {
       localStorage.setItem("email", email);
       localStorage.setItem("password", hashedPassword);
       localStorage.setItem("role", role);
-      setStoredEmail(email);
-      setStoredPassword(hashedPassword);
-      setStoredRole(role);
       setIsLoggedIn(true);
       setShowRegisterModal(false);
-      console.log("Register submitted:", email);
     } else {
       alert("Passwords do not match");
     }
   };
 
   const handleProfileView = () => {
-    if (storedRole === "Doctor") {
+    if (role === "Doctor") {
       navigate("/ViewDoctorProfile");
-    } else if (storedRole === "Patient") {
+    } else if (role === "Patient") {
       navigate("/ViewPatientProfile");
-    } else if (storedRole === "Pharmacy") {
+    } else if (role === "Pharmacy") {
       navigate("/AddPharmacy");
     }
   };
@@ -155,7 +143,7 @@ const Navbar = () => {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  Welcome Wajiha {storedEmail}
+                  Welcome, {email}
                 </a>
                 <div
                   className="dropdown-menu"
