@@ -3,8 +3,9 @@ import { Button } from "react-bootstrap";
 import styles from "./DoctorProfile.module.css";
 
 const DoctorProfile = ({ addEditPharmacyText }) => {
-  const [imageUpload, handleImageUpload] = useState("");
+  const [imageUpload, setImageUpload] = useState("");
   const [fullName, setFullName] = useState("");
+  const [gender, setGender] = useState("");
   const [specialization, setSpecialization] = useState("");
   const [education, setEducation] = useState("");
   const [phone, setPhone] = useState("");
@@ -15,59 +16,59 @@ const DoctorProfile = ({ addEditPharmacyText }) => {
   const [endTime, setEndTime] = useState("");
   const [excludeDay, setExcludeDay] = useState("");
   const [awards, setAwards] = useState("");
-  const [patientCareApproach, setPatientCareApproach] = useState("");
-  const [practiceValues, setPracticeValues] = useState("");
   const [additionalNotes, setAdditionalNotes] = useState("");
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log({
-      imageUpload,
-      fullName,
-      specialization,
-      education,
-      phone,
-      clinicName,
-      fromDay,
-      toDay,
-      startTime,
-      endTime,
-      excludeDay,
-      awards,
-      patientCareApproach,
-      additionalNotes,
-    });
+
+    const formData = new FormData();
+    formData.append("imageUpload", imageUpload);
+    formData.append("fullName", fullName);
+    formData.append("gender", gender);
+    formData.append("specialization", specialization);
+    formData.append("education", education);
+    formData.append("phone", phone);
+    formData.append("clinicName", clinicName);
+    formData.append("fromDay", fromDay);
+    formData.append("toDay", toDay);
+    formData.append("startTime", startTime);
+    formData.append("endTime", endTime);
+    formData.append("excludeDay", excludeDay);
+    formData.append("awards", awards);
+    formData.append("additionalNotes", additionalNotes);
+
+    try {
+      const response = await fetch("/api/doctor-profile", {
+        method: "POST",
+        body: formData,
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      console.log("Success:", data);
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   return (
     <div className={styles.container}>
       <h1 className={styles.dhead1}>Doctor's Profile</h1>
       <div className={styles.profile_image_container}>
-        <label className={styles.upload_label} htmlFor="profileImage">
-          Profile Image:
+        <label htmlFor="imageUpload" className={styles.upload_label}>
+          <input
+            type="file"
+            accept="image/*"
+            id="imageUpload"
+            name="imageUpload"
+            className={styles.upload_input}
+            onChange={(e) => setImageUpload(e.target.files[0])}
+          />
+          <span className={styles.upload_text}>Upload Image</span>
         </label>
-        <input
-          type="file"
-          id="profileImage"
-          accept="image/*"
-          Restrict
-          the
-          input
-          to
-          accept
-          only
-          image
-          files
-          onChange={(e) => handleImageUpload(e.target.files[0])}
-          Call
-          a
-          function
-          to
-          handle
-          the
-          image
-          upload
-        />
       </div>
 
       <form onSubmit={handleSubmit}>
@@ -79,9 +80,23 @@ const DoctorProfile = ({ addEditPharmacyText }) => {
             type="text"
             id="fullName"
             value={fullName}
+            name="fullName"
             onChange={(e) => setFullName(e.target.value)}
             required
           />
+        </div>
+        <div className={styles.form_row}>
+          <label htmlFor="gender">Gender:</label>
+          <select
+            id="gender"
+            value={gender}
+            onChange={(e) => setGender(e.target.value)}
+            required
+          >
+            <option value="">Select Gender</option>
+            <option value="male">Male</option>
+            <option value="female">Female</option>
+          </select>
         </div>
         <div className={styles.form_group}>
           <label>
@@ -121,7 +136,7 @@ const DoctorProfile = ({ addEditPharmacyText }) => {
             value={phone}
             onChange={(e) => setPhone(e.target.value)}
             pattern="[\+]?[0-9\s\-]+"
-            placeholder="+92 3244201338"
+            placeholder="+923244201338"
             required
           />
         </div>
@@ -229,14 +244,7 @@ const DoctorProfile = ({ addEditPharmacyText }) => {
             <option value="Sunday">Sunday</option>
           </select>
         </div>
-        <div className={styles.form_group}>
-          <label htmlFor="patientCareApproach">Approach to Patient Care:</label>
-          <textarea
-            id="patientCareApproach"
-            value={patientCareApproach}
-            onChange={(e) => setPatientCareApproach(e.target.value)}
-          ></textarea>
-        </div>
+
         <div className={styles.form_group}>
           <label htmlFor="awards">Awards, Honors, Recognitions</label>
           <textarea

@@ -1,4 +1,3 @@
-
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faPills,
@@ -26,7 +25,7 @@ const MedicineCard = ({ medicine, onAddToCart }) => {
     <div className="col-md-3 mb-4 medicine-card">
       <div className="card h-100">
         <img
-          src={image}
+          src="https://www.google.com/imgres?q=medicine&imgurl=https%3A%2F%2Fmedshadow.org%2Fwp-content%2Fuploads%2F2012%2F11%2Fmedicine-883x577.jpeg&imgrefurl=https%3A%2F%2Fmedshadow.org%2Fwhat-are-long-term-effects-of-medicine%2F&docid=2-HsvDC0bitowM&tbnid=hoPxBwR2WyAp0M&vet=12ahUKEwjb-OL9upqHAxXpAtsEHV3pBbUQM3oECGYQAA..i&w=883&h=577&hcb=2&ved=2ahUKEwjb-OL9upqHAxXpAtsEHV3pBbUQM3oECGYQAA"
           style={{ height: "250px" }}
           className="card-img-top medicine-image"
           alt={medicineName}

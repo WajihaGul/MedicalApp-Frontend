@@ -9,7 +9,7 @@ const Accomplishments = () => {
           <img
             className={styles.cols_img}
             src="https://medi-dove.netlify.app/img/counter/counter-icon-7.png"
-            alt=""
+            alt="img1"
           />
           <p className={styles.explanation}>
             540 +
