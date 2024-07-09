@@ -22,7 +22,7 @@ const DoctorCard = ({ doctor }) => {
   const goToAppointmentBooking = () => {
     navigate(`/doctors/${doctorId}/book`);
   };
-  const { id, imageUpload, fullName, specialization } = doctor;
+  const { id, fullName, specialization } = doctor;
 
   return (
     <div className="col-md-3 mb-4 doctor-card">
@@ -30,11 +30,11 @@ const DoctorCard = ({ doctor }) => {
         
     
         <div className="card-body">
-        <img
+       {/* <img
           src={imageUpload}
           style={{ height: "250px" }}
           className="card-img-top doctor-image"
-        />
+  />*/}
           <h5 className="card-title">{fullName}</h5>
           <p className="card-text">{specialization}</p>
           <div className="div-button2">
@@ -47,7 +47,7 @@ const DoctorCard = ({ doctor }) => {
                   >
                     Book an Appointment
                   </Button>*/}
-                  <Link to={`/appointment?doctorId=${id}`}>Book Appointment</Link>
+                  <Link to={`/appointment?doctorId=${id}`}  className="custom-button3" >Book Appointment</Link>
                 </div>
                 <button onClick={toggleChat} className="chat-button">
                   Chat With Me
@@ -62,7 +62,6 @@ const DoctorCard = ({ doctor }) => {
 DoctorCard.propTypes = {
   doctor: PropTypes.shape({
     id: PropTypes.string.isRequired,
-    imagUpload: PropTypes.string.isRequired,
     fullName: PropTypes.string.isRequired,
     specialization: PropTypes.string.isRequired,
   }).isRequired,
