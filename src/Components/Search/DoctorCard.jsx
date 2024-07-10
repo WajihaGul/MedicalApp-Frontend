@@ -30,11 +30,11 @@ const DoctorCard = ({ doctor }) => {
         
     
         <div className="card-body">
-       {/* <img
-          src={imageUpload}
+       <img
+          src="https://media.post.rvohealth.io/wp-content/uploads/2020/08/Doctors_For_Men-732x549-thumbnail-1-732x549.jpg"
           style={{ height: "250px" }}
           className="card-img-top doctor-image"
-  />*/}
+  />
           <h5 className="card-title">{fullName}</h5>
           <p className="card-text">{specialization}</p>
           <div className="div-button2">
