@@ -228,7 +228,9 @@ const DoctorProfile = ({ addEditPharmacyText }) => {
           </div>
         </div>
         <div className={styles.form_group}>
-          <label htmlFor="excludeDay">Exclude a Day:</label>
+          <label htmlFor="excludeDay">
+            Exclude a Day<span>*</span>:
+          </label>
           <select
             id="excludeDay"
             value={excludeDay}
